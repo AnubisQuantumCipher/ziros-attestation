@@ -1,14 +1,48 @@
 # ZirOS
 
+### *The Zero-Knowledge Operating System*
+
 ![Mechanized Theorems](https://img.shields.io/badge/Mechanized%20Theorems-169-0b6e4f)
-![Backends](https://img.shields.io/badge/Backends-9-1f4f99)
-![Post-Quantum](https://img.shields.io/badge/Post--Quantum-ML--DSA--87-5a3ec8)
-![Midnight](https://img.shields.io/badge/Midnight-5%20Live%20Contracts-5b4b3a)
-![GPU](https://img.shields.io/badge/GPU-Apple%20Metal-7a1f1f)
+![Backends](https://img.shields.io/badge/Proving%20Backends-9-1f4f99)
+![Post-Quantum](https://img.shields.io/badge/Post--Quantum-ML--DSA--87%20Level%205-5a3ec8)
+![Midnight](https://img.shields.io/badge/Midnight%20Network-5%20Live%20Contracts-5b4b3a)
+![GPU](https://img.shields.io/badge/GPU-Apple%20Metal%2050%20Kernels-7a1f1f)
+![Lines](https://img.shields.io/badge/Rust-290%2C000%20Lines-orange)
+
+---
+
+> *"I prove that something is true without revealing why it is true. The math is the authority. The proofs are mechanized. The system fails closed."*
+
+---
+
+## What Is ZirOS
+
+**ZirOS is not a library.** It is not a framework. It is not a wrapper around someone else's proving system.
+
+**ZirOS is a zero-knowledge operating system** — the system layer between what you want to prove and the raw cryptographic machinery that proves it. It owns the *entire path* from your statement to a verified, signed, post-quantum proof artifact.
+
+**290,000 lines of Rust** across **30 workspace crates**. **9 proving backends** across **7 finite fields**. **7 circuit frontends**. **63 Metal GPU shaders** with **50 kernel entrypoints**. **169 mechanized theorems** across **5 formal proof languages** with **zero pending claims**. **Post-quantum signatures** (ML-DSA-87, NIST Level 5) on every artifact. **Apple Silicon native** — shaped around the M4 Max unified memory architecture, Metal GPU, Neural Engine, Secure Enclave, and iCloud Drive.
+
+One person built this. The contracts are live on Midnight. The proofs verify. The code is invisible.
+
+| | |
+|---|---|
+| **Scale** | 290,000 lines of Rust, 30 crates, 1,047 tests passing |
+| **Proving** | 9 backends, 7 fields, 7 frontends, 11 gadgets |
+| **GPU** | 63 Metal shaders, 50 kernels, 8 accelerators, 14 prewarmed pipelines |
+| **AI Control Plane** | 6 CoreML Neural Engine model lanes (38 TOPS on M4 Max) |
+| **Formal Verification** | 169 mechanized theorems (Lean 4, Rocq, Verus, F*, Kani), 0 pending |
+| **Post-Quantum** | ML-DSA-87 (FIPS 204), ML-KEM-1024 (FIPS 203), CNSA 2.0 Level 5 |
+| **Midnight Network** | Native GPU-accelerated proof server, 5 live Compact contracts |
+| **Ethereum** | 128-byte Groth16 proofs, ~210K gas verification, Solidity export |
+| **Defense** | Swarm anomaly detection, attack genome sequencing, honeypot traps |
+| **Agentic** | Designed for Claude Code (Opus 4.6) and Codex autonomous operation |
+
+---
 
 ## Download & Install
 
-**[Download ZirOS v0.4.0 for Apple Silicon](https://github.com/AnubisQuantumCipher/ziros-attestation/releases/download/v0.4.0/zkf-aarch64-apple-darwin-v0.4.0.tar.gz)** (85 MB)
+**[Download ZirOS v0.4.0 for Apple Silicon](https://github.com/AnubisQuantumCipher/ziros-attestation/releases/download/v0.4.0/zkf-aarch64-apple-darwin-v0.4.0.tar.gz)** — *85 MB, aarch64-apple-darwin, stripped release binary with LTO*
 
 ```bash
 # Download and install
@@ -173,22 +207,7 @@ Nothing here contains ZirOS implementation source, proof construction files, GPU
 | Evidence package | [evidence/evidence-package.json](evidence/evidence-package.json) |
 | Midnight deployments | [midnight/explorer-links.md](midnight/explorer-links.md) |
 
-## Section 1 — What ZirOS Is
-
-ZirOS is a zero-knowledge operating system. It is not a library and not a framework. The disclosed private-core architecture spans 290,000 lines of Rust across 30 workspace crates and owns the full path from statement to verified, signed, post-quantum proof artifact.
-
-The system is built around Apple Silicon and shaped for the M4 Max unified-memory model: Metal GPU acceleration, Apple Neural Engine scheduling assistance, Secure Enclave-backed key custody, and iCloud-synchronized operator storage. This repository publishes evidence for that system without exposing the implementation witness.
-
-| Surface | Public Evidence |
-|--------|-----------------|
-| Verification ledger | [ledger/verification-ledger.json](ledger/verification-ledger.json) |
-| Weekly attestation | [attestation/latest.json](attestation/latest.json) |
-| Conformance runs | [conformance/latest/](conformance/latest/) |
-| Binary integrity | [binary-manifest/v0.4.0/manifest.json](binary-manifest/v0.4.0/manifest.json) |
-| SDK interface | [sdk/api-surface.md](sdk/api-surface.md) |
-| Midnight proof-server contract | [proof-server/endpoint-spec.md](proof-server/endpoint-spec.md) |
-
-## Section 2 — The Proving Engine
+## The Proving Engine
 
 The table below is the disclosed proving-lane architecture. Live binary/backend readiness and compatibility policy are published separately in [capability-matrix/backends.json](capability-matrix/backends.json). Public conformance evidence in this repo currently covers Plonky3, Halo2, Nova, and HyperNova.
 
@@ -213,7 +232,7 @@ The table below is the disclosed proving-lane architecture. Live binary/backend 
 | Nova | 6 | 6 | [conformance/latest/nova.json](conformance/latest/nova.json) |
 | HyperNova | 6 | 6 | [conformance/latest/hypernova.json](conformance/latest/hypernova.json) |
 
-## Section 3 — Circuit Frontends
+## Circuit Frontends
 
 Seven import surfaces are documented for the private core. After import, programs pass through one compile/prove/verify pipeline.
 
@@ -229,7 +248,7 @@ Seven import surfaces are documented for the private core. After import, program
 
 See [capability-matrix/frontends.json](capability-matrix/frontends.json).
 
-## Section 4 — Gadgets
+## Gadgets
 
 | Gadget | Field Support | Status |
 |--------|---------------|--------|
@@ -247,7 +266,7 @@ See [capability-matrix/frontends.json](capability-matrix/frontends.json).
 
 See [capability-matrix/gadgets.json](capability-matrix/gadgets.json).
 
-## Section 5 — Seven Fields
+## Seven Fields
 
 | Field | Bit Width | Modulus | Primary Backend |
 |-------|-----------|---------|-----------------|
@@ -259,7 +278,7 @@ See [capability-matrix/gadgets.json](capability-matrix/gadgets.json).
 | BabyBear | 32-bit | 2013265921 | Plonky3 |
 | Mersenne31 | 31-bit | 2147483647 | Plonky3 |
 
-## Section 6 — Apple Metal GPU Acceleration
+## Apple Metal GPU Acceleration
 
 The disclosed GPU lane covers 63 Metal shader sources, 50 kernel entrypoints, 8 active accelerators, 14 prewarmed pipelines, and a fail-closed 4-digest attestation chain. The public evidence package also publishes the current attested accelerator set and pipeline count.
 
@@ -289,7 +308,7 @@ The disclosed GPU lane covers 63 Metal shader sources, 50 kernel entrypoints, 8 
 
 See [evidence/evidence-package.json](evidence/evidence-package.json).
 
-## Section 7 — Neural Engine Control Plane
+## Neural Engine Control Plane
 
 ZirOS documents six CoreML lanes running on the Apple Neural Engine on M4 Max class hardware. This control plane is advisory only. Proof truth never depends on model output. If model integrity, feature shape, or bundle hash checks fail, bundles are quarantined and heuristic scheduling takes over.
 
@@ -309,7 +328,7 @@ ZirOS documents six CoreML lanes running on the Apple Neural Engine on M4 Max cl
 | Supply-chain integrity | SHA-256 manifest pinning, quarantine markers, model-integrity verification |
 | Failure mode | Advisory-only quarantine, never proof-plane corruption |
 
-## Section 8 — Unified Memory Prover Graph (UMPG)
+## Unified Memory Prover Graph (UMPG)
 
 UMPG plans, materializes, executes, and certifies proving jobs across CPU, GPU, and the advisory Neural Engine surface. The public architectural contract exposes three memory classes, three execution modes, and three trust lanes.
 
@@ -333,7 +352,7 @@ UMPG plans, materializes, executes, and certifies proving jobs across CPU, GPU, 
 
 UnifiedBufferPool lives in unified CPU/GPU memory, tracks per-slot metadata and liveness, and uses FNV-1a content digests for integrity on the spill/reload boundary.
 
-## Section 9 — Swarm Defense System
+## Swarm Defense System
 
 The disclosed swarm architecture has seven components and a hard non-interference boundary: it may affect scheduling, peer selection, or escalation state, but never proof truth.
 
@@ -357,7 +376,7 @@ The disclosed swarm architecture has seven components and a hard non-interferenc
 | Non-interference claim | Swarm affects scheduling, never artifact truth |
 | Published bounded claim | `controller_artifact_mutation_surface_count() -> 0` |
 
-## Section 10 — Post-Quantum Cryptographic Surface
+## Post-Quantum Cryptographic Surface
 
 | Component | Classification | Mathematical Basis |
 |-----------|----------------|--------------------|
@@ -374,7 +393,7 @@ The disclosed swarm architecture has seven components and a hard non-interferenc
 
 The system documents CNSA 2.0 Level 5 alignment for the signature and key-establishment lanes. See [capability-matrix/post-quantum.json](capability-matrix/post-quantum.json).
 
-## Section 11 — Formal Verification
+## Formal Verification
 
 The live public theorem ledger in this repository contains 169 mechanized entries, 0 pending entries, and 0 model-only claims. The bounded-check and proof-tool inventory described below is part of the documented verification surface, even though this repository deliberately omits the proof files themselves.
 
@@ -399,7 +418,7 @@ The live public theorem ledger in this repository contains 169 mechanized entrie
 
 Constitutional rule: verification coverage is a one-way ratchet. It may increase. It is not weakened.
 
-## Section 12 — Eight Defense Layers
+## Eight Defense Layers
 
 | Layer | What It Covers | Evidence Surface |
 |-------|----------------|------------------|
@@ -414,7 +433,7 @@ Constitutional rule: verification coverage is a one-way ratchet. It may increase
 
 An audit firm reviews a snapshot. ZirOS publishes a continuously updated verification surface.
 
-## Section 13 — Midnight Network Integration
+## Midnight Network Integration
 
 ZirOS exposes a Midnight-compatible proof server and documents five deployed Compact contracts on Midnight preprod.
 
@@ -446,7 +465,7 @@ See [proof-server/endpoint-spec.md](proof-server/endpoint-spec.md).
 
 Additional deployment details are published in [midnight/sed-deployment-manifest.json](midnight/sed-deployment-manifest.json), [midnight/explorer-links.md](midnight/explorer-links.md), and [midnight/attestation-contracts.md](midnight/attestation-contracts.md).
 
-## Section 14 — Proof Wrapping (STARK-to-Groth16)
+## Proof Wrapping (STARK-to-Groth16)
 
 The public wrapping contract is a Nova IVC decomposition of the FRI verifier, not a monolithic direct wrap.
 
@@ -463,7 +482,7 @@ The public wrapping contract is a Nova IVC decomposition of the FRI verifier, no
 
 The trust boundary is explicit: the inner STARK is post-quantum; the outer Groth16 wrapper is not.
 
-## Section 15 — Solidity Verifier Export
+## Solidity Verifier Export
 
 Groth16 artifacts can be exported to Solidity verifiers for EVM deployment.
 
@@ -478,7 +497,7 @@ Groth16 artifacts can be exported to Solidity verifiers for EVM deployment.
 | Deploy gas | ~1.5M gas |
 | Verify gas | ~210K gas per proof |
 
-## Section 16 — Credential System
+## Credential System
 
 The disclosed credential surface is ML-DSA-87 signed, supports hybrid Ed25519 + ML-DSA-87 issuance, and proves policy satisfaction without revealing subject identity.
 
@@ -489,7 +508,7 @@ The disclosed credential surface is ML-DSA-87 signed, supports hybrid Ed25519 + 
 | Membership structure | Poseidon Merkle membership proofs |
 | Encrypted file-key KDF | Argon2id, 4 GiB memory, 3 iterations, 1 lane |
 
-## Section 17 — Binary Distribution
+## Binary Distribution
 
 No binaries are published in this repository. Only their hashes and the opaque C header are published.
 
@@ -510,7 +529,7 @@ typedef struct ZkfCompiledProgramHandle { uint8_t _private[0]; } ZkfCompiledProg
 typedef struct ZkfProofArtifactHandle { uint8_t _private[0]; } ZkfProofArtifactHandle;
 ```
 
-## Section 18 — Public SDK (Apache 2.0)
+## Public SDK (Apache 2.0)
 
 The SDK interface is the only open programming surface documented here. It is intentionally narrow: 29 lines, zero function bodies, public type and function signatures only.
 
@@ -522,7 +541,7 @@ The SDK interface is the only open programming surface documented here. It is in
 
 Subsystem developers build on ZirOS. They own their app, license, and domain logic. The ZirOS engine remains private.
 
-## Section 19 — Subsystem Architecture
+## Subsystem Architecture
 
 ZirOS generates complete subsystem surfaces from domain specifications. The subsystem developer owns the subsystem. ZirOS owns the operating system beneath it.
 
@@ -533,7 +552,7 @@ ZirOS generates complete subsystem surfaces from domain specifications. The subs
 
 This is the operating-system model: you own the application, not the kernel.
 
-## Section 20 — Weekly Attestation
+## Weekly Attestation
 
 This repository is intended to update weekly with fresh machine-verifiable evidence:
 
@@ -548,7 +567,7 @@ This repository is intended to update weekly with fresh machine-verifiable evide
 
 When the Midnight attestation contracts are live on-chain, the same boundary will extend to public on-chain verification.
 
-## Section 21 — What Is Not In This Repository
+## What Is Not In This Repository
 
 This repository does not contain:
 
@@ -616,7 +635,7 @@ zkf verify --program circuit.json --artifact proof.json --backend plonky3
 
 Full SDK API: [sdk/api-surface.md](sdk/api-surface.md) | Example: [sdk/example-circuit.rs](sdk/example-circuit.rs)
 
-## Section 22 — Application Templates
+## Application Templates
 
 The public architecture documentation lists 22 built-in ready templates. The in-development `sovereign-economic-defense` template is excluded from the table below because it is not part of the ready built-in set.
 
@@ -645,7 +664,7 @@ The public architecture documentation lists 22 built-in ready templates. The in-
 | navier-stokes-structured | Structured-grid Navier-Stokes step |
 | combustion-instability-rayleigh | Rayleigh-window combustion-instability certificate |
 
-## Section 23 — Distributed Cluster
+## Distributed Cluster
 
 The disclosed distributed proving architecture supports multi-node execution over TCP with graph partitioning and swarm-defended coordination.
 
@@ -657,7 +676,7 @@ The disclosed distributed proving architecture supports multi-node execution ove
 | Heartbeat payload | `ThreatIntelPayload` with digest set, activation level, intelligence root, local pressure, network pressure |
 | Gossip encryption | ML-KEM-1024 epoch keys |
 
-## Section 24 — Measured Performance
+## Measured Performance
 
 | Metric | Published Figure |
 |--------|------------------|
