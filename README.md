@@ -413,6 +413,55 @@ This repository does not contain:
 
 ZirOS core remains proprietary. This repository publishes evidence and interfaces only.
 
+## How To Use ZirOS
+
+This repository proves ZirOS works. To actually **use** ZirOS, you need:
+
+| Component | What It Is | How To Get It | License |
+|-----------|-----------|---------------|---------|
+| **`zkf` binary** | 33 MB CLI — the operator tool. Compile, prove, verify, deploy, wrap, fold, benchmark, audit. 38 top-level commands. | Distributed separately under commercial license. Contact [AnubisQuantumCipher](https://github.com/AnubisQuantumCipher) for access. | ZirOS Core Proprietary |
+| **`libzkf_ffi.dylib`** | 12 MB dynamic library — the entire proving engine as a callable C ABI. Opaque handles. 14 extern functions. | Distributed separately under commercial license. Bundled with `zkf.h` (56-line C header). | ZirOS Core Proprietary |
+| **`libzkf_ffi.a`** | 170 MB static library — same engine, statically linked. All dependencies included. | Distributed with the dynamic library. | ZirOS Core Proprietary |
+| **`zkf-sdk`** | 29-line Rust crate — the public API surface. Types, traits, function signatures. Zero implementation bodies. Build your own circuits with `ProgramBuilder`. | Coming to [crates.io](https://crates.io) as `zkf-sdk`. | Apache 2.0 (open) |
+| **`zkf.h`** | 56-line C header — opaque handle API for C/C++/Swift/Python FFI integration. | Included in this repo at [binary-manifest/v0.4.0/zkf.h](binary-manifest/v0.4.0/zkf.h). | Apache 2.0 (open) |
+
+### What You Can Build
+
+With the SDK and binary, you can build **subsystem applications** — complete ZK-powered products that run on top of ZirOS:
+
+- **Cooperative governance systems** (treasury compliance, land trust equity, lending fairness)
+- **Aerospace mission assurance** (reentry thermal envelopes, powered descent, orbital dynamics)
+- **Private identity credentials** (age verification, KYC compliance without revealing identity)
+- **On-chain verification** (128-byte Groth16 proofs on Ethereum for ~$15)
+- **Midnight Network DApps** (Compact smart contracts with selective disclosure)
+- **Scientific certificates** (thermochemical equilibrium, Navier-Stokes, combustion instability)
+
+Your subsystem code belongs to you. Your license, your contracts, your product. ZirOS's engine stays invisible — you link against the binary, you never see the source.
+
+### The Developer Experience
+
+```rust
+// Your code — you own it
+use zkf_sdk::{ProgramBuilder, FieldId, Expr, compile_default, prove, verify};
+
+let mut builder = ProgramBuilder::new("my_circuit", FieldId::Bn254);
+builder.private_input("secret")?;
+builder.public_output("commitment")?;
+builder.constrain_equal(Expr::signal("commitment"), Expr::signal("secret"))?;
+
+let program = builder.build()?;
+// builder.build() calls into libzkf.dylib — you never see the internals
+```
+
+Or via CLI:
+```bash
+zkf prove --program circuit.json --inputs inputs.json --backend plonky3 --out proof.json
+zkf verify --program circuit.json --artifact proof.json --backend plonky3
+# verification: OK
+```
+
+Full SDK API: [sdk/api-surface.md](sdk/api-surface.md) | Example: [sdk/example-circuit.rs](sdk/example-circuit.rs)
+
 ## Section 22 — Application Templates
 
 The public architecture documentation lists 22 built-in ready templates. The in-development `sovereign-economic-defense` template is excluded from the table below because it is not part of the ready built-in set.
