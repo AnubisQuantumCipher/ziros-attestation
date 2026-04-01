@@ -6,18 +6,111 @@
 ![Midnight](https://img.shields.io/badge/Midnight-5%20Live%20Contracts-5b4b3a)
 ![GPU](https://img.shields.io/badge/GPU-Apple%20Metal-7a1f1f)
 
+## Download & Install
+
+**[Download ZirOS v0.4.0 for Apple Silicon](https://github.com/AnubisQuantumCipher/ziros-attestation/releases/download/v0.4.0/zkf-aarch64-apple-darwin-v0.4.0.tar.gz)** (85 MB)
+
+```bash
+# Download and install
+curl -LO https://github.com/AnubisQuantumCipher/ziros-attestation/releases/download/v0.4.0/zkf-aarch64-apple-darwin-v0.4.0.tar.gz
+tar xzf zkf-aarch64-apple-darwin-v0.4.0.tar.gz
+sudo cp aarch64-apple-darwin/zkf /usr/local/bin/
+
+# Verify installation
+zkf doctor --json
+
+# Build and prove your first circuit in 30 seconds
+zkf emit-example --field goldilocks --out example.json
+echo '{"x": "3", "y": "5"}' > inputs.json
+zkf prove --program example.json --inputs inputs.json --backend plonky3 --out proof.json
+zkf verify --program example.json --artifact proof.json --backend plonky3
+# → verification: OK
+```
+
+**What's in the download:**
+
+| File | Size | What It Does |
+|------|------|-------------|
+| `zkf` | 33 MB | CLI binary — 38 commands: compile, prove, verify, deploy, wrap, fold, benchmark, audit, and more |
+| `libzkf_ffi.dylib` | 12 MB | Dynamic library — the entire proving engine as a callable C ABI with opaque handles |
+| `libzkf_ffi.a` | 170 MB | Static library — same engine, all dependencies included |
+| `zkf.h` | 2 KB | C header — [56 lines, opaque handles](binary-manifest/v0.4.0/zkf.h), 14 extern functions |
+| `manifest.json` | 544 B | [SHA-256 hashes](binary-manifest/v0.4.0/manifest.json) of all binaries for integrity verification |
+
+**Verify integrity:**
+```bash
+shasum -a 256 aarch64-apple-darwin/zkf
+# Expected: 6af0cefa7c3fbcff5df266fea031fbab0a72d3927f7634561d1de306ac29547c
+```
+
+**Releases:** [All releases](https://github.com/AnubisQuantumCipher/ziros-attestation/releases) | **License:** ZirOS Core Proprietary — free to use, [commercial license](https://github.com/AnubisQuantumCipher) required for production deployment and managed services
+
+---
+
+## What You Can Build
+
+ZirOS generates complete subsystem applications from domain specifications. Your code is yours — your license, your contracts, your product. ZirOS's engine stays invisible.
+
+| Domain | What You Can Prove | Example |
+|--------|-------------------|---------|
+| **DeFi / Ethereum** | 128-byte Groth16 proofs verifiable on-chain for ~$15 gas | Solidity verifier contracts for any circuit |
+| **Cooperative Governance** | Treasury compliance, lending fairness, equity distribution | [5 live contracts on Midnight](midnight/explorer-links.md) |
+| **Aerospace** | Reentry thermal envelopes, powered descent, orbital dynamics | 256-step RK4 reentry certificate |
+| **Private Identity** | Age verification, KYC compliance without revealing identity | ML-DSA-87 signed credentials |
+| **Midnight Network** | Compact smart contracts with selective disclosure | Native GPU-accelerated proof server |
+| **Scientific** | Thermochemical equilibrium, Navier-Stokes, combustion instability | 22 built-in templates |
+
+**The developer experience:**
+
+```rust
+// Your code — you own it, whatever license you want
+use zkf_sdk::{ProgramBuilder, FieldId, Expr, compile_default, prove, verify};
+
+let mut builder = ProgramBuilder::new("my_circuit", FieldId::Bn254);
+builder.private_input("secret")?;
+builder.public_output("commitment")?;
+builder.constrain_equal(Expr::signal("commitment"), Expr::signal("secret"))?;
+
+let program = builder.build()?;
+// builder.build() calls into libzkf.dylib — you never see the internals
+```
+
+Or use the CLI directly — no Rust required:
+
+```bash
+# Define your circuit in JSON
+zkf compile --spec zirapp.json --backend plonky3 --out compiled.json
+zkf prove --program zirapp.json --inputs inputs.json --backend plonky3 --out proof.json
+zkf verify --program zirapp.json --artifact proof.json --backend plonky3
+
+# Deploy a Solidity verifier to Ethereum
+zkf deploy --artifact proof.json --backend arkworks-groth16 --out Verifier.sol --evm-target ethereum
+
+# Scaffold a complete app from a template
+zkf app init my-app --template range-proof --style colored
+cd my-app && cargo run
+```
+
+**Full SDK API:** [sdk/api-surface.md](sdk/api-surface.md) | **Example circuit:** [sdk/example-circuit.rs](sdk/example-circuit.rs) | **Proof server endpoints:** [proof-server/endpoint-spec.md](proof-server/endpoint-spec.md)
+
+---
+
 ## Public Attestation Repository
 
-This repository is public, evidence-only, and intentionally source-free.
+This repository is public, evidence-only, and intentionally source-free. It publishes machine-verifiable attestation data and interface-level architecture documentation for the private ZirOS core.
 
-It publishes two things:
+Nothing here contains ZirOS implementation source, proof construction files, GPU kernels, Cargo manifests, build scripts, or private workspace paths. The publication boundary and leak-prevention rules are documented in [SECURITY.md](SECURITY.md) and [position/source-code-protection.md](position/source-code-protection.md).
 
-1. Machine-verifiable attestation data: [attestation/latest.json](attestation/latest.json), [ledger/verification-ledger.json](ledger/verification-ledger.json), [conformance/latest/](conformance/latest/), [evidence/evidence-package.json](evidence/evidence-package.json), and [binary-manifest/v0.4.0/manifest.json](binary-manifest/v0.4.0/manifest.json).
-2. Interface-level architecture documentation for the private ZirOS core: capabilities, public SDK surface, proof-server contract, deployment evidence, and operational trust boundaries.
-
-Nothing here contains ZirOS implementation source, proof construction files, GPU kernels, binaries, Cargo manifests, build scripts, or private workspace paths.
-
-The publication boundary and leak-prevention rules are documented in [SECURITY.md](SECURITY.md) and [position/source-code-protection.md](position/source-code-protection.md).
+| Evidence | Link |
+|----------|------|
+| Weekly attestation | [attestation/latest.json](attestation/latest.json) |
+| Verification ledger (169 theorems) | [ledger/verification-ledger.json](ledger/verification-ledger.json) |
+| Backend conformance | [conformance/latest/](conformance/latest/) |
+| Binary integrity (SHA-256) | [binary-manifest/v0.4.0/manifest.json](binary-manifest/v0.4.0/manifest.json) |
+| SDK API surface | [sdk/api-surface.md](sdk/api-surface.md) |
+| Proof server spec | [proof-server/endpoint-spec.md](proof-server/endpoint-spec.md) |
+| Evidence package | [evidence/evidence-package.json](evidence/evidence-package.json) |
+| Midnight deployments | [midnight/explorer-links.md](midnight/explorer-links.md) |
 
 ## Section 1 — What ZirOS Is
 
