@@ -95,6 +95,67 @@ cd my-app && cargo run
 
 ---
 
+## Agentic Operation — Best With Claude Code or Codex
+
+ZirOS is an agentic system. It is designed to be operated by AI — not just used as a tool, but driven autonomously by a language model that understands zero-knowledge proving, circuit construction, and proof verification.
+
+**Recommended:** [Claude Code](https://claude.com/claude-code) with Claude Opus 4.6 (1M context) or [Codex](https://openai.com/codex) for scheduled automation.
+
+### Why Agentic
+
+Traditional ZK frameworks require you to manually write circuits, configure backends, manage witnesses, run provers, and verify artifacts. ZirOS is built so an AI agent can do all of this autonomously:
+
+- **"Prove this circuit"** — the agent selects the backend, compiles, generates the witness, proves, and verifies
+- **"Deploy a Solidity verifier"** — the agent picks Groth16, generates the proof, exports the contract, estimates gas
+- **"Run conformance across all backends"** — the agent runs Plonky3, Halo2, Nova, HyperNova, compares outputs
+- **"Scaffold me a range proof app"** — the agent runs `zkf app init`, sets up the project, runs the smoke tests
+- **"Wrap this STARK to Groth16"** — the agent plans the wrapping pipeline, monitors memory, handles the Nova IVC decomposition
+- **"Check system health"** — the agent runs `zkf doctor`, `zkf metal-doctor`, inspects GPU readiness, reports anomalies
+
+### How To Use With Claude Code
+
+```bash
+# Install ZirOS, then start Claude Code in your project directory
+claude
+
+# Tell it what you want
+> Build me a circuit that proves a value is within a 32-bit range,
+  prove it with Plonky3, and verify the proof.
+
+# Claude Code calls zkf directly:
+#   zkf emit-example → zkf prove → zkf verify → done
+```
+
+Claude Code with Opus 4.6 has a 1M token context window — large enough to hold the entire ZirOS CLI reference, understand all 38 commands, and chain multi-step proving workflows without losing track of state.
+
+### How To Use With Codex (Scheduled Automation)
+
+Codex can run ZirOS tasks on a schedule — weekly attestations, daily conformance tests, automated proof generation:
+
+```
+Codex Scheduled Task (weekly, Monday 2:00 AM):
+
+"Run ZirOS conformance across all backends. If all pass, generate a fresh
+attestation witness, prove it locally, and save the report. If any backend
+fails, stop and report which test failed."
+```
+
+### Agentic Architecture
+
+ZirOS supports five agent patterns:
+
+| Agent Type | What It Does | Trigger |
+|-----------|-------------|---------|
+| **Proving Agent** | Selects backend, compiles, proves, verifies | On demand |
+| **Testing Agent** | Runs conformance, soak tests, formal verification | Scheduled or on demand |
+| **Healing Agent** | Monitors system health, restarts crashed services, reroutes failed backends | Every 15 minutes |
+| **Blueprint Executor** | Executes multi-week plans with checkpointing and error recovery | Scheduled |
+| **Daemon Agent** | Background event loop — spawns other agents when events occur | Continuous |
+
+Every `zkf` command supports `--json` output for machine parsing. Every error includes a remediation suggestion. The system is built to be operated by AI from the ground up.
+
+---
+
 ## Public Attestation Repository
 
 This repository is public, evidence-only, and intentionally source-free. It publishes machine-verifiable attestation data and interface-level architecture documentation for the private ZirOS core.
