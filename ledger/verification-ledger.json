@@ -1,8 +1,5 @@
 {
-  "schema": "zkf-public-verification-ledger-v1",
-  "source_schema": "zkf-verification-ledger-v5",
-  "generated_at": "2026-04-01T17:55:20Z",
-  "total_entries": 169,
+  "schema": "zkf-verification-ledger-v5",
   "entries": [
     {
       "theorem_id": "ccs.fail_closed_conversion",

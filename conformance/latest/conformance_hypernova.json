@@ -1,0 +1,82 @@
+{
+  "backend": "hypernova",
+  "field": "Bn254",
+  "tests_run": 6,
+  "tests_passed": 6,
+  "tests_failed": 0,
+  "pass_rate": 1.0,
+  "results": [
+    {
+      "test_name": "identity",
+      "backend": "hypernova",
+      "compile_ok": true,
+      "prove_ok": true,
+      "verify_ok": true,
+      "total_time_ms": 1846,
+      "error": null,
+      "public_outputs": [
+        "42"
+      ]
+    },
+    {
+      "test_name": "multiply",
+      "backend": "hypernova",
+      "compile_ok": true,
+      "prove_ok": true,
+      "verify_ok": true,
+      "total_time_ms": 1478,
+      "error": null,
+      "public_outputs": [
+        "21"
+      ]
+    },
+    {
+      "test_name": "range_check",
+      "backend": "hypernova",
+      "compile_ok": true,
+      "prove_ok": true,
+      "verify_ok": true,
+      "total_time_ms": 1502,
+      "error": null,
+      "public_outputs": [
+        "200"
+      ]
+    },
+    {
+      "test_name": "boolean",
+      "backend": "hypernova",
+      "compile_ok": true,
+      "prove_ok": true,
+      "verify_ok": true,
+      "total_time_ms": 1540,
+      "error": null,
+      "public_outputs": [
+        "1"
+      ]
+    },
+    {
+      "test_name": "add_chain",
+      "backend": "hypernova",
+      "compile_ok": true,
+      "prove_ok": true,
+      "verify_ok": true,
+      "total_time_ms": 1506,
+      "error": null,
+      "public_outputs": [
+        "35"
+      ]
+    },
+    {
+      "test_name": "quadratic",
+      "backend": "hypernova",
+      "compile_ok": true,
+      "prove_ok": true,
+      "verify_ok": true,
+      "total_time_ms": 1465,
+      "error": null,
+      "public_outputs": [
+        "25"
+      ]
+    }
+  ]
+}
