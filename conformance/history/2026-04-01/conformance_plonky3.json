@@ -1,6 +1,6 @@
 {
-  "backend": "halo2",
-  "field": "PastaFp",
+  "backend": "plonky3",
+  "field": "Goldilocks",
   "tests_run": 6,
   "tests_passed": 6,
   "tests_failed": 0,
@@ -8,11 +8,11 @@
   "results": [
     {
       "test_name": "identity",
-      "backend": "halo2",
+      "backend": "plonky3",
       "compile_ok": true,
       "prove_ok": true,
       "verify_ok": true,
-      "total_time_ms": 2536,
+      "total_time_ms": 1315,
       "error": null,
       "public_outputs": [
         "42"
@@ -20,11 +20,11 @@
     },
     {
       "test_name": "multiply",
-      "backend": "halo2",
+      "backend": "plonky3",
       "compile_ok": true,
       "prove_ok": true,
       "verify_ok": true,
-      "total_time_ms": 1550,
+      "total_time_ms": 804,
       "error": null,
       "public_outputs": [
         "21"
@@ -32,11 +32,11 @@
     },
     {
       "test_name": "range_check",
-      "backend": "halo2",
+      "backend": "plonky3",
       "compile_ok": true,
       "prove_ok": true,
       "verify_ok": true,
-      "total_time_ms": 1421,
+      "total_time_ms": 875,
       "error": null,
       "public_outputs": [
         "200"
@@ -44,11 +44,11 @@
     },
     {
       "test_name": "boolean",
-      "backend": "halo2",
+      "backend": "plonky3",
       "compile_ok": true,
       "prove_ok": true,
       "verify_ok": true,
-      "total_time_ms": 1524,
+      "total_time_ms": 840,
       "error": null,
       "public_outputs": [
         "1"
@@ -56,11 +56,11 @@
     },
     {
       "test_name": "add_chain",
-      "backend": "halo2",
+      "backend": "plonky3",
       "compile_ok": true,
       "prove_ok": true,
       "verify_ok": true,
-      "total_time_ms": 1514,
+      "total_time_ms": 814,
       "error": null,
       "public_outputs": [
         "35"
@@ -68,11 +68,11 @@
     },
     {
       "test_name": "quadratic",
-      "backend": "halo2",
+      "backend": "plonky3",
       "compile_ok": true,
       "prove_ok": true,
       "verify_ok": true,
-      "total_time_ms": 1545,
+      "total_time_ms": 816,
       "error": null,
       "public_outputs": [
         "25"

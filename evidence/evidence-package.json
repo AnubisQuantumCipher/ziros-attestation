@@ -1,6 +1,6 @@
 {
   "schema": "ziros-attestation-v1",
-  "generated_at": "2026-04-01T19:57:20Z",
+  "generated_at": "2026-04-01T20:07:52Z",
   "version": "0.4.0",
   "claims_verified": {
     "verification_ledger": {
@@ -69,5 +69,5 @@
       }
     }
   },
-  "attestation_hash": "5ddc30ad4e43248fd2d583ae3dbc85c6c4fc31e68b5eeb66b1daefa923ad68be"
+  "attestation_hash": "44ed1d656c0c9202daac732fbf26c7cf5bf947c883ad99e6455d4334f342035b"
 }

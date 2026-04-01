@@ -12,7 +12,7 @@
       "compile_ok": true,
       "prove_ok": true,
       "verify_ok": true,
-      "total_time_ms": 1315,
+      "total_time_ms": 1354,
       "error": null,
       "public_outputs": [
         "42"
@@ -24,7 +24,7 @@
       "compile_ok": true,
       "prove_ok": true,
       "verify_ok": true,
-      "total_time_ms": 804,
+      "total_time_ms": 1029,
       "error": null,
       "public_outputs": [
         "21"
@@ -36,7 +36,7 @@
       "compile_ok": true,
       "prove_ok": true,
       "verify_ok": true,
-      "total_time_ms": 875,
+      "total_time_ms": 936,
       "error": null,
       "public_outputs": [
         "200"
@@ -48,7 +48,7 @@
       "compile_ok": true,
       "prove_ok": true,
       "verify_ok": true,
-      "total_time_ms": 840,
+      "total_time_ms": 1014,
       "error": null,
       "public_outputs": [
         "1"
@@ -60,7 +60,7 @@
       "compile_ok": true,
       "prove_ok": true,
       "verify_ok": true,
-      "total_time_ms": 814,
+      "total_time_ms": 945,
       "error": null,
       "public_outputs": [
         "35"
@@ -72,7 +72,7 @@
       "compile_ok": true,
       "prove_ok": true,
       "verify_ok": true,
-      "total_time_ms": 816,
+      "total_time_ms": 911,
       "error": null,
       "public_outputs": [
         "25"
