@@ -40,6 +40,26 @@ One person built this. The contracts are live on Midnight. The proofs verify. Th
 
 ---
 
+## Weekly Attestation — Machine-Verifiable Proof That ZirOS Works
+
+> *Every week, this repository is updated with fresh evidence that ZirOS passes all verification checks. No source code is revealed. The proof is public. The code is invisible.*
+
+**Latest attestation:** [**attestation/latest.json**](attestation/latest.json)
+
+| What It Proves | How | Current Status |
+|---------------|-----|----------------|
+| **All backends produce correct proofs** | Compile → prove → verify across Plonky3, Halo2, Nova, HyperNova | **24/24 tests passed** |
+| **169 mechanized theorems, 0 pending** | Machine-checked verification ledger across 5 proof languages | [**ledger/verification-ledger.json**](ledger/verification-ledger.json) |
+| **Zero underconstrained signals** | Fail-closed nonlinear anchoring audit on every circuit | **0 violations** |
+| **Binary integrity verified** | SHA-256 hashes of every distributed artifact | [**manifest.json**](binary-manifest/v0.4.0/manifest.json) |
+| **5 Midnight contracts live** | Deployed to preprod with selective disclosure | [**Explorer links**](midnight/explorer-links.md) |
+
+**Full evidence:** [evidence/evidence-package.json](evidence/evidence-package.json) | **Conformance results:** [conformance/latest/](conformance/latest/) | **Attestation history:** [attestation/](attestation/)
+
+*When the Midnight on-chain attestation contracts deploy, these same proofs will be verifiable as zero-knowledge proofs on the Midnight block explorer — proving ZirOS works without revealing how.*
+
+---
+
 ## Download & Install
 
 **[Download ZirOS v0.4.0 for Apple Silicon](https://github.com/AnubisQuantumCipher/ziros-attestation/releases/download/v0.4.0/zkf-aarch64-apple-darwin-v0.4.0.tar.gz)** — *85 MB, aarch64-apple-darwin, stripped release binary with LTO*
