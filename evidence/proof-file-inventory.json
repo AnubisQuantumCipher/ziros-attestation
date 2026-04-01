@@ -1,6 +1,6 @@
 {
   "schema": "zkf-public-proof-file-inventory-v1",
-  "generated_at": "2026-04-01T20:42:00Z",
+  "generated_at": "2026-04-01T22:21:17Z",
   "inventory": {
     "rocq_coq_files": 71,
     "verus_files": 28,
