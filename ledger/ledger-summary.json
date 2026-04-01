@@ -3,23 +3,23 @@
   "mechanized_local": 169,
   "pending": 0,
   "by_checker": {
-    "rocq": 59,
-    "verus": 86,
+    "fstar": 2,
     "lean": 22,
-    "fstar": 2
+    "rocq": 59,
+    "verus": 86
   },
   "by_scope_domain": {
-    "zkf-core": 23,
     "zkf-backends": 24,
-    "zkf-ir-spec": 3,
-    "zkf-runtime": 70,
-    "zkf-frontends": 1,
-    "zkf-metal": 9,
+    "zkf-core": 23,
     "zkf-distributed": 24,
-    "zkf-lib": 15
+    "zkf-frontends": 1,
+    "zkf-ir-spec": 3,
+    "zkf-lib": 15,
+    "zkf-metal": 9,
+    "zkf-runtime": 70
   },
   "by_assurance_class": {
-    "mechanized_implementation_claim": 157,
-    "hypothesis_carried_theorem": 12
+    "hypothesis_carried_theorem": 12,
+    "mechanized_implementation_claim": 157
   }
 }
