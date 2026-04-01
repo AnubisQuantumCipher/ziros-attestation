@@ -1,0 +1,17 @@
+{
+  "schema": "zkf-public-proof-file-inventory-v1",
+  "generated_at": "2026-04-01T17:55:20Z",
+  "inventory": {
+    "rocq_coq_files": 71,
+    "verus_files": 28,
+    "lean4_files": 19,
+    "fstar_files": 10,
+    "kani_harnesses": 6
+  },
+  "ledger_checker_counts": {
+    "rocq": 59,
+    "verus": 86,
+    "lean": 22,
+    "fstar": 2
+  }
+}

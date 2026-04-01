@@ -1,0 +1,117 @@
+name: validate-attestation
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Block forbidden source, proof, and build files
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          forbidden="$(find . -type f \
+            \( -name '*.rs' -o -name '*.ts' -o -name '*.tsx' -o -name '*.js' -o -name '*.jsx' -o -name '*.mjs' -o -name '*.cjs' \
+               -o -name '*.py' -o -name '*.sh' -o -name '*.bash' -o -name '*.zsh' -o -name '*.ps1' -o -name '*.bat' \
+               -o -name '*.v' -o -name '*.lean' -o -name '*.fst' -o -name '*.fsti' \
+               -o -name '*.metal' -o -name '*.metallib' \
+               -o -name '*.circom' -o -name '*.nr' -o -name '*.noir' -o -name '*.zkir' -o -name '*.bzkir' \
+               -o -name '*.dylib' -o -name '*.a' -o -name '*.so' -o -name '*.dll' -o -name '*.exe' -o -name '*.o' -o -name '*.rlib' -o -name '*.wasm' -o -name '*.bin' \
+               -o -name 'Cargo.toml' -o -name 'Cargo.lock' -o -name 'Cargo.*' -o -name '*.toml' \
+               -o -name 'build.rs' -o -name 'Makefile' -o -name 'Dockerfile' \) \
+            ! -path './sdk/example-circuit.rs' \
+            -print)"
+
+          if [[ -n "${forbidden}" ]]; then
+            echo "Forbidden files detected:"
+            printf '%s\n' "${forbidden}"
+            exit 1
+          fi
+
+      - name: Block unexpected binary payloads
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          while IFS= read -r file; do
+            mime="$(file -b --mime-type "$file")"
+            case "$mime" in
+              text/*|application/json|application/x-yaml|application/xml|inode/x-empty)
+                ;;
+              *)
+                echo "Unsupported binary or opaque payload detected: $file ($mime)"
+                exit 1
+                ;;
+            esac
+          done < <(find . -type f ! -path './.git/*')
+
+      - name: Block unsanitized paths and token-like strings
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if rg -n --hidden \
+            --glob '!.git/**' \
+            --glob '!.github/workflows/validate-attestation.yml' \
+            -e '/Users/' \
+            -e '/private/var/' \
+            -e 'Desktop/ZirOS' \
+            -e 'target-local' \
+            -e 'target-public' \
+            -e 'ghp_[A-Za-z0-9_]+' \
+            -e 'mn_(dust|addr)_[A-Za-z0-9_]+' \
+            -e '\bsicarii\b' \
+            -e '"evidence_path"\s*:' \
+            .; then
+            echo "Unsanitized path, identifier, or private evidence field detected."
+            exit 1
+          fi
+
+      - name: Validate JSON documents
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          while IFS= read -r file; do
+            python -m json.tool "$file" > /dev/null
+          done < <(find . -type f -name '*.json' | sort)
+
+      - name: Validate ledger and attestation consistency
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path(".")
+          ledger_doc = json.loads((root / "ledger/verification-ledger.json").read_text())
+          summary = json.loads((root / "ledger/ledger-summary.json").read_text())
+          attestation = json.loads((root / "attestation/latest.json").read_text())
+          ledger = ledger_doc.get("entries", [])
+
+          if not ledger:
+              raise SystemExit("verification ledger is empty")
+
+          bad_rows = [row["theorem_id"] for row in ledger if row.get("status") != "mechanized_local"]
+          if bad_rows:
+              raise SystemExit(f"non-mechanized public ledger rows detected: {bad_rows[:5]}")
+
+          if summary.get("pending_entries", 0) != 0:
+              raise SystemExit("ledger-summary.json reports pending entries")
+
+          claim = attestation["claims_verified"]["verification_ledger"]
+          if claim.get("pending", 0) != 0:
+              raise SystemExit("attestation/latest.json reports pending entries")
+
+          if claim.get("total_entries") != len(ledger):
+              raise SystemExit("attestation total_entries does not match public ledger length")
+          PY

@@ -1,0 +1,56 @@
+{
+  "schema": "zkf-public-ledger-summary-v1",
+  "generated_at": "2026-04-01T17:55:20Z",
+  "total_entries": 169,
+  "pending_entries": 0,
+  "model_only_entries": 0,
+  "trusted_assumption_rows": 0,
+  "status_counts": {
+    "mechanized_local": 169
+  },
+  "assurance_class_counts": {
+    "mechanized_implementation_claim": 157,
+    "hypothesis_carried_theorem": 12
+  },
+  "checker_counts": {
+    "rocq": 59,
+    "verus": 86,
+    "lean": 22,
+    "fstar": 2
+  },
+  "scope_prefix_counts": {
+    "zkf-core": 23,
+    "zkf-backends": 24,
+    "zkf-ir-spec": 3,
+    "zkf-runtime": 70,
+    "zkf-frontends": 1,
+    "zkf-metal": 9,
+    "zkf-distributed": 24,
+    "zkf-lib": 15
+  },
+  "proof_artifact_inventory": {
+    "rocq_coq_files": 71,
+    "verus_files": 28,
+    "lean4_files": 19,
+    "fstar_files": 10,
+    "kani_harnesses": 6
+  },
+  "runtime_proof_coverage": {
+    "total_files": 89,
+    "total_functions": 1788,
+    "complete_files": 89,
+    "complete_functions": 1788,
+    "file_counts": {
+      "implementation_mechanized": 27,
+      "shell_contract_mechanized": 32,
+      "explicit_tcb_adapter": 30
+    },
+    "function_counts": {
+      "implementation_mechanized": 199,
+      "shell_contract_mechanized": 1037,
+      "explicit_tcb_adapter": 552
+    }
+  },
+  "source_ledger_sha256": "1d556a5febb8d32e5dc2927c3e8b7e2ce662a50ecd680f369c7598b58bdcaa4e",
+  "public_ledger_sha256": "5a7cc92bb23abf16b08d807a8f6fc8668823a7240333336cc5ea1a3ff6163921"
+}

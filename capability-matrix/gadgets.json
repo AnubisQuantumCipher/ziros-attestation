@@ -1,0 +1,150 @@
+{
+  "schema": "zkf-public-capability-surface-v1",
+  "generated_at": "2026-04-01T17:55:20Z",
+  "generated_for": "0.1.0",
+  "gadgets": [
+    {
+      "id": "blake3",
+      "status": "ready",
+      "supported_fields": [
+        "bn254",
+        "bls12-381",
+        "pasta-fp",
+        "pasta-fq",
+        "goldilocks"
+      ],
+      "audit_status": "unaudited",
+      "notes": "BLAKE3 hash function circuit."
+    },
+    {
+      "id": "boolean",
+      "status": "ready",
+      "supported_fields": [
+        "bn254",
+        "bls12-381",
+        "pasta-fp",
+        "pasta-fq",
+        "goldilocks",
+        "babybear",
+        "mersenne31"
+      ],
+      "audit_status": "informally-reviewed",
+      "notes": "Boolean logic gates (AND, OR, NOT, XOR)."
+    },
+    {
+      "id": "comparison",
+      "status": "ready",
+      "supported_fields": [
+        "bn254",
+        "bls12-381",
+        "pasta-fp",
+        "pasta-fq",
+        "goldilocks",
+        "babybear",
+        "mersenne31"
+      ],
+      "audit_status": "unaudited",
+      "notes": "Comparison operations (less-than, greater-than, equal)."
+    },
+    {
+      "id": "ecdsa",
+      "status": "limited",
+      "supported_fields": [
+        "bn254"
+      ],
+      "audit_status": "informally-reviewed",
+      "notes": "ECDSA signature verification over secp256k1 (Bitcoin/Ethereum). blackbox_ops=ecdsa_secp256k1,ecdsa_secp256r1"
+    },
+    {
+      "id": "kzg",
+      "status": "limited",
+      "supported_fields": [
+        "bn254",
+        "bls12-381"
+      ],
+      "audit_status": "unaudited",
+      "notes": "KZG polynomial commitment pairing verification. blackbox_ops=pairing_check"
+    },
+    {
+      "id": "merkle",
+      "status": "ready",
+      "supported_fields": [
+        "bn254",
+        "bls12-381",
+        "pasta-fp",
+        "goldilocks",
+        "babybear",
+        "mersenne31"
+      ],
+      "audit_status": "informally-reviewed",
+      "notes": "Merkle tree inclusion proof verification."
+    },
+    {
+      "id": "plonk_gate",
+      "status": "ready",
+      "supported_fields": [
+        "bn254",
+        "bls12-381",
+        "pasta-fp",
+        "pasta-fq",
+        "goldilocks",
+        "babybear",
+        "mersenne31"
+      ],
+      "audit_status": "unaudited",
+      "notes": "Universal Plonk gate constraint with configurable selectors."
+    },
+    {
+      "id": "poseidon",
+      "status": "ready",
+      "supported_fields": [
+        "bn254",
+        "bls12-381",
+        "pasta-fp",
+        "goldilocks",
+        "babybear",
+        "mersenne31"
+      ],
+      "audit_status": "informally-reviewed",
+      "notes": "Poseidon algebraic hash function (ZK-friendly). blackbox_ops=poseidon"
+    },
+    {
+      "id": "range",
+      "status": "ready",
+      "supported_fields": [
+        "bn254",
+        "bls12-381",
+        "pasta-fp",
+        "pasta-fq",
+        "goldilocks",
+        "babybear",
+        "mersenne31"
+      ],
+      "audit_status": "informally-reviewed",
+      "notes": "Range constraint: value < 2^bits."
+    },
+    {
+      "id": "schnorr",
+      "status": "limited",
+      "supported_fields": [
+        "bn254"
+      ],
+      "audit_status": "unaudited",
+      "notes": "Schnorr signature verification. blackbox_ops=schnorr_verify"
+    },
+    {
+      "id": "sha256",
+      "status": "ready",
+      "supported_fields": [
+        "bn254",
+        "bls12-381",
+        "pasta-fp",
+        "goldilocks",
+        "babybear",
+        "mersenne31"
+      ],
+      "audit_status": "informally-reviewed",
+      "notes": "SHA-256 hash function circuit (NIST FIPS 180-4). blackbox_ops=sha256"
+    }
+  ]
+}

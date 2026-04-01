@@ -1,0 +1,48 @@
+{
+  "schema": "zkf-public-post-quantum-matrix-v1",
+  "generated_at": "2026-04-01T17:55:20Z",
+  "components": [
+    {
+      "component": "plonky3",
+      "classification": "post-quantum",
+      "basis": "FRI hash-based STARK proof lane",
+      "notes": "Native Plonky3 proofs are the primary post-quantum proof surface in this checkout."
+    },
+    {
+      "component": "ml-dsa-87",
+      "classification": "post-quantum",
+      "basis": "NIST FIPS 204 Level 5",
+      "notes": "Used for proof-origin attestation, credential issuance, and swarm identity bundles."
+    },
+    {
+      "component": "ml-kem-1024",
+      "classification": "post-quantum",
+      "basis": "NIST FIPS 203 Level 5",
+      "notes": "Used in the hybrid key-exchange lane."
+    },
+    {
+      "component": "arkworks-groth16",
+      "classification": "classical",
+      "basis": "BN254 pairings",
+      "notes": "Not post-quantum."
+    },
+    {
+      "component": "halo2",
+      "classification": "classical",
+      "basis": "elliptic-curve polynomial commitments",
+      "notes": "Includes both IPA and KZG lanes."
+    },
+    {
+      "component": "nova-hypernova",
+      "classification": "classical",
+      "basis": "elliptic-curve recursive folding",
+      "notes": "Recursive proof lanes remain classical."
+    },
+    {
+      "component": "midnight-offchain-envelope",
+      "classification": "scoped-off-chain-post-quantum",
+      "basis": "Plonky3 verification + ML-DSA signatures + commitment comparison against Midnight anchors",
+      "notes": "This does not upgrade Midnight consensus or its classical proving cryptography."
+    }
+  ]
+}
