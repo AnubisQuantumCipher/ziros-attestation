@@ -11,7 +11,7 @@ ZirOS does not present a third-party audit PDF as the authority for its security
 | [ledger/ledger-summary.json](../ledger/ledger-summary.json) | Counts by checker, domain, and assurance class |
 | [conformance/latest/](../conformance/latest/) | Live compile-prove-verify backend results |
 | [evidence/evidence-package.json](../evidence/evidence-package.json) | Sanitized evidence bundle |
-| [binary-manifest/v0.4.0/manifest.json](../binary-manifest/v0.4.0/manifest.json) | Binary integrity hashes and sizes |
+| [binary-manifest/v0.4.1/manifest.json](../binary-manifest/v0.4.1/manifest.json) | Binary integrity hashes and sizes |
 
 ## Position
 

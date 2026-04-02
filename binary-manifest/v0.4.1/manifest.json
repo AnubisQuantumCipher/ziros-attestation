@@ -1,0 +1,19 @@
+{
+  "version": "0.4.1",
+  "build_date": "2026-04-02T15:24:57Z",
+  "target_triple": "aarch64-apple-darwin",
+  "binaries": {
+    "zkf": {
+      "path": "zkf",
+      "sha256": "3726e15a64ca88a9ede67934a2be84c74f5b3b20c3aead75b32c3e69050a652f"
+    },
+    "libzkf_ffi.dylib": {
+      "path": "libzkf_ffi.dylib",
+      "sha256": "12b04154f188bde7a69e365bdce081e7d2412fb47a491cb2a69f4158d08a4f10"
+    },
+    "libzkf_ffi.a": {
+      "path": "libzkf_ffi.a",
+      "sha256": "86adf231deaf5a535f6f77af6f0977a9b35b4905b081d26095df1ab026d9bbec"
+    }
+  }
+}

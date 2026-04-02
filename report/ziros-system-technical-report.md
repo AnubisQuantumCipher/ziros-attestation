@@ -2,7 +2,7 @@
 
 ## The Zero-Knowledge Operating System
 
-### Publication state: ZirOS v0.4.0, public attestation generated 2026-04-01
+### Publication state: ZirOS v0.4.1, public attestation generated 2026-04-02
 ### 24/24 published conformance tests passed. 169 verification-ledger rows (169 mechanized, 0 pending). 5 Midnight preprod contracts live. Public repository is evidence-only by design.
 
 ---

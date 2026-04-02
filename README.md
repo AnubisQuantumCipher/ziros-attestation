@@ -54,7 +54,7 @@ Listening edition: [report/ziros-system-listening-report.md](report/ziros-system
 | **All backends produce correct proofs** | Compile → prove → verify across Plonky3, Halo2, Nova, HyperNova | **24/24 tests passed** |
 | **169 mechanized theorems, 0 pending** | Machine-checked verification ledger across 5 proof languages | [**ledger/verification-ledger.json**](ledger/verification-ledger.json) |
 | **Zero underconstrained signals** | Fail-closed nonlinear anchoring audit on every circuit | **0 violations** |
-| **Binary integrity verified** | SHA-256 hashes of every distributed artifact | [**manifest.json**](binary-manifest/v0.4.0/manifest.json) |
+| **Binary integrity verified** | SHA-256 hashes of every distributed artifact | [**manifest.json**](binary-manifest/v0.4.1/manifest.json) |
 | **5 Midnight contracts live** | Deployed to preprod with selective disclosure | [**Explorer links**](midnight/explorer-links.md) |
 
 **Full evidence:** [evidence/evidence-package.json](evidence/evidence-package.json) | **Conformance results:** [conformance/latest/](conformance/latest/) | **Attestation history:** [attestation/](attestation/)
@@ -65,12 +65,12 @@ Listening edition: [report/ziros-system-listening-report.md](report/ziros-system
 
 ## Download & Install
 
-**[Download ZirOS v0.4.0 for Apple Silicon](https://github.com/AnubisQuantumCipher/ziros-attestation/releases/download/v0.4.0/zkf-aarch64-apple-darwin-v0.4.0.tar.gz)** — *85 MB, aarch64-apple-darwin, stripped release binary with LTO*
+**[Download ZirOS v0.4.1 for Apple Silicon](https://github.com/AnubisQuantumCipher/ziros-attestation/releases/download/v0.4.1/zkf-aarch64-apple-darwin-v0.4.1.tar.gz)** — *99 MB, aarch64-apple-darwin, stripped release binary with LTO*
 
 ```bash
 # Download and install
-curl -LO https://github.com/AnubisQuantumCipher/ziros-attestation/releases/download/v0.4.0/zkf-aarch64-apple-darwin-v0.4.0.tar.gz
-tar xzf zkf-aarch64-apple-darwin-v0.4.0.tar.gz
+curl -LO https://github.com/AnubisQuantumCipher/ziros-attestation/releases/download/v0.4.1/zkf-aarch64-apple-darwin-v0.4.1.tar.gz
+tar xzf zkf-aarch64-apple-darwin-v0.4.1.tar.gz
 sudo cp aarch64-apple-darwin/zkf /usr/local/bin/
 
 # Verify installation
@@ -89,15 +89,15 @@ zkf verify --program example.json --artifact proof.json --backend plonky3
 | File | Size | What It Does |
 |------|------|-------------|
 | `zkf` | 33 MB | CLI binary — 38 commands: compile, prove, verify, deploy, wrap, fold, benchmark, audit, and more |
-| `libzkf_ffi.dylib` | 12 MB | Dynamic library — the entire proving engine as a callable C ABI with opaque handles |
-| `libzkf_ffi.a` | 170 MB | Static library — same engine, all dependencies included |
-| `zkf.h` | 2 KB | C header — [56 lines, opaque handles](binary-manifest/v0.4.0/zkf.h), 14 extern functions |
-| `manifest.json` | 544 B | [SHA-256 hashes](binary-manifest/v0.4.0/manifest.json) of all binaries for integrity verification |
+| `libzkf_ffi.dylib` | 14 MB | Dynamic library — the entire proving engine as a callable C ABI with opaque handles |
+| `libzkf_ffi.a` | 210 MB | Static library — same engine, all dependencies included |
+| `zkf.h` | 2 KB | C header — [56 lines, opaque handles](binary-manifest/v0.4.1/zkf.h), 14 extern functions |
+| `manifest.json` | 544 B | [SHA-256 hashes](binary-manifest/v0.4.1/manifest.json) of all binaries for integrity verification |
 
 **Verify integrity:**
 ```bash
 shasum -a 256 aarch64-apple-darwin/zkf
-# Expected: 6af0cefa7c3fbcff5df266fea031fbab0a72d3927f7634561d1de306ac29547c
+# Expected: 3726e15a64ca88a9ede67934a2be84c74f5b3b20c3aead75b32c3e69050a652f
 ```
 
 **Releases:** [All releases](https://github.com/AnubisQuantumCipher/ziros-attestation/releases) | **License:** ZirOS Core Proprietary — free to use, [commercial license](https://github.com/AnubisQuantumCipher) required for production deployment and managed services
@@ -224,7 +224,7 @@ Nothing here contains ZirOS implementation source, proof construction files, GPU
 | Weekly attestation | [attestation/latest.json](attestation/latest.json) |
 | Verification ledger (169 theorems) | [ledger/verification-ledger.json](ledger/verification-ledger.json) |
 | Backend conformance | [conformance/latest/](conformance/latest/) |
-| Binary integrity (SHA-256) | [binary-manifest/v0.4.0/manifest.json](binary-manifest/v0.4.0/manifest.json) |
+| Binary integrity (SHA-256) | [binary-manifest/v0.4.1/manifest.json](binary-manifest/v0.4.1/manifest.json) |
 | System technical report | [report/ziros-system-technical-report.md](report/ziros-system-technical-report.md) |
 | SDK API surface | [sdk/api-surface.md](sdk/api-surface.md) |
 | Proof server spec | [proof-server/endpoint-spec.md](proof-server/endpoint-spec.md) |
@@ -538,10 +538,10 @@ No binaries are published in this repository. Only their hashes and the opaque C
 
 | Artifact | Size | Public Evidence |
 |----------|------|-----------------|
-| `zkf` | 33 MB | [binary-manifest/v0.4.0/manifest.json](binary-manifest/v0.4.0/manifest.json) |
-| `libzkf_ffi.dylib` | 12 MB | [binary-manifest/v0.4.0/manifest.json](binary-manifest/v0.4.0/manifest.json) |
-| `libzkf_ffi.a` | 170 MB | [binary-manifest/v0.4.0/manifest.json](binary-manifest/v0.4.0/manifest.json) |
-| `zkf.h` | 56 lines | [binary-manifest/v0.4.0/zkf.h](binary-manifest/v0.4.0/zkf.h) |
+| `zkf` | 33 MB | [binary-manifest/v0.4.1/manifest.json](binary-manifest/v0.4.1/manifest.json) |
+| `libzkf_ffi.dylib` | 14 MB | [binary-manifest/v0.4.1/manifest.json](binary-manifest/v0.4.1/manifest.json) |
+| `libzkf_ffi.a` | 210 MB | [binary-manifest/v0.4.1/manifest.json](binary-manifest/v0.4.1/manifest.json) |
+| `zkf.h` | 56 lines | [binary-manifest/v0.4.1/zkf.h](binary-manifest/v0.4.1/zkf.h) |
 | Distribution tarball | 85 MB | Hash only, not distributed here |
 
 Opaque-handle excerpt from the published header:
@@ -587,7 +587,7 @@ This repository is intended to update weekly with fresh machine-verifiable evide
 | Backend conformance | [conformance/latest/](conformance/latest/) |
 | Verification ledger summary | [ledger/ledger-summary.json](ledger/ledger-summary.json) |
 | Evidence package | [evidence/evidence-package.json](evidence/evidence-package.json) |
-| Binary hash manifest | [binary-manifest/v0.4.0/manifest.json](binary-manifest/v0.4.0/manifest.json) |
+| Binary hash manifest | [binary-manifest/v0.4.1/manifest.json](binary-manifest/v0.4.1/manifest.json) |
 
 When the Midnight attestation contracts are live on-chain, the same boundary will extend to public on-chain verification.
 
@@ -620,7 +620,7 @@ This repository proves ZirOS works. To actually **use** ZirOS, you need:
 | **`libzkf_ffi.dylib`** | 12 MB dynamic library — the entire proving engine as a callable C ABI. Opaque handles. 14 extern functions. | Distributed separately under commercial license. Bundled with `zkf.h` (56-line C header). | ZirOS Core Proprietary |
 | **`libzkf_ffi.a`** | 170 MB static library — same engine, statically linked. All dependencies included. | Distributed with the dynamic library. | ZirOS Core Proprietary |
 | **`zkf-sdk`** | 29-line Rust crate — the public API surface. Types, traits, function signatures. Zero implementation bodies. Build your own circuits with `ProgramBuilder`. | Coming to [crates.io](https://crates.io) as `zkf-sdk`. | Apache 2.0 (open) |
-| **`zkf.h`** | 56-line C header — opaque handle API for C/C++/Swift/Python FFI integration. | Included in this repo at [binary-manifest/v0.4.0/zkf.h](binary-manifest/v0.4.0/zkf.h). | Apache 2.0 (open) |
+| **`zkf.h`** | 56-line C header — opaque handle API for C/C++/Swift/Python FFI integration. | Included in this repo at [binary-manifest/v0.4.1/zkf.h](binary-manifest/v0.4.1/zkf.h). | Apache 2.0 (open) |
 
 ### What You Can Build
 
@@ -720,7 +720,7 @@ The disclosed distributed proving architecture supports multi-node execution ove
 1. Read the latest attestation: [attestation/latest.json](attestation/latest.json)
 2. Check theorem metadata and counts: [ledger/verification-ledger.json](ledger/verification-ledger.json), [ledger/ledger-summary.json](ledger/ledger-summary.json)
 3. Review backend conformance: [conformance/latest/](conformance/latest/)
-4. Review binary hashes and the opaque C header: [binary-manifest/v0.4.0/](binary-manifest/v0.4.0/)
+4. Review binary hashes and the opaque C header: [binary-manifest/v0.4.1/](binary-manifest/v0.4.1/)
 5. Review the public evidence package: [evidence/evidence-package.json](evidence/evidence-package.json)
 6. Review the Midnight deployment manifest: [midnight/sed-deployment-manifest.json](midnight/sed-deployment-manifest.json)
 

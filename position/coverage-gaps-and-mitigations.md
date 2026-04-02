@@ -12,7 +12,7 @@ The public theorem ledger is not the only defense surface ZirOS discloses. Some 
 | Runtime state-space faults | 90 Kani harnesses across 6 crates | [README.md](../README.md) and public attestation summaries |
 | Sustained-load behavior | 12-hour soak-test lane | [attestation/latest.json](../attestation/latest.json) |
 | Live threat response | Security supervisor with 24 signal types, 11 actions, 5 risk levels | [README.md](../README.md) |
-| Artifact integrity | SHA-256 manifests and ML-DSA-87 signing policy | [binary-manifest/v0.4.0/manifest.json](../binary-manifest/v0.4.0/manifest.json) |
+| Artifact integrity | SHA-256 manifests and ML-DSA-87 signing policy | [binary-manifest/v0.4.1/manifest.json](../binary-manifest/v0.4.1/manifest.json) |
 | Swarm non-interference | Mechanized and bounded non-interference claims; mutation surface count published as zero | [README.md](../README.md) and public theorem metadata |
 
 ## What the Public Ledger Does and Does Not Mean

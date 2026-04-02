@@ -1,6 +1,6 @@
 # zkf-sdk Public API Surface
 
-This document records the public `zkf-sdk` export surface for ZirOS v0.4.0. It contains names, type aliases, enums, and function signatures only. No function bodies are published here.
+This document records the public `zkf-sdk` export surface for ZirOS v0.4.1. It contains names, type aliases, enums, and function signatures only. No function bodies are published here.
 
 ## Exported Types
 
