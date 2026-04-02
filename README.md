@@ -25,6 +25,9 @@
 
 One person built this. The contracts are live on Midnight. The proofs verify. The code is invisible.
 
+Long-form system report: [report/ziros-system-technical-report.md](report/ziros-system-technical-report.md)
+Listening edition: [report/ziros-system-listening-report.md](report/ziros-system-listening-report.md)
+
 | | |
 |---|---|
 | **Scale** | 290,000 lines of Rust, 30 crates, 1,047 tests passing |
@@ -222,6 +225,7 @@ Nothing here contains ZirOS implementation source, proof construction files, GPU
 | Verification ledger (169 theorems) | [ledger/verification-ledger.json](ledger/verification-ledger.json) |
 | Backend conformance | [conformance/latest/](conformance/latest/) |
 | Binary integrity (SHA-256) | [binary-manifest/v0.4.0/manifest.json](binary-manifest/v0.4.0/manifest.json) |
+| System technical report | [report/ziros-system-technical-report.md](report/ziros-system-technical-report.md) |
 | SDK API surface | [sdk/api-surface.md](sdk/api-surface.md) |
 | Proof server spec | [proof-server/endpoint-spec.md](proof-server/endpoint-spec.md) |
 | Evidence package | [evidence/evidence-package.json](evidence/evidence-package.json) |
