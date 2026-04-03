@@ -1,6 +1,6 @@
 {
   "schema": "ziros-attestation-v1",
-  "generated_at": "2026-04-02T15:30:56.303Z",
+  "generated_at": "2026-04-03T15:04:30Z",
   "version": "0.4.1",
   "claims_verified": {
     "verification_ledger": {
@@ -67,7 +67,31 @@
           "sha256": "86adf231deaf5a535f6f77af6f0977a9b35b4905b081d26095df1ab026d9bbec"
         }
       }
+    },
+    "soak_certification": {
+      "claim": "12-hour Plonky3 STARK soak passed on Apple M4 Max 48GB with 60 cycles and zero degraded runs",
+      "verified": true,
+      "report_path": "evidence/soak-certification-v0.4.1-20260403.json",
+      "sha256": "a4d9d4f30da0278f20dd4459ce89eabfef032bbf9897d2c5e1ae198dbc99235a",
+      "status": "passed",
+      "cycles_completed": 60,
+      "degraded_cycles": 0,
+      "requested_duration_seconds": 43200,
+      "elapsed_seconds": 43825,
+      "hardware_profile": "apple-silicon-m4-max-48gb",
+      "workload": "falcon-ascent-187",
+      "metal_participation": {
+        "realized": true,
+        "artifact_gpu_stage_coverage_ratio": 0.5,
+        "metal_stages": [
+          "fft-ntt"
+        ],
+        "cpu_stages": [
+          "hash-merkle"
+        ],
+        "note": "Metal NTT was realized during the soak; hash-merkle remained on CPU because trace width exceeded the current Metal MMCS limit."
+      }
     }
   },
-  "attestation_hash": "973aacbdd5c26b225f7b5b9484dcf4adb18bf0ddb9f925c975bc2d3a220abf09"
+  "attestation_hash": "44a4855fdb48ddb8952827b7496219ce1c3677541613f19e6b268ab0c79c6ddd"
 }

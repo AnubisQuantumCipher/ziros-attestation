@@ -49,12 +49,15 @@ Listening edition: [report/ziros-system-listening-report.md](report/ziros-system
 
 **Latest attestation:** [**attestation/latest.json**](attestation/latest.json)
 
+**Soak certified:** 60 cycles, zero degraded runs, 12 hours sustained on Apple M4 Max 48GB. Full report: [evidence/soak-certification-v0.4.1-20260403.json](evidence/soak-certification-v0.4.1-20260403.json)
+
 | What It Proves | How | Current Status |
 |---------------|-----|----------------|
 | **All backends produce correct proofs** | Compile → prove → verify across Plonky3, Halo2, Nova, HyperNova | **24/24 tests passed** |
 | **169 mechanized theorems, 0 pending** | Machine-checked verification ledger across 5 proof languages | [**ledger/verification-ledger.json**](ledger/verification-ledger.json) |
 | **Zero underconstrained signals** | Fail-closed nonlinear anchoring audit on every circuit | **0 violations** |
 | **Binary integrity verified** | SHA-256 hashes of every distributed artifact | [**manifest.json**](binary-manifest/v0.4.1/manifest.json) |
+| **12-hour soak certified** | Sustained Plonky3 STARK prove/verify on Apple M4 Max 48GB | **60 cycles, 0 degraded** |
 | **5 Midnight contracts live** | Deployed to preprod with selective disclosure | [**Explorer links**](midnight/explorer-links.md) |
 
 **Full evidence:** [evidence/evidence-package.json](evidence/evidence-package.json) | **Conformance results:** [conformance/latest/](conformance/latest/) | **Attestation history:** [attestation/](attestation/)
