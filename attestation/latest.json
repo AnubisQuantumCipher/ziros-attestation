@@ -4,12 +4,12 @@
   "version": "0.4.1",
   "claims_verified": {
     "verification_ledger": {
-      "claim": "169 mechanized theorems, 0 pending",
+      "claim": "160 mechanized theorems, 0 pending",
       "verified": true,
-      "total_entries": 169,
-      "mechanized_local": 169,
+      "total_entries": 160,
+      "mechanized_local": 160,
       "pending": 0,
-      "sha256": "8f333c7ae3c51b7bb1a89288dc009972cde6193293c2666f889e18771aea338a"
+      "sha256": "deb2f5a7155f8ef452ccf74a6edcbe2581fadb88a7393195f144e053c6318daa"
     },
     "backend_conformance": {
       "claim": "24/24 conformance tests passed across 4 backends",

@@ -2,7 +2,7 @@
 
 ### *The Zero-Knowledge Operating System*
 
-![Mechanized Theorems](https://img.shields.io/badge/Mechanized%20Theorems-169-0b6e4f)
+![Mechanized Theorems](https://img.shields.io/badge/Mechanized%20Theorems-160-0b6e4f)
 ![Backends](https://img.shields.io/badge/Proving%20Backends-9-1f4f99)
 ![Post-Quantum](https://img.shields.io/badge/Post--Quantum-ML--DSA--87%20Level%205-5a3ec8)
 ![Midnight](https://img.shields.io/badge/Midnight%20Network-5%20Live%20Contracts-5b4b3a)
@@ -24,7 +24,7 @@
 
 **ZirOS is a zero-knowledge operating system** — the system layer between what you want to prove and the raw cryptographic machinery that proves it. It owns the *entire path* from your statement to a verified, signed, post-quantum proof artifact.
 
-**496,000 lines of Rust** across **30 workspace crates**. **9 proving backends** across **7 finite fields**. **7 circuit frontends**. **63 Metal GPU shaders** with **50 kernel entrypoints** and **5 soak-certified accelerators**. **169 mechanized theorems** across **5 formal proof languages** with **zero pending claims**. **Post-quantum signatures** (ML-DSA-87, NIST Level 5) on every artifact. **Soak certified** — 60 cycles, zero degraded, 12 hours sustained on Apple M4 Max. **Midnight developer toolchain** — resolver, disclosure analyzer, native proof server, 6 DApp templates, diagnostic probe on npm. **Apple Silicon native** — shaped around the M4 Max unified memory architecture, Metal GPU, Neural Engine, Secure Enclave, and iCloud Drive.
+**496,000 lines of Rust** across **30 workspace crates**. **9 proving backends** across **7 finite fields**. **7 circuit frontends**. **63 Metal GPU shaders** with **50 kernel entrypoints** and **5 soak-certified accelerators**. **160 mechanized theorems** across **5 formal proof languages** with **zero pending claims**. **Post-quantum signatures** (ML-DSA-87, NIST Level 5) on every artifact. **Soak certified** — 60 cycles, zero degraded, 12 hours sustained on Apple M4 Max. **Midnight developer toolchain** — resolver, disclosure analyzer, native proof server, 6 DApp templates, diagnostic probe on npm. **Apple Silicon native** — shaped around the M4 Max unified memory architecture, Metal GPU, Neural Engine, Secure Enclave, and iCloud Drive.
 
 One person built this. The contracts are live on Midnight. The proofs verify. The code is invisible.
 
@@ -38,7 +38,7 @@ Listening edition: [report/ziros-system-listening-report.md](report/ziros-system
 | **GPU** | 63 Metal shaders, 50 kernels, 5 soak-certified accelerators (constraint_eval, field_ops, fri, hash, msm) |
 | **Soak** | 60 cycles, 0 degraded, 12h sustained, Falcon Heavy physics workload, Metal NTT realized |
 | **AI Control Plane** | 6 CoreML Neural Engine model lanes (38 TOPS on M4 Max) |
-| **Formal Verification** | 169 mechanized theorems (Lean 4, Rocq, Verus, F*, Kani), 0 pending |
+| **Formal Verification** | 160 mechanized theorems (Lean 4, Rocq, Verus, F*, Kani), 0 pending |
 | **Post-Quantum** | ML-DSA-87 (FIPS 204), ML-KEM-1024 (FIPS 203), CNSA 2.0 Level 5 |
 | **Midnight Network** | Native proof server, resolver, disclosure analyzer, 6 templates, diagnostic probe on npm, 5 live contracts |
 | **Ethereum** | 128-byte Groth16 proofs, ~210K gas verification, Solidity export |
@@ -58,7 +58,7 @@ Listening edition: [report/ziros-system-listening-report.md](report/ziros-system
 | What It Proves | How | Current Status |
 |---------------|-----|----------------|
 | **All backends produce correct proofs** | Compile → prove → verify across Plonky3, Halo2, Nova, HyperNova | **24/24 tests passed** |
-| **169 mechanized theorems, 0 pending** | Machine-checked verification ledger across 5 proof languages | [**ledger/verification-ledger.json**](ledger/verification-ledger.json) |
+| **160 mechanized theorems, 0 pending** | Machine-checked verification ledger across 5 proof languages | [**ledger/verification-ledger.json**](ledger/verification-ledger.json) |
 | **Zero underconstrained signals** | Fail-closed nonlinear anchoring audit on every circuit | **0 violations** |
 | **Binary integrity verified** | SHA-256 hashes of every distributed artifact | [**manifest.json**](binary-manifest/v0.4.1/manifest.json) |
 | **12-hour soak certified** | Sustained Plonky3 STARK prove/verify on Apple M4 Max 48GB | **60 cycles, 0 degraded** |
@@ -229,7 +229,7 @@ Nothing here contains ZirOS implementation source, proof construction files, GPU
 | Evidence | Link |
 |----------|------|
 | Weekly attestation | [attestation/latest.json](attestation/latest.json) |
-| Verification ledger (169 theorems) | [ledger/verification-ledger.json](ledger/verification-ledger.json) |
+| Verification ledger (160 theorems) | [ledger/verification-ledger.json](ledger/verification-ledger.json) |
 | Backend conformance | [conformance/latest/](conformance/latest/) |
 | Binary integrity (SHA-256) | [binary-manifest/v0.4.1/manifest.json](binary-manifest/v0.4.1/manifest.json) |
 | System technical report | [report/ziros-system-technical-report.md](report/ziros-system-technical-report.md) |
@@ -430,7 +430,7 @@ The system documents CNSA 2.0 Level 5 alignment for the signature and key-establ
 
 ## Formal Verification
 
-The live public theorem ledger in this repository contains 169 mechanized entries, 0 pending entries, and 0 model-only claims. The bounded-check and proof-tool inventory described below is part of the documented verification surface, even though this repository deliberately omits the proof files themselves.
+The live public theorem ledger in this repository contains 160 mechanized entries, 0 pending entries, and 0 model-only claims. The bounded-check and proof-tool inventory described below is part of the documented verification surface, even though this repository deliberately omits the proof files themselves.
 
 | Domain | Theorems |
 |--------|----------|
