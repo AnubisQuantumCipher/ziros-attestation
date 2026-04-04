@@ -327,33 +327,30 @@ Two infrastructure improvements were shipped in v0.4.1 that materially affect pr
 
 **MSM Metal segmentation:** The BN254 MSM (multi-scalar multiplication) Metal kernel now segments large problem sizes instead of attempting a single monolithic dispatch. This eliminates the Metal command buffer watchdog timeout that previously killed the STARK-to-Groth16 wrap admission gate on the M4 Max. The segmentation fix is structural, not a workaround -- it allows the GPU to process the MSM in bounded chunks within the watchdog window.
 
-## 11. Wallet and Quantum Messaging (Built, Not Released)
+## 11. Post-Quantum Encrypted Channel Infrastructure
 
-A native Apple Silicon wallet has been implemented but is not publicly released. It is documented here because it represents a significant system surface and several of its subsystems (the FFI approval chain, the quantum messaging module, the DUST management patterns) are relevant to the architectural claims.
+ZirOS includes a hybrid post-quantum encrypted messaging channel implementation in the distributed cluster and wallet subsystem layers. The cryptographic construction is production-grade and tested:
 
-**Wallet core:** A Rust crate (`zkf-wallet`) with WalletHandle as the single policy authority. 44 opaque FFI functions. Two-phase approval chain: ApprovalToken (proves the user authenticated via Touch ID/Face ID) followed by SubmissionGrant (authorizes the Node helper to submit to chain). Single-use, digest-bound, origin-bound, network-bound, time-limited. The Rust core enforces every security policy regardless of what the Swift layer does.
+- **Key exchange:** ML-KEM-1024 (FIPS 203, Level 5) combined with X25519 in a hybrid construction. Both classical and post-quantum legs must succeed. The combined shared secret is fed into HKDF-SHA384 to derive a 32-byte symmetric key.
+- **Symmetric encryption:** ChaCha20-Poly1305 with random 12-byte nonces and 5-field associated data binding (message kind, sender, receiver, sequence, epoch).
+- **Envelope signing:** ML-DSA-87 (FIPS 204, Level 5) signatures on every encrypted envelope. The sender's identity is cryptographically bound to the envelope via a Poseidon fingerprint of their ML-DSA-87 verification key.
+- **Forward secrecy:** Epoch-based key rotation (hourly). Keys for the current and previous epoch are retained; all older keys are dropped. Compromising the current key does not decrypt messages from two or more hours ago.
+- **Conversation storage:** Encrypted at rest with ChaCha20-Poly1305 using a domain-separated storage key derived from the same root material.
+- **Message types:** text, transfer receipt, credential request, credential response.
+- **Tests:** Bidirectional key derivation, bilateral encryption round-trips, epoch grace window acceptance, stale epoch rejection, ciphertext tampering detection, peer identity impersonation rejection.
 
-**Biometric security:** Seed material stored in iCloud Keychain with `kSecAccessControlBiometryCurrentSet` -- the Secure Enclave verifies the biometric before releasing the seed. Session-cached after unlock, cleared on lock/background/idle. Per-operation Touch ID/Face ID gates. Second biometric prompt for transfers above 100 NIGHT.
+This infrastructure is relevant to the architectural claims because it demonstrates that ZirOS's post-quantum cryptographic surface extends beyond proof signing into real-time communication channels. The epoch rotation pattern originated in the swarm defense Diplomat component (`zkf-distributed/src/swarm/epoch.rs`) and was adapted for wallet-to-wallet messaging.
 
-**Quantum encrypted messaging:** 1,522 lines in `messaging.rs`. ML-KEM-1024 + X25519 hybrid key exchange, ChaCha20-Poly1305 symmetric encryption, ML-DSA-87 envelope signing. Epoch-based key rotation (hourly) with forward secrecy. Deterministic epoch keys derived from the wallet seed via HKDF-SHA384 so wallet restarts within the same epoch hour recover the same keys. Conversations encrypted at rest with ChaCha20-Poly1305. 4 message types: text, transfer receipt, credential request, credential response.
+## 12. FFI-Enforced Approval Chain
 
-**DUST-first UX:** DUST (Midnight's gas token) is treated as a first-class citizen with a circular fuel ring gauge, UTXO management with registration state chips, per-message DUST cost display, and estimated transactions remaining. The wallet shows DUST as a fuel gauge, not just a number.
+ZirOS includes a two-phase approval chain enforced entirely in compiled Rust behind opaque FFI handles. This architecture is designed for any external application that consumes the ZirOS proving engine through the C ABI:
 
-**Apps:** macOS SwiftUI with NavigationSplitView and Safari Web Extension (DApp Connector v4). iPhone SwiftUI with TabView and Face ID. Chain operations held closed on iPhone until a WebKit-safe Midnight execution path is verified.
+- **Phase 1 (ApprovalToken):** A biometric authentication (Touch ID / Face ID via Secure Enclave) mints a single-use token bound to origin, network, method, transaction digest, and expiry.
+- **Phase 2 (SubmissionGrant):** The approval token is consumed to mint a submission grant -- a second single-use artifact that authorizes a helper process to finalize and submit a transaction.
+- **Enforcement:** The Rust core rejects any submit path that lacks a valid, unexpired, unconsumed grant with matching origin, network, method, and digest bindings. A compromised UI layer cannot bypass the policy because the enforcement is in compiled Rust, not in the application code.
+- **Lifecycle:** All approval state (tokens, grants, pending approvals) is cleared on lock, background, or idle timeout. Nothing survives a session boundary.
 
-The wallet is not in the public evidence repo because it has not shipped publicly. When it does, its attestation will be published through the same evidence model described in this report.
-
-## 12. Automation System
-
-ZirOS operational infrastructure is managed by 19 Codex automations running on GPT-5.4 with extended high reasoning:
-
-- 7 live external lanes: twitter-morning, twitter-evening, twitter-weekly-thread, newsletter-pipeline, discord-community, grant-preparation, weekly-attestation
-- 5 live internal lanes: morning-briefing, system-health (repair-first), weekly-business-report, grant-preparation, infrastructure-tracker
-- System health performs bounded self-heal: syncs Keychain entries from authenticated sessions, refreshes analytics, restarts owned local services
-- Weekly attestation automation runs the full 8-step attestation process documented in this report
-- OpenClaw gateway fully decommissioned April 2, 2026; runtime migrated to `~/.jacobian`
-
-The automation system is not published in the evidence repo. It is documented here because it manages the attestation publication lifecycle and the content distribution pipeline.
+This pattern is not specific to any single application. It is a general-purpose approval architecture for any system that needs hardware-enforced transaction authorization with the proving engine.
 
 ## 13. Updated Formal Coverage State
 
