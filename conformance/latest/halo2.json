@@ -1,1 +1,82 @@
-{"schema":"zkf-public-conformance-v1","generated_at":"2026-04-01T22:21:17Z","backend":"halo2","field":"PastaFp","tests_run":6,"tests_passed":6,"tests_failed":0,"pass_rate":1.0,"status":"pass"}
+{
+  "backend": "halo2",
+  "field": "PastaFp",
+  "tests_run": 6,
+  "tests_passed": 6,
+  "tests_failed": 0,
+  "pass_rate": 1.0,
+  "results": [
+    {
+      "test_name": "identity",
+      "backend": "halo2",
+      "compile_ok": true,
+      "prove_ok": true,
+      "verify_ok": true,
+      "total_time_ms": 2151,
+      "error": null,
+      "public_outputs": [
+        "42"
+      ]
+    },
+    {
+      "test_name": "multiply",
+      "backend": "halo2",
+      "compile_ok": true,
+      "prove_ok": true,
+      "verify_ok": true,
+      "total_time_ms": 1266,
+      "error": null,
+      "public_outputs": [
+        "21"
+      ]
+    },
+    {
+      "test_name": "range_check",
+      "backend": "halo2",
+      "compile_ok": true,
+      "prove_ok": true,
+      "verify_ok": true,
+      "total_time_ms": 1288,
+      "error": null,
+      "public_outputs": [
+        "200"
+      ]
+    },
+    {
+      "test_name": "boolean",
+      "backend": "halo2",
+      "compile_ok": true,
+      "prove_ok": true,
+      "verify_ok": true,
+      "total_time_ms": 1335,
+      "error": null,
+      "public_outputs": [
+        "1"
+      ]
+    },
+    {
+      "test_name": "add_chain",
+      "backend": "halo2",
+      "compile_ok": true,
+      "prove_ok": true,
+      "verify_ok": true,
+      "total_time_ms": 1353,
+      "error": null,
+      "public_outputs": [
+        "35"
+      ]
+    },
+    {
+      "test_name": "quadratic",
+      "backend": "halo2",
+      "compile_ok": true,
+      "prove_ok": true,
+      "verify_ok": true,
+      "total_time_ms": 1353,
+      "error": null,
+      "public_outputs": [
+        "25"
+      ]
+    }
+  ]
+}

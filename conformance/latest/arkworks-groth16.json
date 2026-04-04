@@ -1,6 +1,6 @@
 {
-  "backend": "plonky3",
-  "field": "Goldilocks",
+  "backend": "arkworks-groth16",
+  "field": "Bn254",
   "tests_run": 6,
   "tests_passed": 6,
   "tests_failed": 0,
@@ -8,11 +8,11 @@
   "results": [
     {
       "test_name": "identity",
-      "backend": "plonky3",
+      "backend": "arkworks-groth16",
       "compile_ok": true,
       "prove_ok": true,
       "verify_ok": true,
-      "total_time_ms": 1107,
+      "total_time_ms": 1007,
       "error": null,
       "public_outputs": [
         "42"
@@ -20,11 +20,11 @@
     },
     {
       "test_name": "multiply",
-      "backend": "plonky3",
+      "backend": "arkworks-groth16",
       "compile_ok": true,
       "prove_ok": true,
       "verify_ok": true,
-      "total_time_ms": 797,
+      "total_time_ms": 809,
       "error": null,
       "public_outputs": [
         "21"
@@ -32,11 +32,11 @@
     },
     {
       "test_name": "range_check",
-      "backend": "plonky3",
+      "backend": "arkworks-groth16",
       "compile_ok": true,
       "prove_ok": true,
       "verify_ok": true,
-      "total_time_ms": 798,
+      "total_time_ms": 806,
       "error": null,
       "public_outputs": [
         "200"
@@ -44,11 +44,11 @@
     },
     {
       "test_name": "boolean",
-      "backend": "plonky3",
+      "backend": "arkworks-groth16",
       "compile_ok": true,
       "prove_ok": true,
       "verify_ok": true,
-      "total_time_ms": 793,
+      "total_time_ms": 829,
       "error": null,
       "public_outputs": [
         "1"
@@ -56,11 +56,11 @@
     },
     {
       "test_name": "add_chain",
-      "backend": "plonky3",
+      "backend": "arkworks-groth16",
       "compile_ok": true,
       "prove_ok": true,
       "verify_ok": true,
-      "total_time_ms": 802,
+      "total_time_ms": 817,
       "error": null,
       "public_outputs": [
         "35"
@@ -68,11 +68,11 @@
     },
     {
       "test_name": "quadratic",
-      "backend": "plonky3",
+      "backend": "arkworks-groth16",
       "compile_ok": true,
       "prove_ok": true,
       "verify_ok": true,
-      "total_time_ms": 796,
+      "total_time_ms": 799,
       "error": null,
       "public_outputs": [
         "25"
