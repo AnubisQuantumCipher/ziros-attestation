@@ -2,8 +2,8 @@
 
 ## The Zero-Knowledge Operating System
 
-### Publication state: ZirOS v0.4.1, public attestation generated 2026-04-02
-### 24/24 published conformance tests passed. 169 verification-ledger rows (169 mechanized, 0 pending). 5 Midnight preprod contracts live. Public repository is evidence-only by design.
+### Publication state: ZirOS v0.4.1, public attestation generated 2026-04-04
+### 24/24 published conformance tests passed. 160 verification-ledger rows (160 mechanized, 0 pending). 60-cycle Metal GPU soak certified. 5 Midnight preprod contracts live. 7 Midnight developer commands shipped. midnight-probe 1.0.1 on npm. Public repository is evidence-only by design.
 
 ---
 
@@ -15,15 +15,20 @@ ZirOS is a system layer. It sits between a developer's statement and the cryptog
 
 The public claim is not subtle:
 
-- 290,000 lines of Rust
+- 496,000 lines of Rust
 - 30 workspace crates
 - 9 proving backends
 - 7 circuit frontends
-- 63 Metal GPU shaders with 50 kernel entrypoints
-- 169 mechanized theorem rows
+- 63 Metal GPU shaders with 50 kernel entrypoints and 5 soak-certified accelerators
+- 160 mechanized theorem rows (plus 9 hypothesis-stated protocol entries in development)
 - 0 pending ledger rows
+- 60-cycle Metal GPU soak certification (zero degraded, 12 hours sustained)
 - Apple Silicon native release artifacts
-- Midnight-compatible proof-server surface
+- 7 shipped Midnight developer commands (proof-server, gateway, doctor, disclosure, resolve, templates, init)
+- midnight-probe diagnostic toolkit published on npm
+- Halo2 BLS12-381 versioned params cache (10x cold-to-warm improvement)
+- MSM Metal segmentation for large constraint wrap paths
+- Native Midnight wallet with FFI-enforced approval chain, quantum encrypted messaging, and DUST-first UX (built, not publicly released)
 
 Those numbers are published in [README.md](../README.md), the current attestation in [attestation/latest.json](../attestation/latest.json), and the theorem summary in [ledger/ledger-summary.json](../ledger/ledger-summary.json).
 
@@ -62,9 +67,12 @@ ZirOS combines several layers that are usually split across separate products:
 | --- | --- |
 | Circuit authoring/import | 7 frontends, including Midnight Compact surfaces |
 | Proof generation | 9 documented proving lanes, with public conformance currently published for Plonky3, Halo2, Nova, and HyperNova |
-| GPU acceleration | Apple Metal lane with 63 shaders and 50 kernel entrypoints |
+| GPU acceleration | Apple Metal lane with 63 shaders, 50 kernel entrypoints, 5 soak-certified accelerators (constraint_eval, field_ops, fri, hash, msm) |
 | Artifact security | ML-DSA-87 post-quantum signing policy and binary hash manifests |
 | Deployment/export | Solidity verifier export, Midnight proof-server compatibility, Compact contract evidence |
+| Midnight toolchain | Resolver (version drift auto-fix), disclosure analyzer (Compact boundary taint tracking), doctor (environment readiness), 6 DApp templates, midnight-probe on npm |
+| Soak certification | 60-cycle sustained proving with Metal GPU, zero degraded runs, 12 hours on Falcon Heavy physics workload |
+| Cache infrastructure | Halo2 BLS12-381 versioned on-disk params cache with atomic writes and corrupt-cache regeneration (1,362s cold to 132s warm) |
 | Runtime/control plane | system-oriented CLI, health checks, audit commands, and agent-friendly JSON output |
 
 The public attestation repo does not publish the code that implements those layers. It publishes enough machine-verifiable evidence to make the claims inspectable:
@@ -182,10 +190,8 @@ The public repo proves several things well.
 
 [attestation/latest.json](../attestation/latest.json) and [ledger/ledger-summary.json](../ledger/ledger-summary.json) show:
 
-- 169 total ledger rows
-- 169 mechanized local rows
-- 0 pending rows
-- checker split of 59 Rocq, 86 Verus, 22 Lean, 2 F*
+- 160 total public ledger rows (160 mechanized local, 0 pending; plus 9 hypothesis-stated protocol entries excluded from the public ledger)
+- checker split of 59 Rocq, 86 Verus, 13 Lean, 2 F*
 
 That proves the current published theorem metadata is not hand-wavy. There is a concrete ledger and a concrete count.
 
@@ -272,7 +278,98 @@ The repo reduces trust burden by publishing evidence. It does not erase the fact
 
 That is not a flaw in the report. That is the actual decision surface.
 
-## 8. Why This Report Matters
+## 8. Metal GPU Soak Certification
+
+The soak certification is a 12-hour sustained proving test that validates Metal GPU acceleration under continuous load. This is not a benchmark. It is a reliability certification.
+
+**Results:** 60 cycles completed, zero degraded, 12 hours 10 minutes elapsed, Falcon Heavy ascent trajectory workload (187 Goldilocks steps, 3,569 signals, 4,879 constraints).
+
+**What it proved:**
+- Metal NTT acceleration is realized and stable in the Plonky3 STARK proving path
+- Memory usage is constant across all 60 cycles (16.9 MB per cycle, no leaks)
+- No GPU dispatch failures, no watchdog timeouts, no attestation chain breaks
+- 5 active accelerators confirmed: constraint_eval, field_ops, fri, hash, msm
+- Hash-merkle stage falls back to CPU when trace width exceeds the current MMCS Metal limit (documented limitation, not a failure)
+
+**What it did not prove:**
+- The STARK-to-Groth16 wrap path was not soak-certified on the M4 Max 48GB. The 27.5M constraint wrap requires approximately 66 GB peak memory footprint, which exceeds the 48 GB physical memory. Wrap soak certification is pending fleet hardware (192 GB Mac Studio Ultra machines).
+
+The full soak report is published at [evidence/soak-certification-v0.4.1-20260403.json](../evidence/soak-certification-v0.4.1-20260403.json).
+
+## 9. Midnight Developer Toolchain
+
+The Midnight integration has expanded from a proof-server compatibility surface to a complete developer toolchain. Seven shipped commands now live under `zkf midnight`:
+
+| Command | What it does |
+| --- | --- |
+| `zkf midnight proof-server serve` | Native Halo2-KZG proof server on port 6300 with 10 HTTP endpoints. No Docker dependency. Apple Silicon first-class. UMPG engine routing. |
+| `zkf midnight resolve` | Reads a project's `package.json`, compares all `@midnight-ntwrk/*` dependencies against the 22-package embedded manifest, identifies version mismatches, and rewrites the file with compatible versions. Optionally runs `npm install`, compiles Compact contracts, and validates artifacts. |
+| `zkf midnight disclosure` | Taint-tracks witness flow through the Compact constraint graph and classifies every public signal as disclosed-public, commitment-public-hash, private-only, or uncertain. Fails closed on untracked public exposure. |
+| `zkf midnight doctor` | Reports toolchain (Node, npm, compactc), package pin, network reachability, proof server health, wallet detection, Lace status, and DUST readiness in one check. |
+| `zkf midnight init` | Scaffolds a pinned, production-mode Midnight DApp project from one of 6 verified templates. |
+| `zkf midnight templates` | Lists the 6 shipped Midnight DApp templates with backend lanes and package pin counts. |
+| `zkf midnight gateway serve` | Fail-closed Compact admission gateway on port 6311 with ML-DSA-87 attestations and compactc 0.30.0 enforcement. |
+
+**midnight-probe** is a separate free, MIT-licensed npm package published at version 1.0.1. It provides diagnostic commands (`fingerprint`, `test-deploy`, `canary`, `matrix`) that identify chain-level issues, SDK version mismatches, and validator health. Every diagnostic output points developers to `zkf midnight resolve` as the fix. The probe creates demand. The binary fulfills it.
+
+The embedded manifest pins 22 `@midnight-ntwrk/*` packages at versions known to be compatible with specVersion 22000:
+
+- compactc 0.30.0, compact-runtime 0.15.0, compact-js 2.5.0
+- midnight-js-* 4.0.2 across contracts, types, compact, and provider surfaces
+- ledger-v8 8.0.3, wallet-sdk-facade 3.0.0, dapp-connector-api 4.0.1
+- Required Node: 22
+
+## 10. Halo2 BLS12-381 Cache and MSM Segmentation
+
+Two infrastructure improvements were shipped in v0.4.1 that materially affect proving performance:
+
+**Halo2 BLS12-381 versioned params cache:** KZG proving parameters now persist to disk at `~/.zkf/cache` with atomic writes and SHA-256 version keys. The first cold run generates deterministic params (can take 22+ minutes for k=18). Subsequent runs hit the disk cache and load in seconds. Corrupt or unreadable cache files are silently regenerated instead of failing the prove path. Cold-to-warm improvement: 1,362 seconds to 132 seconds (10x).
+
+**MSM Metal segmentation:** The BN254 MSM (multi-scalar multiplication) Metal kernel now segments large problem sizes instead of attempting a single monolithic dispatch. This eliminates the Metal command buffer watchdog timeout that previously killed the STARK-to-Groth16 wrap admission gate on the M4 Max. The segmentation fix is structural, not a workaround -- it allows the GPU to process the MSM in bounded chunks within the watchdog window.
+
+## 11. Wallet and Quantum Messaging (Built, Not Released)
+
+A native Apple Silicon wallet has been implemented but is not publicly released. It is documented here because it represents a significant system surface and several of its subsystems (the FFI approval chain, the quantum messaging module, the DUST management patterns) are relevant to the architectural claims.
+
+**Wallet core:** A Rust crate (`zkf-wallet`) with WalletHandle as the single policy authority. 44 opaque FFI functions. Two-phase approval chain: ApprovalToken (proves the user authenticated via Touch ID/Face ID) followed by SubmissionGrant (authorizes the Node helper to submit to chain). Single-use, digest-bound, origin-bound, network-bound, time-limited. The Rust core enforces every security policy regardless of what the Swift layer does.
+
+**Biometric security:** Seed material stored in iCloud Keychain with `kSecAccessControlBiometryCurrentSet` -- the Secure Enclave verifies the biometric before releasing the seed. Session-cached after unlock, cleared on lock/background/idle. Per-operation Touch ID/Face ID gates. Second biometric prompt for transfers above 100 NIGHT.
+
+**Quantum encrypted messaging:** 1,522 lines in `messaging.rs`. ML-KEM-1024 + X25519 hybrid key exchange, ChaCha20-Poly1305 symmetric encryption, ML-DSA-87 envelope signing. Epoch-based key rotation (hourly) with forward secrecy. Deterministic epoch keys derived from the wallet seed via HKDF-SHA384 so wallet restarts within the same epoch hour recover the same keys. Conversations encrypted at rest with ChaCha20-Poly1305. 4 message types: text, transfer receipt, credential request, credential response.
+
+**DUST-first UX:** DUST (Midnight's gas token) is treated as a first-class citizen with a circular fuel ring gauge, UTXO management with registration state chips, per-message DUST cost display, and estimated transactions remaining. The wallet shows DUST as a fuel gauge, not just a number.
+
+**Apps:** macOS SwiftUI with NavigationSplitView and Safari Web Extension (DApp Connector v4). iPhone SwiftUI with TabView and Face ID. Chain operations held closed on iPhone until a WebKit-safe Midnight execution path is verified.
+
+The wallet is not in the public evidence repo because it has not shipped publicly. When it does, its attestation will be published through the same evidence model described in this report.
+
+## 12. Automation System
+
+ZirOS operational infrastructure is managed by 19 Codex automations running on GPT-5.4 with extended high reasoning:
+
+- 7 live external lanes: twitter-morning, twitter-evening, twitter-weekly-thread, newsletter-pipeline, discord-community, grant-preparation, weekly-attestation
+- 5 live internal lanes: morning-briefing, system-health (repair-first), weekly-business-report, grant-preparation, infrastructure-tracker
+- System health performs bounded self-heal: syncs Keychain entries from authenticated sessions, refreshes analytics, restarts owned local services
+- Weekly attestation automation runs the full 8-step attestation process documented in this report
+- OpenClaw gateway fully decommissioned April 2, 2026; runtime migrated to `~/.jacobian`
+
+The automation system is not published in the evidence repo. It is documented here because it manages the attestation publication lifecycle and the content distribution pipeline.
+
+## 13. Updated Formal Coverage State
+
+The public ledger now contains 160 mechanized entries (previously 169). The change reflects an honest reclassification:
+
+- 160 entries remain `mechanized_local` with corresponding proof files in the private repository
+- 9 entries were reclassified from `mechanized_local` to `hypothesis_stated` because their referenced Lean 4 proof files (`Groth16Exact.lean`, `FriExact.lean`, `NovaExact.lean`, `HyperNovaExact.lean`) do not exist in the current checkout
+- The 9 hypothesis-stated entries are protocol-level soundness theorems (completeness, knowledge soundness, zero knowledge) with explicitly stated mathematical hypotheses (KEA, Reed-Solomon completeness, commitment binding)
+- These entries are excluded from the public ledger because the CI validation requires all published entries to be `mechanized_local`
+- The theorem statements and hypotheses are specified in the private verification ledger; the Lean 4 proof files are planned but not yet written
+
+This reclassification follows the constitutional guarantee: the ledger distinguishes between what is proven and what is not. The 9 entries will return to the public ledger when the Lean 4 files exist.
+
+Updated checker distribution for the 160 public entries: 59 Rocq, 86 Verus, 13 Lean, 2 F*.
+
+## 14. Why This Report Matters (unchanged from original)
 
 Every other serious ZirOS-adjacent repo having a report is not an aesthetic issue. It is a trust issue.
 
@@ -294,7 +391,7 @@ For ZirOS specifically, that matters even more than usual because the system is 
 
 The report is part of the trust model.
 
-## 9. Verdict
+## 15. Verdict
 
 The public attestation repository makes a strong case for ZirOS, but not because it claims too much.
 
@@ -317,18 +414,20 @@ The best reason to read this repository is not the headline numbers. It is the d
 
 On the public evidence now available, the answer to all of those is yes.
 
-## 10. Recommended Reading Order
+## 16. Recommended Reading Order
 
 For a first pass through the public repo, read these in order:
 
 1. [README.md](../README.md)
 2. [attestation/latest.json](../attestation/latest.json)
-3. [ledger/ledger-summary.json](../ledger/ledger-summary.json)
-4. [proof-server/endpoint-spec.md](../proof-server/endpoint-spec.md)
-5. [midnight/explorer-links.md](../midnight/explorer-links.md)
-6. [midnight/attestation-contracts.md](../midnight/attestation-contracts.md)
-7. [position/coverage-gaps-and-mitigations.md](../position/coverage-gaps-and-mitigations.md)
-8. [position/source-code-protection.md](../position/source-code-protection.md)
-9. [position/third-party-audits.md](../position/third-party-audits.md)
+3. [evidence/soak-certification-v0.4.1-20260403.json](../evidence/soak-certification-v0.4.1-20260403.json)
+4. [ledger/ledger-summary.json](../ledger/ledger-summary.json)
+5. [proof-server/endpoint-spec.md](../proof-server/endpoint-spec.md)
+6. [midnight/explorer-links.md](../midnight/explorer-links.md)
+7. [midnight/attestation-contracts.md](../midnight/attestation-contracts.md)
+8. [evidence/evidence-package.json](../evidence/evidence-package.json)
+9. [position/coverage-gaps-and-mitigations.md](../position/coverage-gaps-and-mitigations.md)
+10. [position/source-code-protection.md](../position/source-code-protection.md)
+11. [position/third-party-audits.md](../position/third-party-audits.md)
 
-That sequence gives the reader the same thing this report is trying to give them: the system, the evidence, the boundary, and the trust model.
+That sequence gives the reader the same thing this report is trying to give them: the system, the evidence, the soak certification, the Midnight toolchain, the boundary, and the trust model.
