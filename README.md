@@ -7,7 +7,10 @@
 ![Post-Quantum](https://img.shields.io/badge/Post--Quantum-ML--DSA--87%20Level%205-5a3ec8)
 ![Midnight](https://img.shields.io/badge/Midnight%20Network-5%20Live%20Contracts-5b4b3a)
 ![GPU](https://img.shields.io/badge/GPU-Apple%20Metal%2050%20Kernels-7a1f1f)
-![Lines](https://img.shields.io/badge/Rust-290%2C000%20Lines-orange)
+![Lines](https://img.shields.io/badge/Rust-496%2C000%20Lines-orange)
+![Soak](https://img.shields.io/badge/Soak-60%20Cycles%20%7C%200%20Degraded-0b6e4f)
+![Resolver](https://img.shields.io/badge/Resolver-22%20Package%20Pins-1f4f99)
+![midnight-probe](https://img.shields.io/badge/npm-midnight--probe%201.0.1-cb3837)
 
 ---
 
@@ -21,7 +24,7 @@
 
 **ZirOS is a zero-knowledge operating system** — the system layer between what you want to prove and the raw cryptographic machinery that proves it. It owns the *entire path* from your statement to a verified, signed, post-quantum proof artifact.
 
-**290,000 lines of Rust** across **30 workspace crates**. **9 proving backends** across **7 finite fields**. **7 circuit frontends**. **63 Metal GPU shaders** with **50 kernel entrypoints**. **169 mechanized theorems** across **5 formal proof languages** with **zero pending claims**. **Post-quantum signatures** (ML-DSA-87, NIST Level 5) on every artifact. **Apple Silicon native** — shaped around the M4 Max unified memory architecture, Metal GPU, Neural Engine, Secure Enclave, and iCloud Drive.
+**496,000 lines of Rust** across **30 workspace crates**. **9 proving backends** across **7 finite fields**. **7 circuit frontends**. **63 Metal GPU shaders** with **50 kernel entrypoints** and **5 soak-certified accelerators**. **169 mechanized theorems** across **5 formal proof languages** with **zero pending claims**. **Post-quantum signatures** (ML-DSA-87, NIST Level 5) on every artifact. **Soak certified** — 60 cycles, zero degraded, 12 hours sustained on Apple M4 Max. **Midnight developer toolchain** — resolver, disclosure analyzer, native proof server, 6 DApp templates, diagnostic probe on npm. **Apple Silicon native** — shaped around the M4 Max unified memory architecture, Metal GPU, Neural Engine, Secure Enclave, and iCloud Drive.
 
 One person built this. The contracts are live on Midnight. The proofs verify. The code is invisible.
 
@@ -30,13 +33,14 @@ Listening edition: [report/ziros-system-listening-report.md](report/ziros-system
 
 | | |
 |---|---|
-| **Scale** | 290,000 lines of Rust, 30 crates, 1,047 tests passing |
+| **Scale** | 496,000 lines of Rust, 30 crates |
 | **Proving** | 9 backends, 7 fields, 7 frontends, 11 gadgets |
-| **GPU** | 63 Metal shaders, 50 kernels, 8 accelerators, 14 prewarmed pipelines |
+| **GPU** | 63 Metal shaders, 50 kernels, 5 soak-certified accelerators (constraint_eval, field_ops, fri, hash, msm) |
+| **Soak** | 60 cycles, 0 degraded, 12h sustained, Falcon Heavy physics workload, Metal NTT realized |
 | **AI Control Plane** | 6 CoreML Neural Engine model lanes (38 TOPS on M4 Max) |
 | **Formal Verification** | 169 mechanized theorems (Lean 4, Rocq, Verus, F*, Kani), 0 pending |
 | **Post-Quantum** | ML-DSA-87 (FIPS 204), ML-KEM-1024 (FIPS 203), CNSA 2.0 Level 5 |
-| **Midnight Network** | Native GPU-accelerated proof server, 5 live Compact contracts |
+| **Midnight Network** | Native proof server, resolver, disclosure analyzer, 6 templates, diagnostic probe on npm, 5 live contracts |
 | **Ethereum** | 128-byte Groth16 proofs, ~210K gas verification, Solidity export |
 | **Defense** | Swarm anomaly detection, attack genome sequencing, honeypot traps |
 | **Agentic** | Designed for Claude Code (Opus 4.6) and Codex autonomous operation |
@@ -68,7 +72,7 @@ Listening edition: [report/ziros-system-listening-report.md](report/ziros-system
 
 ## Download & Install
 
-**[Download ZirOS v0.4.1 for Apple Silicon](https://github.com/AnubisQuantumCipher/ziros-attestation/releases/download/v0.4.1/zkf-aarch64-apple-darwin-v0.4.1.tar.gz)** — *99 MB, aarch64-apple-darwin, stripped release binary with LTO*
+**[Download ZirOS v0.4.1 for Apple Silicon](https://github.com/AnubisQuantumCipher/ziros-attestation/releases/download/v0.4.1/zkf-aarch64-apple-darwin-v0.4.1.tar.gz)** — *103 MB, aarch64-apple-darwin, stripped release binary with LTO, soak-certified Metal acceleration*
 
 ```bash
 # Download and install
@@ -100,7 +104,7 @@ zkf verify --program example.json --artifact proof.json --backend plonky3
 **Verify integrity:**
 ```bash
 shasum -a 256 aarch64-apple-darwin/zkf
-# Expected: 3726e15a64ca88a9ede67934a2be84c74f5b3b20c3aead75b32c3e69050a652f
+# Expected: ac87ebdd3cc9a027ccfcd17cff8328fdb878cd4e05d25a32086b0170903930f2
 ```
 
 **Releases:** [All releases](https://github.com/AnubisQuantumCipher/ziros-attestation/releases) | **License:** ZirOS Core Proprietary — free to use, [commercial license](https://github.com/AnubisQuantumCipher) required for production deployment and managed services
@@ -307,7 +311,11 @@ See [capability-matrix/gadgets.json](capability-matrix/gadgets.json).
 
 ## Apple Metal GPU Acceleration
 
-The disclosed GPU lane covers 63 Metal shader sources, 50 kernel entrypoints, 8 active accelerators, 14 prewarmed pipelines, and a fail-closed 4-digest attestation chain. The public evidence package also publishes the current attested accelerator set and pipeline count.
+The disclosed GPU lane covers 63 Metal shader sources, 50 kernel entrypoints, 5 soak-certified accelerators (constraint_eval, field_ops, fri, hash, msm), and a fail-closed 4-digest attestation chain.
+
+**Soak certified:** 60 cycles of sustained Plonky3 STARK proving with Metal NTT on a Falcon Heavy ascent trajectory workload (187 Goldilocks steps, 3,569 signals, 4,879 constraints). 12 hours continuous. Zero degraded runs. Zero crashes. Constant memory (16.9 MB per cycle). Metal NTT realized in the proving path. Hash-merkle falls back to CPU when trace width exceeds the current MMCS Metal limit (documented, not a failure). Full soak report: [evidence/soak-certification-v0.4.1-20260403.json](evidence/soak-certification-v0.4.1-20260403.json).
+
+Halo2 BLS12-381 params cache provides 10x cold-to-warm improvement (1,362s to 132s) with atomic writes and automatic corrupt-cache regeneration. MSM Metal segmentation eliminates the pre-segmentation admission gate failure on BN254.
 
 | Accelerator | Scope |
 |-------------|-------|
@@ -462,7 +470,32 @@ An audit firm reviews a snapshot. ZirOS publishes a continuously updated verific
 
 ## Midnight Network Integration
 
-ZirOS exposes a Midnight-compatible proof server and documents five deployed Compact contracts on Midnight preprod.
+ZirOS provides a complete Midnight developer toolchain: a native proof server, a version resolver that auto-fixes SDK drift, a Compact disclosure boundary analyzer, a diagnostic probe toolkit on npm, 6 DApp scaffold templates, and 5 deployed Compact contracts on Midnight preprod.
+
+### Midnight Developer Toolchain
+
+| Command | What It Does |
+|---------|-------------|
+| `zkf midnight proof-server serve` | Native Midnight proof server on port 6300 with UMPG engine — no Docker required |
+| `zkf midnight resolve` | Auto-fix `@midnight-ntwrk/*` version drift against 22 pinned packages, compile contracts, validate artifacts |
+| `zkf midnight disclosure` | Analyze Compact transcript boundaries, classify disclosed vs commitment-backed outputs, fail closed on untracked exposure |
+| `zkf midnight doctor` | Report toolchain, package, network, wallet, Lace, and DUST readiness in one check |
+| `zkf midnight init` | Scaffold a pinned, production-mode Midnight DApp from 6 verified templates |
+| `zkf midnight templates` | List the 6 shipped templates with backend lanes and package pins |
+| `zkf midnight gateway serve` | Fail-closed Compact admission gateway with ML-DSA-87 attestations |
+
+**midnight-probe** (free, MIT, npm): `npm install -g midnight-probe` — diagnoses chain fingerprint, version mismatches, validator health. Every output points to `zkf midnight resolve` as the fix. Published at [npmjs.com/package/midnight-probe](https://www.npmjs.com/package/midnight-probe).
+
+### Midnight Templates
+
+| Template | What It Scaffolds |
+|----------|------------------|
+| `token-transfer` | Midnight-native token transfer with pinned proof server lane |
+| `cooperative-treasury` | SED cooperative treasury with selective disclosure |
+| `private-voting` | Anonymous voting with Compact commitment contract |
+| `credential-verification` | Private identity with Groth16 proof lane |
+| `private-auction` | Sealed-bid auction with Poseidon commitment |
+| `supply-chain-provenance` | Selective-disclosure provenance attestation |
 
 ### Proof Server
 
