@@ -1,8 +1,8 @@
 {
   "schema": "ziros-weekly-attestation-v1",
-  "generated_at": "2026-04-04T11:31:24Z",
+  "generated_at": "2026-04-04T11:52:49Z",
   "version": "0.4.1",
-  "build_date": "2026-04-04T10:56:41Z",
+  "build_date": "2026-04-04T11:28:32Z",
   "claims_verified": {
     "conformance": {
       "claim": "24/24 backend conformance tests passed",
@@ -52,7 +52,7 @@
       "metal_ntt_realized": true
     },
     "metal_gpu": {
-      "claim": "Metal GPU acceleration with 5 active accelerators on Apple M4 Max",
+      "claim": "Metal GPU acceleration with 8 active accelerators on Apple M4 Max",
       "verified": true,
       "device": "Apple M4 Max",
       "metal_compiled": true,
@@ -64,7 +64,10 @@
         "field_ops",
         "fri",
         "hash",
-        "msm"
+        "msm",
+        "ntt",
+        "poly_ops",
+        "poseidon2"
       ],
       "dispatch_circuit_open": false
     },
