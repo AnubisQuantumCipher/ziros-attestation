@@ -1,6 +1,6 @@
 {
   "schema": "zkf-public-post-quantum-matrix-v1",
-  "generated_at": "2026-04-05T06:55:43Z",
+  "generated_at": "2026-04-05T08:41:33Z",
   "components": [
     {
       "component": "plonky3",

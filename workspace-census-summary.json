@@ -1,6 +1,6 @@
 {
   "schema": "ziros-workspace-census-summary-v1",
-  "generated_at": "2026-04-05T06:55:43Z",
+  "generated_at": "2026-04-05T08:41:33Z",
   "source_commit": "1f5059ccb05686b4c45f85d095838fb9b70abe92",
   "source_census_root": "a1ce4ce245d1a7cb2909824e43af409819e753d0b86b4d9e0de04263cae4ec33",
   "total_tracked_files": 1315,

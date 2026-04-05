@@ -4,8 +4,8 @@
   "release_tag": "v0.4.0",
   "binary_manifest_path": "binary-manifest/v0.4.0/manifest.json",
   "binary_target": "aarch64-apple-darwin",
-  "attestation_generated_at": "2026-04-01T20:07:52Z",
-  "publication_checked_at": "2026-04-05T06:55:43Z",
+  "attestation_generated_at": "2026-04-01T22:21:17Z",
+  "publication_checked_at": "2026-04-05T08:41:33Z",
   "source_commit": "1f5059ccb05686b4c45f85d095838fb9b70abe92",
   "source_truth_surfaces": [
     "zkf-ir-spec/verification-ledger.json",
@@ -14,5 +14,5 @@
     "release/product-release.json",
     "release/private_source_census.json"
   ],
-  "public_repo_name": "ziros-attestation"
+  "public_repo_name": "ziros-attestation-publish"
 }
