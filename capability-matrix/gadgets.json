@@ -1,7 +1,7 @@
 {
   "schema": "zkf-public-capability-surface-v1",
-  "generated_at": "2026-04-01T17:55:20Z",
-  "generated_for": "0.1.0",
+  "generated_at": "2026-04-05T06:55:43Z",
+  "generated_for": "0.4.0",
   "gadgets": [
     {
       "id": "blake3",

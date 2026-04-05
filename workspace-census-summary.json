@@ -1,0 +1,46 @@
+{
+  "schema": "ziros-workspace-census-summary-v1",
+  "generated_at": "2026-04-05T06:55:43Z",
+  "source_commit": "1f5059ccb05686b4c45f85d095838fb9b70abe92",
+  "source_census_root": "a1ce4ce245d1a7cb2909824e43af409819e753d0b86b4d9e0de04263cae4ec33",
+  "total_tracked_files": 1315,
+  "zero_unclassified_files": true,
+  "trust_band_counts": {
+    "noncritical_support": 387,
+    "publication_critical": 4,
+    "release_critical": 93,
+    "sealed_core": 831
+  },
+  "coverage_state_counts": {
+    "excluded_from_release": 193,
+    "bounded": 481,
+    "explicit_tcb": 141,
+    "mechanized": 500
+  },
+  "by_trust_band_and_coverage": {
+    "noncritical_support": {
+      "excluded_from_release": 99,
+      "bounded": 260,
+      "explicit_tcb": 9,
+      "mechanized": 19
+    },
+    "publication_critical": {
+      "explicit_tcb": 4
+    },
+    "release_critical": {
+      "excluded_from_release": 32,
+      "explicit_tcb": 5,
+      "bounded": 56
+    },
+    "sealed_core": {
+      "excluded_from_release": 62,
+      "mechanized": 481,
+      "bounded": 165,
+      "explicit_tcb": 123
+    }
+  },
+  "release_included_counts": {
+    "included": 1183,
+    "excluded": 132
+  }
+}

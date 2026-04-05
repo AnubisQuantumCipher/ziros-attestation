@@ -1,0 +1,349 @@
+{
+  "schema": "ziros-claim-source-graph-v1",
+  "generated_at": "2026-04-05T06:55:43Z",
+  "claims": [
+    {
+      "claim_id": "publication.release_tag",
+      "category": "mathematically_established",
+      "claim_text": "Published release tag in the public attestation.",
+      "expected_value": "v0.4.0",
+      "sources": [
+        {
+          "path": "publication/manifest.json",
+          "json_pointer": "/release_tag"
+        },
+        {
+          "path": "attestation/latest.json",
+          "json_pointer": "/publication/release_tag"
+        }
+      ]
+    },
+    {
+      "claim_id": "ledger.implementation_bound_rows",
+      "category": "mathematically_established",
+      "claim_text": "Implementation-bound machine-checked theorem rows disclosed in the public ledger.",
+      "expected_value": 157,
+      "sources": [
+        {
+          "path": "ledger/ledger-summary.json",
+          "json_pointer": "/by_assurance_class/mechanized_implementation_claim"
+        },
+        {
+          "path": "attestation/latest.json",
+          "json_pointer": "/headline_counts/implementation_bound_rows"
+        },
+        {
+          "path": "evidence/evidence-package.json",
+          "json_pointer": "/attestation/headline_counts/implementation_bound_rows"
+        }
+      ]
+    },
+    {
+      "claim_id": "ledger.hypothesis_carried_rows",
+      "category": "hypothesis_carried",
+      "claim_text": "Hypothesis-carried theorem rows disclosed separately from the headline count.",
+      "expected_value": 12,
+      "sources": [
+        {
+          "path": "ledger/ledger-summary.json",
+          "json_pointer": "/by_assurance_class/hypothesis_carried_theorem"
+        },
+        {
+          "path": "attestation/latest.json",
+          "json_pointer": "/headline_counts/hypothesis_carried_rows"
+        },
+        {
+          "path": "attestation/latest.json",
+          "json_pointer": "/hypothesis_registry/count"
+        }
+      ]
+    },
+    {
+      "claim_id": "ledger.pending_rows",
+      "category": "mathematically_established",
+      "claim_text": "Pending theorem rows remaining in the public ledger.",
+      "expected_value": 0,
+      "sources": [
+        {
+          "path": "ledger/ledger-summary.json",
+          "json_pointer": "/pending"
+        },
+        {
+          "path": "attestation/latest.json",
+          "json_pointer": "/headline_counts/pending_rows"
+        },
+        {
+          "path": "attestation/latest.json",
+          "json_pointer": "/claims_verified/verification_ledger/pending"
+        }
+      ]
+    },
+    {
+      "claim_id": "census.zero_unclassified_files",
+      "category": "mathematically_established",
+      "claim_text": "Every tracked private file is classified in the sealed-source census.",
+      "expected_value": true,
+      "sources": [
+        {
+          "path": "workspace-census-summary.json",
+          "json_pointer": "/zero_unclassified_files"
+        },
+        {
+          "path": "attestation/latest.json",
+          "json_pointer": "/headline_counts/zero_unclassified_files"
+        },
+        {
+          "path": "attestation/latest.json",
+          "json_pointer": "/claims_verified/source_census/verified"
+        }
+      ]
+    },
+    {
+      "claim_id": "census.total_tracked_files",
+      "category": "explicit_tcb",
+      "claim_text": "Total tracked private files included in the sealed-source census root.",
+      "expected_value": 1315,
+      "sources": [
+        {
+          "path": "workspace-census-summary.json",
+          "json_pointer": "/total_tracked_files"
+        },
+        {
+          "path": "attestation/latest.json",
+          "json_pointer": "/claims_verified/source_census/total_tracked_files"
+        }
+      ]
+    },
+    {
+      "claim_id": "binary.target",
+      "category": "mathematically_established",
+      "claim_text": "Published binary target in the attestation and manifest.",
+      "expected_value": "aarch64-apple-darwin",
+      "sources": [
+        {
+          "path": "binary-manifest/v0.4.0/manifest.json",
+          "json_pointer": "/target_triple"
+        },
+        {
+          "path": "attestation/latest.json",
+          "json_pointer": "/claims_verified/binary_integrity/target"
+        }
+      ]
+    },
+    {
+      "claim_id": "midnight.verified_contracts",
+      "category": "external_evidence",
+      "claim_text": "Current live explorer verification count for published Midnight manifests.",
+      "expected_value": 0,
+      "sources": [
+        {
+          "path": "midnight/explorer-status.json",
+          "json_pointer": "/verified_contracts"
+        },
+        {
+          "path": "attestation/latest.json",
+          "json_pointer": "/claims_verified/midnight_deployments/verified_contracts"
+        }
+      ]
+    },
+    {
+      "claim_id": "conformance.plonky3.tests_passed",
+      "category": "mathematically_established",
+      "claim_text": "Published conformance passed count for backend plonky3.",
+      "expected_value": 6,
+      "sources": [
+        {
+          "path": "conformance/latest/plonky3.json",
+          "json_pointer": "/tests_passed"
+        },
+        {
+          "path": "attestation/latest.json",
+          "json_pointer": "/claims_verified/backend_conformance/backends/plonky3/tests_passed"
+        }
+      ]
+    },
+    {
+      "claim_id": "conformance.plonky3.tests_run",
+      "category": "mathematically_established",
+      "claim_text": "Published conformance total run count for backend plonky3.",
+      "expected_value": 6,
+      "sources": [
+        {
+          "path": "conformance/latest/plonky3.json",
+          "json_pointer": "/tests_run"
+        },
+        {
+          "path": "attestation/latest.json",
+          "json_pointer": "/claims_verified/backend_conformance/backends/plonky3/tests_run"
+        }
+      ]
+    },
+    {
+      "claim_id": "conformance.halo2.tests_passed",
+      "category": "mathematically_established",
+      "claim_text": "Published conformance passed count for backend halo2.",
+      "expected_value": 6,
+      "sources": [
+        {
+          "path": "conformance/latest/halo2.json",
+          "json_pointer": "/tests_passed"
+        },
+        {
+          "path": "attestation/latest.json",
+          "json_pointer": "/claims_verified/backend_conformance/backends/halo2/tests_passed"
+        }
+      ]
+    },
+    {
+      "claim_id": "conformance.halo2.tests_run",
+      "category": "mathematically_established",
+      "claim_text": "Published conformance total run count for backend halo2.",
+      "expected_value": 6,
+      "sources": [
+        {
+          "path": "conformance/latest/halo2.json",
+          "json_pointer": "/tests_run"
+        },
+        {
+          "path": "attestation/latest.json",
+          "json_pointer": "/claims_verified/backend_conformance/backends/halo2/tests_run"
+        }
+      ]
+    },
+    {
+      "claim_id": "conformance.nova.tests_passed",
+      "category": "mathematically_established",
+      "claim_text": "Published conformance passed count for backend nova.",
+      "expected_value": 6,
+      "sources": [
+        {
+          "path": "conformance/latest/nova.json",
+          "json_pointer": "/tests_passed"
+        },
+        {
+          "path": "attestation/latest.json",
+          "json_pointer": "/claims_verified/backend_conformance/backends/nova/tests_passed"
+        }
+      ]
+    },
+    {
+      "claim_id": "conformance.nova.tests_run",
+      "category": "mathematically_established",
+      "claim_text": "Published conformance total run count for backend nova.",
+      "expected_value": 6,
+      "sources": [
+        {
+          "path": "conformance/latest/nova.json",
+          "json_pointer": "/tests_run"
+        },
+        {
+          "path": "attestation/latest.json",
+          "json_pointer": "/claims_verified/backend_conformance/backends/nova/tests_run"
+        }
+      ]
+    },
+    {
+      "claim_id": "conformance.hypernova.tests_passed",
+      "category": "mathematically_established",
+      "claim_text": "Published conformance passed count for backend hypernova.",
+      "expected_value": 6,
+      "sources": [
+        {
+          "path": "conformance/latest/hypernova.json",
+          "json_pointer": "/tests_passed"
+        },
+        {
+          "path": "attestation/latest.json",
+          "json_pointer": "/claims_verified/backend_conformance/backends/hypernova/tests_passed"
+        }
+      ]
+    },
+    {
+      "claim_id": "conformance.hypernova.tests_run",
+      "category": "mathematically_established",
+      "claim_text": "Published conformance total run count for backend hypernova.",
+      "expected_value": 6,
+      "sources": [
+        {
+          "path": "conformance/latest/hypernova.json",
+          "json_pointer": "/tests_run"
+        },
+        {
+          "path": "attestation/latest.json",
+          "json_pointer": "/claims_verified/backend_conformance/backends/hypernova/tests_run"
+        }
+      ]
+    },
+    {
+      "claim_id": "conformance.total_passed",
+      "category": "mathematically_established",
+      "claim_text": "Published total passed count across the four attested public backends.",
+      "expected_value": 24,
+      "aggregate": "sum",
+      "components": [
+        {
+          "path": "conformance/latest/plonky3.json",
+          "json_pointer": "/tests_passed"
+        },
+        {
+          "path": "conformance/latest/halo2.json",
+          "json_pointer": "/tests_passed"
+        },
+        {
+          "path": "conformance/latest/nova.json",
+          "json_pointer": "/tests_passed"
+        },
+        {
+          "path": "conformance/latest/hypernova.json",
+          "json_pointer": "/tests_passed"
+        }
+      ],
+      "corroborating_sources": [
+        {
+          "path": "attestation/latest.json",
+          "json_pointer": "/claims_verified/backend_conformance/total_passed"
+        },
+        {
+          "path": "evidence/evidence-package.json",
+          "json_pointer": "/attestation/claims_verified/backend_conformance/total_passed"
+        }
+      ]
+    },
+    {
+      "claim_id": "conformance.total_run",
+      "category": "mathematically_established",
+      "claim_text": "Published total run count across the four attested public backends.",
+      "expected_value": 24,
+      "aggregate": "sum",
+      "components": [
+        {
+          "path": "conformance/latest/plonky3.json",
+          "json_pointer": "/tests_run"
+        },
+        {
+          "path": "conformance/latest/halo2.json",
+          "json_pointer": "/tests_run"
+        },
+        {
+          "path": "conformance/latest/nova.json",
+          "json_pointer": "/tests_run"
+        },
+        {
+          "path": "conformance/latest/hypernova.json",
+          "json_pointer": "/tests_run"
+        }
+      ],
+      "corroborating_sources": [
+        {
+          "path": "attestation/latest.json",
+          "json_pointer": "/claims_verified/backend_conformance/total_run"
+        },
+        {
+          "path": "evidence/evidence-package.json",
+          "json_pointer": "/attestation/claims_verified/backend_conformance/total_run"
+        }
+      ]
+    }
+  ],
+  "graph_digest": "80de62693090993ca58f52d3f342975348d729f2ff5825aa18c882e47015632a"
+}

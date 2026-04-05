@@ -1,12 +1,42 @@
 {
-  "schema": "zkf-ledger-summary-v1",
-  "total_entries": 160,
-  "pending_entries": 0,
-  "mechanized_local": 160,
+  "total": 169,
+  "mechanized_local": 169,
+  "pending": 0,
   "by_checker": {
-    "fstar": 2,
-    "lean": 13,
     "rocq": 59,
-    "verus": 86
-  }
+    "verus": 86,
+    "lean": 22,
+    "fstar": 2
+  },
+  "by_scope_domain": {
+    "zkf-core": 23,
+    "zkf-backends": 24,
+    "zkf-ir-spec": 3,
+    "zkf-runtime": 70,
+    "zkf-frontends": 1,
+    "zkf-metal": 9,
+    "zkf-distributed": 24,
+    "zkf-lib": 15
+  },
+  "by_assurance_class": {
+    "mechanized_implementation_claim": 157,
+    "bounded_check": 0,
+    "attestation_backed_lane": 0,
+    "model_only_claim": 0,
+    "hypothesis_carried_theorem": 12
+  },
+  "trusted_assumption_rows": [
+    "swarm.coordinator_acceptance_soundness",
+    "swarm.memory_snapshot_identity",
+    "distributed.acceptance_soundness",
+    "protocol.groth16_completeness",
+    "protocol.groth16_knowledge_soundness",
+    "protocol.groth16_zero_knowledge",
+    "protocol.fri_completeness",
+    "protocol.fri_proximity_soundness",
+    "protocol.nova_completeness",
+    "protocol.nova_folding_soundness",
+    "protocol.hypernova_completeness",
+    "protocol.hypernova_folding_soundness"
+  ]
 }

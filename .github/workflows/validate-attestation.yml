@@ -19,14 +19,15 @@ jobs:
 
           forbidden="$(find . -type f \
             \( -name '*.rs' -o -name '*.ts' -o -name '*.tsx' -o -name '*.js' -o -name '*.jsx' -o -name '*.mjs' -o -name '*.cjs' \
+               -o -name '*.c' -o -name '*.cc' -o -name '*.cpp' -o -name '*.h' -o -name '*.hpp' -o -name '*.swift' \
                -o -name '*.py' -o -name '*.sh' -o -name '*.bash' -o -name '*.zsh' -o -name '*.ps1' -o -name '*.bat' \
                -o -name '*.v' -o -name '*.lean' -o -name '*.fst' -o -name '*.fsti' \
                -o -name '*.metal' -o -name '*.metallib' \
                -o -name '*.circom' -o -name '*.nr' -o -name '*.noir' -o -name '*.zkir' -o -name '*.bzkir' \
                -o -name '*.dylib' -o -name '*.a' -o -name '*.so' -o -name '*.dll' -o -name '*.exe' -o -name '*.o' -o -name '*.rlib' -o -name '*.wasm' -o -name '*.bin' \
+               -o -name '*.map' \
                -o -name 'Cargo.toml' -o -name 'Cargo.lock' -o -name 'Cargo.*' -o -name '*.toml' \
                -o -name 'build.rs' -o -name 'Makefile' -o -name 'Dockerfile' \) \
-            ! -path './sdk/example-circuit.rs' \
             -print)"
 
           if [[ -n "${forbidden}" ]]; then
@@ -68,9 +69,31 @@ jobs:
             -e 'ghp_[A-Za-z0-9_]+' \
             -e 'mn_(dust|addr)_[A-Za-z0-9_]+' \
             -e '\bsicarii\b' \
+            -e '\bzkf-sdk\b' \
+            -e '\bopen[- ]core\b' \
+            -e '\bpublic mirror\b' \
+            -e '\bzkf\.h\b' \
+            -e '\bopaque C header\b' \
             -e '"evidence_path"\s*:' \
             .; then
             echo "Unsanitized path, identifier, or private evidence field detected."
+            exit 1
+          fi
+
+      - name: Block fenced implementation snippets
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if rg -n --glob '*.md' \
+            --glob '!proof-server/endpoint-spec.md' \
+            '^```' .; then
+            echo "Fenced code blocks are not allowed in the public evidence repo."
+            exit 1
+          fi
+
+          if rg -n '^```(?!json$)' proof-server/endpoint-spec.md -g 'proof-server/endpoint-spec.md' -P; then
+            echo "proof-server/endpoint-spec.md may only use json fences."
             exit 1
           fi
 
@@ -114,4 +137,124 @@ jobs:
 
           if claim.get("total_entries") != len(ledger):
               raise SystemExit("attestation total_entries does not match public ledger length")
+          PY
+
+      - name: Replay public attestation bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          root = Path(".")
+
+          def load_json(rel: str):
+              return json.loads((root / rel).read_text())
+
+          def canonical_sha256(payload):
+              encoded = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
+              return hashlib.sha256(encoded).hexdigest()
+
+          def without_keys(payload, *keys):
+              clone = json.loads(json.dumps(payload))
+              for key in keys:
+                  clone.pop(key, None)
+              return clone
+
+          def json_pointer_get(document, pointer: str):
+              if pointer == "":
+                  return document
+              if not pointer.startswith("/"):
+                  raise SystemExit(f"invalid JSON pointer: {pointer}")
+              current = document
+              for raw_part in pointer[1:].split("/"):
+                  part = raw_part.replace("~1", "/").replace("~0", "~")
+                  if isinstance(current, list):
+                      current = current[int(part)]
+                  else:
+                      current = current[part]
+              return current
+
+          attestation = load_json("attestation/latest.json")
+          evidence = load_json("evidence/evidence-package.json")
+          publication = load_json("publication/manifest.json")
+          claim_graph = load_json("claim-source-graph.json")
+          hostile_verdict = load_json("hostile-audit-verdict.json")
+          workspace_census_summary = load_json("workspace-census-summary.json")
+
+          computed_attestation_hash = canonical_sha256(without_keys(attestation, "attestation_hash"))
+          if computed_attestation_hash != attestation["attestation_hash"]:
+              raise SystemExit("attestation hash does not match payload")
+
+          computed_graph_digest = canonical_sha256(
+              {
+                  "schema": claim_graph["schema"],
+                  "generated_at": claim_graph["generated_at"],
+                  "claims": claim_graph["claims"],
+              }
+          )
+          if computed_graph_digest != claim_graph["graph_digest"]:
+              raise SystemExit("claim-source graph digest does not match graph payload")
+          if computed_graph_digest != attestation["claim_source_graph_digest"]:
+              raise SystemExit("attestation and claim-source graph digests disagree")
+          if computed_graph_digest != hostile_verdict["claim_source_graph_digest"]:
+              raise SystemExit("hostile-audit verdict and claim-source graph digests disagree")
+          if computed_graph_digest != evidence["claim_source_graph_digest"]:
+              raise SystemExit("evidence package and claim-source graph digests disagree")
+
+          computed_hostile_digest = canonical_sha256(hostile_verdict)
+          if computed_hostile_digest != evidence["hostile_audit_verdict_digest"]:
+              raise SystemExit("evidence package hostile-audit verdict digest does not match verdict payload")
+
+          if evidence["publication"] != publication:
+              raise SystemExit("evidence package publication manifest is out of sync")
+          if evidence["workspace_census_summary"] != workspace_census_summary:
+              raise SystemExit("evidence package workspace census summary is out of sync")
+          if evidence["attestation"] != attestation:
+              raise SystemExit("evidence package attestation payload is out of sync")
+
+          for name, rel in evidence["artifact_index"].items():
+              if not (root / rel).exists():
+                  raise SystemExit(f"artifact_index entry {name} points to missing path {rel}")
+
+          for claim in claim_graph["claims"]:
+              expected = claim["expected_value"]
+              if claim.get("aggregate") == "sum":
+                  total = 0
+                  for component in claim["components"]:
+                      total += int(json_pointer_get(load_json(component["path"]), component["json_pointer"]))
+                  if total != expected:
+                      raise SystemExit(f"claim {claim['claim_id']} expected {expected}, recomputed {total}")
+                  for corroborating_source in claim.get("corroborating_sources", []):
+                      value = json_pointer_get(
+                          load_json(corroborating_source["path"]),
+                          corroborating_source["json_pointer"],
+                      )
+                      if value != expected:
+                          raise SystemExit(
+                              f"claim {claim['claim_id']} mismatch at "
+                              f"{corroborating_source['path']}{corroborating_source['json_pointer']}"
+                          )
+                  continue
+
+              for source in claim["sources"]:
+                  value = json_pointer_get(load_json(source["path"]), source["json_pointer"])
+                  if value != expected:
+                      raise SystemExit(
+                          f"claim {claim['claim_id']} mismatch at {source['path']}{source['json_pointer']}"
+                      )
+
+          expected_explicit_tcb = workspace_census_summary["coverage_state_counts"].get("explicit_tcb", 0)
+          if hostile_verdict["summary"]["explicit_tcb_files"] != expected_explicit_tcb:
+              raise SystemExit("hostile-audit verdict explicit_tcb_files does not match workspace census summary")
+          if hostile_verdict["summary"]["zero_unclassified_files"] != workspace_census_summary["zero_unclassified_files"]:
+              raise SystemExit("hostile-audit verdict zero_unclassified_files does not match workspace census summary")
+
+          if attestation["headline_counts"]["implementation_bound_rows"] != attestation["claims_verified"]["verification_ledger"]["implementation_bound_rows"]:
+              raise SystemExit("headline implementation count does not match verification_ledger implementation count")
+          if attestation["headline_counts"]["hypothesis_carried_rows"] != attestation["hypothesis_registry"]["count"]:
+              raise SystemExit("headline hypothesis count does not match hypothesis registry count")
           PY

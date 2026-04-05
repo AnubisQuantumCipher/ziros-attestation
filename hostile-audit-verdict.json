@@ -1,0 +1,48 @@
+{
+  "schema": "ziros-hostile-audit-verdict-v1",
+  "generated_at": "2026-04-05T06:55:43Z",
+  "claim_source_graph_digest": "80de62693090993ca58f52d3f342975348d729f2ff5825aa18c882e47015632a",
+  "verdict": "pass",
+  "summary": {
+    "mathematically_established_claims": 15,
+    "hypothesis_carried_claims": 1,
+    "external_evidence_claims": 1,
+    "explicit_tcb_claims": 1,
+    "explicit_tcb_files": 141,
+    "bounded_only_files": 481,
+    "excluded_files": 193,
+    "zero_unclassified_files": true,
+    "failed_claims": 0,
+    "indeterminate_claims": 0
+  },
+  "categories": {
+    "mathematically_established": [
+      "publication.release_tag",
+      "ledger.implementation_bound_rows",
+      "ledger.pending_rows",
+      "census.zero_unclassified_files",
+      "binary.target",
+      "conformance.plonky3.tests_passed",
+      "conformance.plonky3.tests_run",
+      "conformance.halo2.tests_passed",
+      "conformance.halo2.tests_run",
+      "conformance.nova.tests_passed",
+      "conformance.nova.tests_run",
+      "conformance.hypernova.tests_passed",
+      "conformance.hypernova.tests_run",
+      "conformance.total_passed",
+      "conformance.total_run"
+    ],
+    "hypothesis_carried": [
+      "ledger.hypothesis_carried_rows"
+    ],
+    "explicit_tcb": [
+      "census.total_tracked_files"
+    ],
+    "external_evidence": [
+      "midnight.verified_contracts"
+    ],
+    "failed": [],
+    "indeterminate": []
+  }
+}
