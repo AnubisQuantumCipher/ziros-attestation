@@ -1,0 +1,11 @@
+{
+  "version": "0.4.2",
+  "build_date": "2026-04-07T00:31:22.391379+00:00",
+  "target_triple": "aarch64-apple-darwin",
+  "binaries": {
+    "zkf": {
+      "path": "zkf",
+      "sha256": "bcefb3ffb8d9c2a183077e0e7f759e93ec72e31733eea6550768a3870f68d80d"
+    }
+  }
+}

@@ -1,42 +1,38 @@
 {
-  "total": 169,
-  "mechanized_local": 169,
+  "total": 165,
+  "mechanized_local": 165,
   "pending": 0,
+  "pending_entries": 0,
   "by_checker": {
-    "rocq": 59,
-    "verus": 86,
+    "rocq": 61,
+    "verus": 80,
     "lean": 22,
     "fstar": 2
   },
   "by_scope_domain": {
-    "zkf-core": 23,
-    "zkf-backends": 24,
+    "zkf-core": 29,
+    "zkf-backends": 23,
     "zkf-ir-spec": 3,
-    "zkf-runtime": 70,
-    "zkf-frontends": 1,
+    "zkf-cli": 13,
+    "zkf-frontends": 4,
+    "zkf-runtime": 53,
     "zkf-metal": 9,
     "zkf-distributed": 24,
-    "zkf-lib": 15
+    "zkf-lib": 7
   },
   "by_assurance_class": {
-    "mechanized_implementation_claim": 157,
-    "bounded_check": 0,
-    "attestation_backed_lane": 0,
-    "model_only_claim": 0,
-    "hypothesis_carried_theorem": 12
+    "mechanized_implementation_claim": 156,
+    "hypothesis_carried_theorem": 9
   },
   "trusted_assumption_rows": [
-    "swarm.coordinator_acceptance_soundness",
-    "swarm.memory_snapshot_identity",
-    "distributed.acceptance_soundness",
+    "protocol.fri_completeness",
+    "protocol.fri_proximity_soundness",
     "protocol.groth16_completeness",
     "protocol.groth16_knowledge_soundness",
     "protocol.groth16_zero_knowledge",
-    "protocol.fri_completeness",
-    "protocol.fri_proximity_soundness",
-    "protocol.nova_completeness",
-    "protocol.nova_folding_soundness",
     "protocol.hypernova_completeness",
-    "protocol.hypernova_folding_soundness"
+    "protocol.hypernova_folding_soundness",
+    "protocol.nova_completeness",
+    "protocol.nova_folding_soundness"
   ]
 }

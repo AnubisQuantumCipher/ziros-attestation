@@ -150,9 +150,23 @@ jobs:
           from pathlib import Path
 
           root = Path(".")
+          HEADLINE_CONFORMANCE_BACKENDS = ["plonky3", "halo2", "nova", "hypernova"]
+          SUPPLEMENTAL_CONFORMANCE_BACKENDS = ["arkworks-groth16"]
+          CAPABILITY_MATRIX_FILES = {
+              "backends": "backends.json",
+              "frontends": "frontends.json",
+              "gadgets": "gadgets.json",
+              "post_quantum": "post-quantum.json",
+          }
 
           def load_json(rel: str):
               return json.loads((root / rel).read_text())
+
+          def load_claim_source(rel: str):
+              path = root / rel
+              if path.suffix == ".json":
+                  return json.loads(path.read_text())
+              return path.read_text().strip()
 
           def canonical_sha256(payload):
               encoded = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
@@ -178,12 +192,77 @@ jobs:
                       current = current[part]
               return current
 
+          def build_expected_conformance_summary():
+              def row_for(backend: str):
+                  payload = load_json(f"conformance/latest/{backend}.json")
+                  return {
+                      "backend": backend,
+                      "path": f"conformance/latest/{backend}.json",
+                      "tests_run": payload["tests_run"],
+                      "tests_passed": payload["tests_passed"],
+                      "tests_failed": payload["tests_failed"],
+                      "status": payload.get("status", "pass" if payload["tests_failed"] == 0 else "fail"),
+                  }
+
+              headline_rows = [row_for(backend) for backend in HEADLINE_CONFORMANCE_BACKENDS]
+              supplemental_rows = []
+              for backend in SUPPLEMENTAL_CONFORMANCE_BACKENDS:
+                  path = root / "conformance" / "latest" / f"{backend}.json"
+                  if path.exists():
+                      supplemental_rows.append(row_for(backend))
+
+              published_rows = headline_rows + supplemental_rows
+              headline_tests_failed = sum(row["tests_failed"] for row in headline_rows)
+              published_tests_failed = sum(row["tests_failed"] for row in published_rows)
+              return {
+                  "headline_backend_ids": [row["backend"] for row in headline_rows],
+                  "headline_backend_count": len(headline_rows),
+                  "headline_tests_run": sum(row["tests_run"] for row in headline_rows),
+                  "headline_tests_passed": sum(row["tests_passed"] for row in headline_rows),
+                  "headline_tests_failed": headline_tests_failed,
+                  "headline_status": "pass" if headline_tests_failed == 0 else "fail",
+                  "published_backend_ids": [row["backend"] for row in published_rows],
+                  "published_backend_count": len(published_rows),
+                  "published_tests_run": sum(row["tests_run"] for row in published_rows),
+                  "published_tests_passed": sum(row["tests_passed"] for row in published_rows),
+                  "published_tests_failed": published_tests_failed,
+                  "published_status": "pass" if published_tests_failed == 0 else "fail",
+                  "headline_rows": headline_rows,
+                  "supplemental_rows": supplemental_rows,
+              }
+
+          def build_expected_capability_summary(version: str):
+              payloads = {}
+              for key, filename in CAPABILITY_MATRIX_FILES.items():
+                  payload = load_json(f"capability-matrix/{filename}")
+                  if payload.get("generated_for") != version:
+                      raise SystemExit(
+                          f"capability matrix {filename} generated_for={payload.get('generated_for')} != {version}"
+                      )
+                  payloads[key] = payload
+              return {
+                  "backend_count": len(payloads["backends"]["backends"]),
+                  "backend_ids": [entry["id"] for entry in payloads["backends"]["backends"]],
+                  "frontend_count": len(payloads["frontends"]["frontends"]),
+                  "frontend_ids": [entry["id"] for entry in payloads["frontends"]["frontends"]],
+                  "gadget_count": len(payloads["gadgets"]["gadgets"]),
+                  "gadget_ids": [entry["id"] for entry in payloads["gadgets"]["gadgets"]],
+                  "post_quantum_component_count": len(payloads["post_quantum"]["components"]),
+                  "post_quantum_components": [
+                      entry["component"] for entry in payloads["post_quantum"]["components"]
+                  ],
+              }
+
           attestation = load_json("attestation/latest.json")
           evidence = load_json("evidence/evidence-package.json")
           publication = load_json("publication/manifest.json")
           claim_graph = load_json("claim-source-graph.json")
           hostile_verdict = load_json("hostile-audit-verdict.json")
           workspace_census_summary = load_json("workspace-census-summary.json")
+          conformance_summary = load_json("evidence/conformance-summary.json")
+          capability_summary = load_json("evidence/capability-summary.json")
+          proof_inventory = load_json("evidence/proof-file-inventory.json")
+          ledger_file_sha = (root / "ledger/ledger-sha256.txt").read_text().strip()
 
           computed_attestation_hash = canonical_sha256(without_keys(attestation, "attestation_hash"))
           if computed_attestation_hash != attestation["attestation_hash"]:
@@ -216,6 +295,27 @@ jobs:
           if evidence["attestation"] != attestation:
               raise SystemExit("evidence package attestation payload is out of sync")
 
+          if proof_inventory["schema"] != "zkf-public-proof-file-inventory-v2":
+              raise SystemExit("unexpected proof-file inventory schema")
+
+          if ledger_file_sha != attestation["claims_verified"]["verification_ledger"]["file_sha256"]:
+              raise SystemExit("attestation ledger file SHA-256 does not match ledger-sha256.txt")
+          computed_ledger_file_sha = hashlib.sha256(
+              (root / "ledger/verification-ledger.json").read_bytes()
+          ).hexdigest()
+          if computed_ledger_file_sha != ledger_file_sha:
+              raise SystemExit("ledger-sha256.txt does not match verification-ledger.json")
+
+          expected_conformance = build_expected_conformance_summary()
+          for key, expected_value in expected_conformance.items():
+              if conformance_summary.get(key) != expected_value:
+                  raise SystemExit(f"conformance-summary mismatch for {key}")
+
+          expected_capability = build_expected_capability_summary(publication["published_release_version"])
+          for key, expected_value in expected_capability.items():
+              if capability_summary.get(key) != expected_value:
+                  raise SystemExit(f"capability-summary mismatch for {key}")
+
           for name, rel in evidence["artifact_index"].items():
               if not (root / rel).exists():
                   raise SystemExit(f"artifact_index entry {name} points to missing path {rel}")
@@ -241,7 +341,7 @@ jobs:
                   continue
 
               for source in claim["sources"]:
-                  value = json_pointer_get(load_json(source["path"]), source["json_pointer"])
+                  value = json_pointer_get(load_claim_source(source["path"]), source["json_pointer"])
                   if value != expected:
                       raise SystemExit(
                           f"claim {claim['claim_id']} mismatch at {source['path']}{source['json_pointer']}"

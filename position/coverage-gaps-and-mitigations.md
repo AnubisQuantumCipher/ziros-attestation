@@ -6,13 +6,13 @@ The public theorem ledger is not the only defense surface ZirOS discloses. Some 
 
 | Risk Category | Published Mitigation | Public Evidence Surface |
 |---------------|----------------------|-------------------------|
-| Logic correctness | 169 mechanized theorems, 0 pending, 0 model-only claims | [ledger/verification-ledger.json](../ledger/verification-ledger.json) |
+| Logic correctness | 165 mechanized theorem rows, 0 pending, 9 explicit protocol hypotheses disclosed separately | [ledger/verification-ledger.json](../ledger/verification-ledger.json) |
 | Timing side channels | F* constant-time proof inventory: 10 files, 6,049 lines | [README.md](../README.md) and public evidence package |
 | GPU kernel supply chain | 9 attestation manifests, 4-digest chain, CPU fallback on failure | [evidence/evidence-package.json](../evidence/evidence-package.json) |
-| Runtime state-space faults | 90 Kani harnesses across 6 crates | [README.md](../README.md) and public attestation summaries |
+| Runtime state-space faults | 88 `kani::proof` annotations across 6 tracked Rust files | [evidence/proof-file-inventory.json](../evidence/proof-file-inventory.json) and public attestation summaries |
 | Sustained-load behavior | 12-hour soak-test lane | [attestation/latest.json](../attestation/latest.json) |
 | Live threat response | Security supervisor with 24 signal types, 11 actions, 5 risk levels | [README.md](../README.md) |
-| Artifact integrity | SHA-256 manifests and ML-DSA-87 signing policy | [binary-manifest/v0.4.0/manifest.json](../binary-manifest/v0.4.0/manifest.json) |
+| Artifact integrity | SHA-256 manifests and ML-DSA-87 signing policy | [binary-manifest/v0.4.2/manifest.json](../binary-manifest/v0.4.2/manifest.json) |
 | Swarm non-interference | Mechanized and bounded non-interference claims; mutation surface count published as zero | [README.md](../README.md) and public theorem metadata |
 
 ## What the Public Ledger Does and Does Not Mean

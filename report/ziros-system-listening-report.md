@@ -16,7 +16,7 @@ This report stays inside the public evidence boundary. It uses the public README
 
 That matters because ZirOS is not published as a source-open framework. It is published as a source-private system with a public evidence boundary. Any honest explanation of ZirOS has to begin there.
 
-The current public surface says the following. ZirOS presents itself as a zero-knowledge operating system. The public repository states that the system spans 290,000 lines of Rust across 30 workspace crates, 9 proving backends, 7 finite fields, 7 circuit frontends, 63 Metal GPU shaders with 50 kernel entrypoints, and 169 mechanized theorems with 0 pending ledger rows. The published attestation states that 24 out of 24 public conformance tests passed across the currently attested backend lanes. The public repository also documents a Midnight-compatible proof-server surface and five live Midnight preprod contract deployments.
+The current public surface says the following. ZirOS presents itself as a zero-knowledge operating system. The public repository states that the system spans 290,000 lines of Rust across 30 workspace crates, 9 proving backends, 7 finite fields, 7 circuit frontends, 63 Metal GPU shaders with 50 kernel entrypoints, and 165 mechanized ledger rows with 0 pending rows. Of those, the public headline count is 156 implementation-bound rows, while 9 protocol rows are disclosed separately as explicit hypothesis-carried theorems with pinned private Lean artifact digests. The published attestation states that 24 out of 24 public conformance tests passed across the currently attested backend lanes. The public repository also documents a Midnight-compatible proof-server surface and five live Midnight preprod contract deployments.
 
 Those are the facts this report starts from.
 
@@ -570,7 +570,7 @@ A report about ZirOS would be incomplete if it described the system surface with
 
 The public evidence says several things clearly.
 
-It says there are 169 mechanized ledger rows and 0 pending rows in the current public summary.
+It says there are 165 mechanized ledger rows and 0 pending rows in the current public summary.
 
 It says the published conformance set currently covers 24 out of 24 tests across the four publicly attested lanes.
 

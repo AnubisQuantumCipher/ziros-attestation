@@ -1,0 +1,51 @@
+{
+  "schema": "ziros-public-capability-summary-v1",
+  "generated_at": "2026-04-07T01:18:46.668914+00:00",
+  "generated_for": "0.4.2",
+  "backend_count": 9,
+  "backend_ids": [
+    "plonky3",
+    "halo2",
+    "halo2-bls12-381",
+    "arkworks-groth16",
+    "sp1",
+    "risc-zero",
+    "nova",
+    "hypernova",
+    "midnight-compact"
+  ],
+  "frontend_count": 7,
+  "frontend_ids": [
+    "noir",
+    "circom",
+    "cairo",
+    "compact",
+    "halo2-rust",
+    "plonky3-air",
+    "zkvm"
+  ],
+  "gadget_count": 11,
+  "gadget_ids": [
+    "blake3",
+    "boolean",
+    "comparison",
+    "ecdsa",
+    "kzg",
+    "merkle",
+    "plonk_gate",
+    "poseidon",
+    "range",
+    "schnorr",
+    "sha256"
+  ],
+  "post_quantum_component_count": 7,
+  "post_quantum_components": [
+    "plonky3",
+    "ml-dsa-87",
+    "ml-kem-1024",
+    "arkworks-groth16",
+    "halo2",
+    "nova-hypernova",
+    "midnight-offchain-envelope"
+  ]
+}

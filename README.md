@@ -7,11 +7,11 @@ This repository is evidence-only. It publishes no implementation source, headers
 
 | Surface | Published state |
 | --- | --- |
-| Public release | `v0.4.0` via [publication/manifest.json](publication/manifest.json) |
-| Headline theorem count | **157 implementation-bound mechanized rows** |
-| Disclosed hypotheses | 12 hypothesis-carried rows, published separately in [attestation/latest.json](attestation/latest.json) |
+| Public release | `v0.4.2` via [publication/manifest.json](publication/manifest.json) |
+| Headline theorem count | **156 implementation-bound mechanized rows** |
+| Disclosed hypotheses | 9 hypothesis-carried rows, published separately in [attestation/latest.json](attestation/latest.json) and [evidence/protocol-proof-registry.json](evidence/protocol-proof-registry.json) |
 | Public conformance | 24/24 tests passed across `plonky3`, `halo2`, `nova`, and `hypernova` |
-| Sealed-source census | 1315 tracked files classified; zero unclassified = `True` |
+| Sealed-source census | 1240 tracked files classified; zero unclassified = `True` |
 | Midnight evidence | 5 published Midnight preprod deployment manifests; explorer verification 0/5 on 2026-04-05 |
 | Hostile-audit verdict | [hostile-audit-verdict.json](hostile-audit-verdict.json) and [claim-source-graph.json](claim-source-graph.json) |
 <!-- END GENERATED PUBLIC SUMMARY -->
@@ -40,11 +40,11 @@ Public trust here comes from machine-readable evidence and replayable claim edge
 <!-- BEGIN GENERATED WEEKLY STATUS -->
 | What It Publishes | How | Current Status |
 | --- | --- | --- |
-| Headline theorem count | Implementation-bound machine-checked rows only | **157 implementation-bound rows** |
-| Hypothesis registry | Explicit assumptions for non-headline theorem rows | **12 rows disclosed separately** |
+| Headline theorem count | Implementation-bound machine-checked rows only | **156 implementation-bound rows** |
+| Hypothesis registry | Explicit assumptions for non-headline theorem rows | **9 rows disclosed separately with pinned private Lean artifact digests** |
 | Public backend conformance | Compile -> prove -> verify across 4 published backends | **24/24 tests passed** |
-| Sealed-source census | Opaque private-file census summarized publicly | **1315 files; 141 explicit TCB, 481 bounded, 193 excluded** |
-| Binary integrity | Published release manifest `binary-manifest/v0.4.0/manifest.json` | **SHA-256 verified for `aarch64-apple-darwin`** |
+| Sealed-source census | Opaque private-file census summarized publicly | **1240 files; 29 explicit TCB, 479 bounded, 211 excluded** |
+| Binary integrity | Published release manifest `binary-manifest/v0.4.2/manifest.json` | **SHA-256 verified for `aarch64-apple-darwin`** |
 | Midnight deployment evidence | Published deployment manifest plus live explorer recheck | **0/5 explorer-verified on 2026-04-05** |
 <!-- END GENERATED WEEKLY STATUS -->
 
@@ -57,8 +57,13 @@ Public trust here comes from machine-readable evidence and replayable claim edge
 | [publication/manifest.json](publication/manifest.json) | Canonical published release/version provenance |
 | [ledger/verification-ledger.json](ledger/verification-ledger.json) | Public theorem metadata with assurance classes |
 | [ledger/ledger-summary.json](ledger/ledger-summary.json) | Public theorem totals and assurance-class counts |
+| [ledger/ledger-sha256.txt](ledger/ledger-sha256.txt) | File SHA-256 for the published public ledger artifact |
+| [evidence/conformance-summary.json](evidence/conformance-summary.json) | Generated summary of the public compile-prove-verify conformance set |
+| [evidence/capability-summary.json](evidence/capability-summary.json) | Generated counts for the published backend, frontend, gadget, and PQ surfaces |
+| [evidence/proof-file-inventory.json](evidence/proof-file-inventory.json) | Sealed proof-language inventory and checker counts exported from the private tree |
+| [evidence/protocol-proof-registry.json](evidence/protocol-proof-registry.json) | Public digest-pinned registry for the 9 protocol hypothesis rows |
 | [conformance/latest/](conformance/latest/) | Public compile-prove-verify results for the attested backends |
-| [binary-manifest/v0.4.0/manifest.json](binary-manifest/v0.4.0/manifest.json) | SHA-256 integrity manifest for the published release artifacts |
+| [binary-manifest/v0.4.2/manifest.json](binary-manifest/v0.4.2/manifest.json) | SHA-256 integrity manifest for the published release artifacts |
 | [workspace-census-summary.json](workspace-census-summary.json) | Opaque sealed-source census totals and zero-unclassified verdict |
 | [claim-source-graph.json](claim-source-graph.json) | Machine-readable map from public claims to public source artifacts |
 | [hostile-audit-verdict.json](hostile-audit-verdict.json) | Public hostile-audit summary derived from the claim graph and census summary |
@@ -75,7 +80,8 @@ The intended replay path is:
 2. Verify the linked [claim-source-graph.json](claim-source-graph.json) digest.
 3. Follow each claim edge to the referenced public artifact.
 4. Verify [hostile-audit-verdict.json](hostile-audit-verdict.json) against the claim graph and [workspace-census-summary.json](workspace-census-summary.json).
-5. Verify the public binary manifest and conformance JSON directly.
+5. Verify [ledger/ledger-sha256.txt](ledger/ledger-sha256.txt) against [ledger/verification-ledger.json](ledger/verification-ledger.json).
+6. Verify the public binary manifest, [evidence/conformance-summary.json](evidence/conformance-summary.json), and [evidence/capability-summary.json](evidence/capability-summary.json) directly.
 
 The same public replay checks run automatically on every push and pull request via [.github/workflows/validate-attestation.yml](.github/workflows/validate-attestation.yml).
 

@@ -1,17 +1,26 @@
 {
-  "schema": "zkf-public-proof-file-inventory-v1",
-  "generated_at": "2026-04-01T17:55:20Z",
+  "schema": "zkf-public-proof-file-inventory-v2",
+  "generated_at": "2026-04-07T01:18:46.667901+00:00",
   "inventory": {
     "rocq_coq_files": 71,
-    "verus_files": 28,
-    "lean4_files": 19,
+    "verus_files": 36,
+    "lean4_files": 24,
     "fstar_files": 10,
-    "kani_harnesses": 6
+    "kani_harness_files": 6,
+    "kani_proof_annotations": 88
   },
   "ledger_checker_counts": {
-    "rocq": 59,
-    "verus": 86,
+    "rocq": 61,
+    "verus": 80,
     "lean": 22,
     "fstar": 2
+  },
+  "measurement_notes": {
+    "rocq_coq_files": "Count of tracked `.v` files in the private repo.",
+    "verus_files": "Count of tracked Rust files under `proofs/verus/` in the private repo.",
+    "lean4_files": "Count of tracked `.lean` files in the private repo.",
+    "fstar_files": "Count of tracked `.fst` and `.fsti` files in the private repo.",
+    "kani_harness_files": "Count of tracked Rust files containing at least one `kani::proof` annotation.",
+    "kani_proof_annotations": "Total `kani::proof` annotation count across the tracked private Rust tree."
   }
 }

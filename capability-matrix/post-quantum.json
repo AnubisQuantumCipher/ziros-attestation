@@ -1,6 +1,6 @@
 {
   "schema": "zkf-public-post-quantum-matrix-v1",
-  "generated_at": "2026-04-05T08:41:33Z",
+  "generated_at": "2026-04-07T01:18:46.667913+00:00",
   "components": [
     {
       "component": "plonky3",
@@ -45,5 +45,5 @@
       "notes": "This does not upgrade Midnight consensus or its classical proving cryptography."
     }
   ],
-  "generated_for": "0.4.0"
+  "generated_for": "0.4.2"
 }

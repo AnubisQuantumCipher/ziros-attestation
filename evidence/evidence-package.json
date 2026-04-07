@@ -1,15 +1,16 @@
 {
   "schema": "ziros-evidence-package-v2",
-  "generated_at": "2026-04-01T22:21:17Z",
+  "generated_at": "2026-04-07T01:18:46.670387+00:00",
   "publication": {
     "schema": "ziros-publication-manifest-v1",
-    "published_release_version": "0.4.0",
-    "release_tag": "v0.4.0",
-    "binary_manifest_path": "binary-manifest/v0.4.0/manifest.json",
+    "published_release_version": "0.4.2",
+    "release_tag": "v0.4.2",
+    "binary_manifest_path": "binary-manifest/v0.4.2/manifest.json",
     "binary_target": "aarch64-apple-darwin",
-    "attestation_generated_at": "2026-04-01T22:21:17Z",
-    "publication_checked_at": "2026-04-05T08:41:33Z",
-    "source_commit": "1f5059ccb05686b4c45f85d095838fb9b70abe92",
+    "attestation_generated_at": "2026-04-07T01:18:46.670387+00:00",
+    "publication_checked_at": "2026-04-07T01:18:46.670389+00:00",
+    "source_commit": "d6fd472f4cefdf4be70c04b12de88974d65e30a7",
+    "working_tree_dirty": true,
     "source_truth_surfaces": [
       "zkf-ir-spec/verification-ledger.json",
       ".zkf-completion-status.json",
@@ -17,58 +18,36 @@
       "release/product-release.json",
       "release/private_source_census.json"
     ],
-    "public_repo_name": "ziros-attestation-publish"
+    "public_repo_name": "ziros-attestation"
   },
   "attestation": {
     "schema": "ziros-attestation-v2",
-    "generated_at": "2026-04-01T22:21:17Z",
-    "version": "0.4.0",
+    "generated_at": "2026-04-07T01:18:46.670387+00:00",
+    "version": "0.4.2",
     "publication": {
-      "release_tag": "v0.4.0",
-      "source_commit": "1f5059ccb05686b4c45f85d095838fb9b70abe92",
-      "binary_manifest_path": "binary-manifest/v0.4.0/manifest.json",
-      "publication_checked_at": "2026-04-05T08:41:33Z"
+      "release_tag": "v0.4.2",
+      "source_commit": "d6fd472f4cefdf4be70c04b12de88974d65e30a7",
+      "working_tree_dirty": true,
+      "binary_manifest_path": "binary-manifest/v0.4.2/manifest.json",
+      "publication_checked_at": "2026-04-07T01:18:46.670389+00:00"
     },
     "headline_counts": {
-      "implementation_bound_rows": 157,
-      "hypothesis_carried_rows": 12,
-      "mechanized_local_rows": 169,
+      "implementation_bound_rows": 156,
+      "hypothesis_carried_rows": 9,
+      "mechanized_local_rows": 165,
       "pending_rows": 0,
       "zero_unclassified_files": true
     },
     "workspace_census_summary_path": "workspace-census-summary.json",
-    "claim_source_graph_digest": "29dd61d8d190dd41a314778bbe04d61eb1f220b94455505e234fccc5ed5b7c1e",
+    "claim_source_graph_digest": "c857223c169b46380171d692cfdb0cfc44548a0c81dc00dc73cbac112166ca03",
     "public_hostile_audit_verdict_path": "hostile-audit-verdict.json",
     "hypothesis_registry": {
-      "count": 12,
+      "count": 9,
       "families": {
-        "swarm_attestation_honesty": {
-          "label": "Swarm attestation-honesty premises",
-          "checker": "verus",
-          "proof_status": "mechanized_local_with_explicit_attestation_honesty_hypotheses",
-          "hypothesis_class": "attestation_honesty",
-          "exact_surface": "swarm coordinator and snapshot identity helpers",
-          "row_count": 2,
-          "theorem_ids": [
-            "swarm.coordinator_acceptance_soundness",
-            "swarm.memory_snapshot_identity"
-          ]
-        },
-        "distributed_attestation_honesty": {
-          "label": "Distributed coordinator attestation-honesty premises",
-          "checker": "rocq",
-          "proof_status": "mechanized_local_with_explicit_attestation_honesty_hypotheses",
-          "hypothesis_class": "attestation_honesty",
-          "exact_surface": "distributed coordinator acceptance helper surface",
-          "row_count": 1,
-          "theorem_ids": [
-            "distributed.acceptance_soundness"
-          ]
-        },
         "groth16_exact": {
           "label": "Groth16 exact protocol hypotheses",
           "checker": "lean",
-          "proof_status": "registry_backed_no_repo_local_lean_artifact",
+          "proof_status": "mechanized_local_with_pinned_private_lean_artifact",
           "hypothesis_class": "cryptographic_protocol_hypothesis",
           "exact_surface": "BN254 Groth16 imported-CRS verifier boundary",
           "row_count": 3,
@@ -81,7 +60,7 @@
         "fri_exact": {
           "label": "FRI exact protocol hypotheses",
           "checker": "lean",
-          "proof_status": "registry_backed_no_repo_local_lean_artifact",
+          "proof_status": "mechanized_local_with_pinned_private_lean_artifact",
           "hypothesis_class": "cryptographic_protocol_hypothesis",
           "exact_surface": "Plonky3 FRI transcript and verifier-guard boundary",
           "row_count": 2,
@@ -93,7 +72,7 @@
         "nova_exact": {
           "label": "Classic Nova exact protocol hypotheses",
           "checker": "lean",
-          "proof_status": "registry_backed_no_repo_local_lean_artifact",
+          "proof_status": "mechanized_local_with_pinned_private_lean_artifact",
           "hypothesis_class": "cryptographic_protocol_hypothesis",
           "exact_surface": "classic Nova recursive shell and verifier metadata boundary",
           "row_count": 2,
@@ -105,7 +84,7 @@
         "hypernova_exact": {
           "label": "HyperNova exact protocol hypotheses",
           "checker": "lean",
-          "proof_status": "registry_backed_no_repo_local_lean_artifact",
+          "proof_status": "mechanized_local_with_pinned_private_lean_artifact",
           "hypothesis_class": "cryptographic_protocol_hypothesis",
           "exact_surface": "HyperNova CCS profile and verifier metadata boundary",
           "row_count": 2,
@@ -116,57 +95,16 @@
         }
       },
       "rows_by_theorem_id": {
-        "swarm.coordinator_acceptance_soundness": {
-          "theorem_id": "swarm.coordinator_acceptance_soundness",
-          "title": "Swarm coordinator acceptance preserves digest-prefix equality under the explicit attestation-honesty premise",
-          "scope": "zkf-distributed::swarm_coordinator_core",
-          "checker": "verus",
-          "proof_family": "swarm_attestation_honesty",
-          "proof_status": "mechanized_local_with_explicit_attestation_honesty_hypotheses",
-          "exact_surface": "swarm coordinator and snapshot identity helpers",
-          "evidence_kind": "proof_artifact",
-          "trusted_assumptions": [
-            "worker attestations honestly report the shipped output digest",
-            "worker traces honestly report the shipped execution trace"
-          ]
-        },
-        "swarm.memory_snapshot_identity": {
-          "theorem_id": "swarm.memory_snapshot_identity",
-          "title": "Swarm memory snapshots preserve signing-byte length and chain-head identity under the explicit attestation-honesty premise",
-          "scope": "zkf-distributed::swarm_memory_core",
-          "checker": "verus",
-          "proof_family": "swarm_attestation_honesty",
-          "proof_status": "mechanized_local_with_explicit_attestation_honesty_hypotheses",
-          "exact_surface": "swarm coordinator and snapshot identity helpers",
-          "evidence_kind": "proof_artifact",
-          "trusted_assumptions": [
-            "snapshot signatures honestly bind the exported chain head",
-            "attestation traces compared by the shipped snapshot surface are truthful"
-          ]
-        },
-        "distributed.acceptance_soundness": {
-          "theorem_id": "distributed.acceptance_soundness",
-          "title": "Distributed acceptance helper requires quorum gating and digest agreement under the explicit attestation-honesty premise",
-          "scope": "zkf-distributed::coordinator",
-          "checker": "rocq",
-          "proof_family": "distributed_attestation_honesty",
-          "proof_status": "mechanized_local_with_explicit_attestation_honesty_hypotheses",
-          "exact_surface": "distributed coordinator acceptance helper surface",
-          "evidence_kind": "proof_artifact",
-          "trusted_assumptions": [
-            "distributed worker attestations honestly report quorum-visible outputs",
-            "distributed worker traces honestly report the shipped coordinator trace surface"
-          ]
-        },
         "protocol.groth16_completeness": {
           "theorem_id": "protocol.groth16_completeness",
           "title": "Groth16 exact imported-CRS shipped surface satisfies completeness under explicit imported-CRS and algebraic hypotheses",
           "scope": "zkf-backends::arkworks",
           "checker": "lean",
           "proof_family": "groth16_exact",
-          "proof_status": "registry_backed_no_repo_local_lean_artifact",
+          "proof_status": "mechanized_local_with_pinned_private_lean_artifact",
           "exact_surface": "BN254 Groth16 imported-CRS verifier boundary",
-          "evidence_kind": "hypothesis_registry_entry",
+          "evidence_kind": "digest_pinned_private_proof_artifact",
+          "private_theorem_name": "groth16_exact_completeness",
           "trusted_assumptions": [
             "imported Groth16 CRS material is valid for the shipped BN254 circuit family",
             "Groth16 exact completeness holds for the imported-CRS algebraic surface"
@@ -178,9 +116,10 @@
           "scope": "zkf-backends::arkworks",
           "checker": "lean",
           "proof_family": "groth16_exact",
-          "proof_status": "registry_backed_no_repo_local_lean_artifact",
+          "proof_status": "mechanized_local_with_pinned_private_lean_artifact",
           "exact_surface": "BN254 Groth16 imported-CRS verifier boundary",
-          "evidence_kind": "hypothesis_registry_entry",
+          "evidence_kind": "digest_pinned_private_proof_artifact",
+          "private_theorem_name": "groth16_exact_knowledge_soundness",
           "trusted_assumptions": [
             "imported Groth16 CRS material is valid for the shipped BN254 circuit family",
             "the Groth16 knowledge-of-exponent hypothesis holds on the shipped algebraic boundary"
@@ -192,9 +131,10 @@
           "scope": "zkf-backends::arkworks",
           "checker": "lean",
           "proof_family": "groth16_exact",
-          "proof_status": "registry_backed_no_repo_local_lean_artifact",
+          "proof_status": "mechanized_local_with_pinned_private_lean_artifact",
           "exact_surface": "BN254 Groth16 imported-CRS verifier boundary",
-          "evidence_kind": "hypothesis_registry_entry",
+          "evidence_kind": "digest_pinned_private_proof_artifact",
+          "private_theorem_name": "groth16_exact_zero_knowledge",
           "trusted_assumptions": [
             "imported Groth16 CRS material is valid for the shipped BN254 circuit family",
             "the Groth16 simulator hypothesis holds on the shipped exact public-view surface"
@@ -206,9 +146,10 @@
           "scope": "zkf-backends::plonky3",
           "checker": "lean",
           "proof_family": "fri_exact",
-          "proof_status": "registry_backed_no_repo_local_lean_artifact",
+          "proof_status": "mechanized_local_with_pinned_private_lean_artifact",
           "exact_surface": "Plonky3 FRI transcript and verifier-guard boundary",
-          "evidence_kind": "hypothesis_registry_entry",
+          "evidence_kind": "digest_pinned_private_proof_artifact",
+          "private_theorem_name": "fri_exact_completeness",
           "trusted_assumptions": [
             "the FRI Reed-Solomon completeness hypothesis holds for the shipped Plonky3 transcript surface"
           ]
@@ -219,9 +160,10 @@
           "scope": "zkf-backends::plonky3",
           "checker": "lean",
           "proof_family": "fri_exact",
-          "proof_status": "registry_backed_no_repo_local_lean_artifact",
+          "proof_status": "mechanized_local_with_pinned_private_lean_artifact",
           "exact_surface": "Plonky3 FRI transcript and verifier-guard boundary",
-          "evidence_kind": "hypothesis_registry_entry",
+          "evidence_kind": "digest_pinned_private_proof_artifact",
+          "private_theorem_name": "fri_exact_proximity_soundness",
           "trusted_assumptions": [
             "the FRI Reed-Solomon proximity-soundness hypothesis holds for the shipped Plonky3 transcript surface"
           ]
@@ -232,9 +174,10 @@
           "scope": "zkf-backends::nova_native",
           "checker": "lean",
           "proof_family": "nova_exact",
-          "proof_status": "registry_backed_no_repo_local_lean_artifact",
+          "proof_status": "mechanized_local_with_pinned_private_lean_artifact",
           "exact_surface": "classic Nova recursive shell and verifier metadata boundary",
-          "evidence_kind": "hypothesis_registry_entry",
+          "evidence_kind": "digest_pinned_private_proof_artifact",
+          "private_theorem_name": "nova_exact_completeness",
           "trusted_assumptions": [
             "the classic Nova completeness hypothesis holds for the shipped recursive shell",
             "the shipped classic Nova artifact metadata satisfies the exact IVC side conditions"
@@ -246,9 +189,10 @@
           "scope": "zkf-backends::nova_native",
           "checker": "lean",
           "proof_family": "nova_exact",
-          "proof_status": "registry_backed_no_repo_local_lean_artifact",
+          "proof_status": "mechanized_local_with_pinned_private_lean_artifact",
           "exact_surface": "classic Nova recursive shell and verifier metadata boundary",
-          "evidence_kind": "hypothesis_registry_entry",
+          "evidence_kind": "digest_pinned_private_proof_artifact",
+          "private_theorem_name": "nova_exact_folding_sound",
           "trusted_assumptions": [
             "the classic Nova folding-soundness hypothesis holds for the shipped recursive shell",
             "the shipped classic Nova verifier metadata satisfies the exact guard conditions"
@@ -260,12 +204,13 @@
           "scope": "zkf-backends::nova_native",
           "checker": "lean",
           "proof_family": "hypernova_exact",
-          "proof_status": "registry_backed_no_repo_local_lean_artifact",
+          "proof_status": "mechanized_local_with_pinned_private_lean_artifact",
           "exact_surface": "HyperNova CCS profile and verifier metadata boundary",
-          "evidence_kind": "hypothesis_registry_entry",
+          "evidence_kind": "digest_pinned_private_proof_artifact",
+          "private_theorem_name": "hypernova_exact_completeness",
           "trusted_assumptions": [
-            "the HyperNova completeness hypothesis holds for the shipped CCS profile",
-            "the shipped HyperNova verifier metadata satisfies the exact guard conditions"
+            "the HyperNova completeness hypothesis holds for the shipped CCS recursive shell",
+            "the shipped HyperNova CCS profile metadata satisfies the exact verifier guard conditions"
           ]
         },
         "protocol.hypernova_folding_soundness": {
@@ -274,125 +219,124 @@
           "scope": "zkf-backends::nova_native",
           "checker": "lean",
           "proof_family": "hypernova_exact",
-          "proof_status": "registry_backed_no_repo_local_lean_artifact",
+          "proof_status": "mechanized_local_with_pinned_private_lean_artifact",
           "exact_surface": "HyperNova CCS profile and verifier metadata boundary",
-          "evidence_kind": "hypothesis_registry_entry",
+          "evidence_kind": "digest_pinned_private_proof_artifact",
+          "private_theorem_name": "hypernova_exact_folding_sound",
           "trusted_assumptions": [
-            "the HyperNova folding-soundness hypothesis holds for the shipped CCS profile",
-            "the shipped HyperNova verifier metadata satisfies the exact guard conditions"
+            "the HyperNova folding-soundness hypothesis holds for the shipped CCS recursive shell",
+            "the shipped HyperNova verifier metadata satisfies the exact CCS guard conditions"
           ]
         }
       }
     },
     "tcb_registry": {
-      "explicit_tcb_files": 141,
-      "bounded_only_files": 481,
-      "excluded_files": 193,
+      "explicit_tcb_files": 29,
+      "bounded_only_files": 479,
+      "excluded_files": 211,
       "coverage_state_counts": {
-        "excluded_from_release": 193,
-        "bounded": 481,
-        "explicit_tcb": 141,
-        "mechanized": 500
+        "bounded": 479,
+        "excluded_from_release": 211,
+        "mechanized": 521,
+        "explicit_tcb": 29
       },
       "trust_band_counts": {
-        "noncritical_support": 387,
-        "publication_critical": 4,
-        "release_critical": 93,
-        "sealed_core": 831
+        "sealed_core": 1109,
+        "publication_critical": 6,
+        "release_critical": 17,
+        "noncritical_support": 108
       },
       "zero_unclassified_files": true
     },
     "claims_verified": {
       "verification_ledger": {
-        "claim": "157 implementation-bound mechanized rows; 12 hypothesis-carried rows disclosed separately; 0 pending",
+        "claim": "156 implementation-bound mechanized rows; 9 hypothesis-carried rows disclosed separately; 0 pending",
         "verified": true,
-        "implementation_bound_rows": 157,
-        "hypothesis_carried_rows": 12,
-        "mechanized_local_total": 169,
+        "total_entries": 165,
+        "implementation_bound_rows": 156,
+        "hypothesis_carried_rows": 9,
+        "mechanized_local_total": 165,
         "pending": 0,
         "assurance_class_counts": {
-          "mechanized_implementation_claim": 157,
-          "bounded_check": 0,
-          "attestation_backed_lane": 0,
-          "model_only_claim": 0,
-          "hypothesis_carried_theorem": 12
+          "mechanized_implementation_claim": 156,
+          "hypothesis_carried_theorem": 9
         },
         "trusted_assumption_rows": [
-          "swarm.coordinator_acceptance_soundness",
-          "swarm.memory_snapshot_identity",
-          "distributed.acceptance_soundness",
+          "protocol.fri_completeness",
+          "protocol.fri_proximity_soundness",
           "protocol.groth16_completeness",
           "protocol.groth16_knowledge_soundness",
           "protocol.groth16_zero_knowledge",
-          "protocol.fri_completeness",
-          "protocol.fri_proximity_soundness",
-          "protocol.nova_completeness",
-          "protocol.nova_folding_soundness",
           "protocol.hypernova_completeness",
-          "protocol.hypernova_folding_soundness"
+          "protocol.hypernova_folding_soundness",
+          "protocol.nova_completeness",
+          "protocol.nova_folding_soundness"
         ],
-        "sha256": "859730cbb63de0a996425e3734a4ca6429d6e43b6af8e83942a0005d5dd5742d"
+        "sha256": "6df2ae68fd1ea03f3559cfeea74e6acfb29f39f62dc7b9012bed24bb67848e89",
+        "canonical_sha256": "6df2ae68fd1ea03f3559cfeea74e6acfb29f39f62dc7b9012bed24bb67848e89",
+        "file_sha256": "edc90b09ac2b47a3fea68abc608556d2ba7c20575e9e8c04094b486ac3e842de",
+        "file_sha256_path": "ledger/ledger-sha256.txt"
       },
-      "backend_conformance": {
-        "claim": "24/24 conformance tests passed across 4 published backends",
+      "public_conformance": {
+        "claim": "24/24 tests passed across 4 attested backends",
         "verified": true,
-        "backends": {
-          "plonky3": {
-            "tests_run": 6,
-            "tests_passed": 6,
-            "pass_rate": 1.0,
-            "field": "Goldilocks"
-          },
-          "halo2": {
-            "tests_run": 6,
-            "tests_passed": 6,
-            "pass_rate": 1.0,
-            "field": "PastaFp"
-          },
-          "nova": {
-            "tests_run": 6,
-            "tests_passed": 6,
-            "pass_rate": 1.0,
-            "field": "Bn254"
-          },
-          "hypernova": {
-            "tests_run": 6,
-            "tests_passed": 6,
-            "pass_rate": 1.0,
-            "field": "Bn254"
-          }
+        "headline_backend_ids": [
+          "plonky3",
+          "halo2",
+          "nova",
+          "hypernova"
+        ],
+        "headline_backend_count": 4,
+        "headline_tests_run": 24,
+        "headline_tests_passed": 24,
+        "published_backend_count": 5,
+        "published_tests_run": 30,
+        "published_tests_passed": 30,
+        "summary_path": "evidence/conformance-summary.json"
+      },
+      "capability_surface": {
+        "claim": "9 backends, 7 frontends, 11 gadgets published",
+        "verified": true,
+        "backend_count": 9,
+        "frontend_count": 7,
+        "gadget_count": 11,
+        "post_quantum_component_count": 7,
+        "summary_path": "evidence/capability-summary.json"
+      },
+      "proof_file_inventory": {
+        "claim": "71 Rocq/Coq files, 36 Verus proof files, 24 Lean 4 files, 10 F* files, 88 Kani proof annotations",
+        "verified": true,
+        "inventory": {
+          "rocq_coq_files": 71,
+          "verus_files": 36,
+          "lean4_files": 24,
+          "fstar_files": 10,
+          "kani_harness_files": 6,
+          "kani_proof_annotations": 88
         },
-        "total_passed": 24,
-        "total_run": 24
-      },
-      "fail_closed_audit": {
-        "claim": "Zero underconstrained signals (via published conformance suite)",
-        "verified": true,
-        "note": "Published compile-prove-verify conformance passed on all 4 attested backends with anchored circuits."
+        "ledger_checker_counts": {
+          "rocq": 61,
+          "verus": 80,
+          "lean": 22,
+          "fstar": 2
+        },
+        "summary_path": "evidence/proof-file-inventory.json"
       },
       "binary_integrity": {
         "claim": "Published binary distribution SHA-256 verified",
         "verified": true,
-        "version": "0.4.0",
+        "version": "0.4.2",
         "target": "aarch64-apple-darwin",
-        "manifest_path": "binary-manifest/v0.4.0/manifest.json",
+        "manifest_path": "binary-manifest/v0.4.2/manifest.json",
         "artifacts": {
           "zkf": {
             "path": "zkf",
-            "sha256": "6af0cefa7c3fbcff5df266fea031fbab0a72d3927f7634561d1de306ac29547c"
-          },
-          "libzkf_ffi.dylib": {
-            "path": "libzkf_ffi.dylib",
-            "sha256": "cc66c62fd2b883669ee5c87fd13a8d4fdc728aa4f45dcbec2df1eeb2d269023d"
-          },
-          "libzkf_ffi.a": {
-            "path": "libzkf_ffi.a",
-            "sha256": "249eb8ef79bd06878129acc6988995329eed4fc723f329288c7f862ca3f24fd3"
+            "sha256": "bcefb3ffb8d9c2a183077e0e7f759e93ec72e31733eea6550768a3870f68d80d"
           }
         }
       },
       "midnight_deployments": {
-        "claim": "5 published Midnight preprod deployment manifests; explorer verification 0/5 on 2026-04-05",
+        "claim": "5 published Midnight preprod deployment manifests; explorer verification 0/5",
         "verified": false,
         "manifest_path": "midnight/sed-deployment-manifest.json",
         "explorer_checked_at": "2026-04-05T08:41:33Z",
@@ -401,26 +345,26 @@
         "status_path": "midnight/explorer-status.json"
       },
       "source_census": {
-        "claim": "1315 tracked private files classified; zero unclassified = True",
+        "claim": "1240 tracked source files classified; zero unclassified = True",
         "verified": true,
-        "source_census_root": "a1ce4ce245d1a7cb2909824e43af409819e753d0b86b4d9e0de04263cae4ec33",
-        "total_tracked_files": 1315,
+        "source_census_root": "c6798e8b9e72101e64cf13865bbed55ac17c61bc1ba5ff3c31e0b30e5a5d76f4",
+        "total_tracked_files": 1240,
         "coverage_state_counts": {
-          "excluded_from_release": 193,
-          "bounded": 481,
-          "explicit_tcb": 141,
-          "mechanized": 500
+          "bounded": 479,
+          "excluded_from_release": 211,
+          "mechanized": 521,
+          "explicit_tcb": 29
         },
         "trust_band_counts": {
-          "noncritical_support": 387,
-          "publication_critical": 4,
-          "release_critical": 93,
-          "sealed_core": 831
+          "sealed_core": 1109,
+          "publication_critical": 6,
+          "release_critical": 17,
+          "noncritical_support": 108
         },
         "summary_path": "workspace-census-summary.json"
       }
     },
-    "attestation_hash": "870cdce1b303e833978a82ab3d989e919ee13f10b341b72269c4a079c669849a"
+    "attestation_hash": "7e91c2da3af3d9792b0fa3e392673f3777f8470cc374474f775080cc5894451e"
   },
   "artifact_index": {
     "attestation": "attestation/latest.json",
@@ -430,58 +374,63 @@
     "hostile_audit_verdict": "hostile-audit-verdict.json",
     "verification_ledger": "ledger/verification-ledger.json",
     "ledger_summary": "ledger/ledger-summary.json",
-    "midnight_status": "midnight/explorer-status.json"
+    "ledger_sha256": "ledger/ledger-sha256.txt",
+    "midnight_status": "midnight/explorer-status.json",
+    "conformance_summary": "evidence/conformance-summary.json",
+    "capability_summary": "evidence/capability-summary.json",
+    "proof_file_inventory": "evidence/proof-file-inventory.json",
+    "protocol_proof_registry": "evidence/protocol-proof-registry.json"
   },
   "replay_contract": {
-    "public_replay": "Recompute attestation hash, validate claim-source graph edges, and verify hostile-audit verdict from published artifacts only.",
-    "private_replay": "Recompute the private source census root and verify the published bundle against the current private truth surfaces."
+    "mode": "artifact-replay",
+    "notes": [
+      "Verify JSON digests and claim-source graph against the published payloads.",
+      "Protocol rows are replayed through pinned private proof artifact digests, not public Lean source."
+    ]
   },
   "workspace_census_summary": {
     "schema": "ziros-workspace-census-summary-v1",
-    "generated_at": "2026-04-05T08:41:33Z",
-    "source_commit": "1f5059ccb05686b4c45f85d095838fb9b70abe92",
-    "source_census_root": "a1ce4ce245d1a7cb2909824e43af409819e753d0b86b4d9e0de04263cae4ec33",
-    "total_tracked_files": 1315,
+    "generated_at": "2026-04-07T00:21:49.906373+00:00",
+    "source_commit": "d6fd472f4cefdf4be70c04b12de88974d65e30a7",
+    "source_census_root": "c6798e8b9e72101e64cf13865bbed55ac17c61bc1ba5ff3c31e0b30e5a5d76f4",
+    "total_tracked_files": 1240,
     "zero_unclassified_files": true,
     "trust_band_counts": {
-      "noncritical_support": 387,
-      "publication_critical": 4,
-      "release_critical": 93,
-      "sealed_core": 831
+      "sealed_core": 1109,
+      "publication_critical": 6,
+      "release_critical": 17,
+      "noncritical_support": 108
     },
     "coverage_state_counts": {
-      "excluded_from_release": 193,
-      "bounded": 481,
-      "explicit_tcb": 141,
-      "mechanized": 500
+      "bounded": 479,
+      "excluded_from_release": 211,
+      "mechanized": 521,
+      "explicit_tcb": 29
     },
     "by_trust_band_and_coverage": {
-      "noncritical_support": {
-        "excluded_from_release": 99,
-        "bounded": 260,
-        "explicit_tcb": 9,
-        "mechanized": 19
+      "sealed_core": {
+        "bounded": 360,
+        "excluded_from_release": 199,
+        "mechanized": 521,
+        "explicit_tcb": 29
       },
       "publication_critical": {
-        "explicit_tcb": 4
+        "bounded": 5,
+        "excluded_from_release": 1
       },
       "release_critical": {
-        "excluded_from_release": 32,
-        "explicit_tcb": 5,
-        "bounded": 56
+        "bounded": 17
       },
-      "sealed_core": {
-        "excluded_from_release": 62,
-        "mechanized": 481,
-        "bounded": 165,
-        "explicit_tcb": 123
+      "noncritical_support": {
+        "excluded_from_release": 11,
+        "bounded": 97
       }
     },
     "release_included_counts": {
-      "included": 1183,
-      "excluded": 132
+      "included": 1029,
+      "excluded": 211
     }
   },
-  "claim_source_graph_digest": "29dd61d8d190dd41a314778bbe04d61eb1f220b94455505e234fccc5ed5b7c1e",
-  "hostile_audit_verdict_digest": "c70f359e9fa16a7dde1fb729d01f2aaf4a879946cbd0f97061266499b04f915e"
+  "claim_source_graph_digest": "c857223c169b46380171d692cfdb0cfc44548a0c81dc00dc73cbac112166ca03",
+  "hostile_audit_verdict_digest": "4131ac4782334b9eddb6703736cb8329efb1ccd74fc232111c7ac5c44161d90f"
 }
