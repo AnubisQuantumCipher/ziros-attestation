@@ -1,0 +1,24 @@
+{
+  "claim_scope": "secondary-deploy-capable-verifier-export-lane-for-0.6.0",
+  "domain": "evm",
+  "generated_at": "2026-04-07T10:47:41.859167Z",
+  "release_tag": "v0.6.0",
+  "schema": "ziros-public-evm-readiness-v1",
+  "source_commit": "26138f39922fc197f23e35a7758b8a0bee018b18",
+  "status": "secondary-ready",
+  "supported_surfaces": [
+    "zkf evm verifier export",
+    "zkf evm estimate-gas",
+    "zkf evm foundry init",
+    "zkf evm deploy",
+    "zkf evm call",
+    "zkf evm test",
+    "zkf evm diagnose"
+  ],
+  "supported_targets": [
+    "ethereum",
+    "optimism-arbitrum-l2",
+    "generic-evm"
+  ],
+  "version": "0.6.0"
+}

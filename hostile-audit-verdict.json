@@ -14,11 +14,13 @@
       "conformance.headline_tests_passed",
       "capability.backends_published",
       "capability.frontends_published",
-      "capability.gadgets_published"
+      "capability.gadgets_published",
+      "operator.midnight_status",
+      "operator.evm_status"
     ]
   },
-  "claim_source_graph_digest": "581b1d289c1404849bf346d078d6b066abe49707dd87206cd07e167ebf4ee4d7",
-  "generated_at": "2026-04-07T05:34:46.354686Z",
+  "claim_source_graph_digest": "7f153619e29b81803cf44d9d1aabc552ef7a7abdc44f373b6b193d3502c47369",
+  "generated_at": "2026-04-07T10:47:41.860368Z",
   "schema": "ziros-hostile-audit-verdict-v1",
   "summary": {
     "bounded_only_files": 0,
@@ -29,7 +31,7 @@
     "failed_claims": 0,
     "hypothesis_carried_claims": 1,
     "indeterminate_claims": 0,
-    "mathematically_established_claims": 11,
+    "mathematically_established_claims": 13,
     "zero_unclassified_files": true
   },
   "verdict": "pass"

@@ -44,6 +44,6 @@
     }
   ],
   "generated_at": "2026-04-07T01:18:46.667913+00:00",
-  "generated_for": "0.5.0",
+  "generated_for": "0.6.0",
   "schema": "zkf-public-post-quantum-matrix-v1"
 }

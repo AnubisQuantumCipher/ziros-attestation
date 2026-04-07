@@ -1,0 +1,42 @@
+{
+  "advisories": [
+    "gateway: {\"error\":\"forbidden\",\"reason\":\"missing_cf_access_jwt_assertion\"}"
+  ],
+  "blockers": [],
+  "claim_scope": "full-universal-path-for-0.6.0",
+  "contract_universe_count": 7,
+  "doctor_summary": {
+    "failed": 0,
+    "not_checkable": 4,
+    "overall_status": "warn",
+    "passed": 8,
+    "total": 13,
+    "warned": 1
+  },
+  "domain": "midnight",
+  "generated_at": "2026-04-07T10:47:41.859163Z",
+  "live_submit_blockers": [
+    "gateway: {\"error\":\"forbidden\",\"reason\":\"missing_cf_access_jwt_assertion\"}",
+    "wallet: No browser wallet session or headless operator wallet credentials were available.",
+    "dust: DUST balance is not checkable from a bare CLI process."
+  ],
+  "ready_for_live_submit": false,
+  "ready_for_local_operator": true,
+  "release_tag": "v0.6.0",
+  "required_cli_surfaces": [
+    "zkf midnight status",
+    "zkf midnight contract compile",
+    "zkf midnight contract deploy-prepare",
+    "zkf midnight contract call-prepare",
+    "zkf midnight contract test",
+    "zkf midnight contract deploy",
+    "zkf midnight contract call",
+    "zkf midnight contract verify-explorer",
+    "zkf midnight contract diagnose"
+  ],
+  "schema": "ziros-public-midnight-readiness-v1",
+  "source_commit": "26138f39922fc197f23e35a7758b8a0bee018b18",
+  "status": "ready",
+  "validation_template": "token-transfer",
+  "version": "0.6.0"
+}

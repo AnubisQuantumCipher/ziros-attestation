@@ -1,6 +1,6 @@
 {
-  "attestation_hash": "40a1525b833e0083a454a7030514aa98292016a5fb2c3b918285e50450c0bb24",
-  "claim_source_graph_digest": "581b1d289c1404849bf346d078d6b066abe49707dd87206cd07e167ebf4ee4d7",
+  "attestation_hash": "5003f445f5261f954a2dd69aa2cdffc36faa3868ea177c593dbe8f9883aca845",
+  "claim_source_graph_digest": "7f153619e29b81803cf44d9d1aabc552ef7a7abdc44f373b6b193d3502c47369",
   "claims_verified": {
     "capability_surface": {
       "backend_count": 9,
@@ -14,6 +14,19 @@
       "headline_tests_run": 24,
       "summary_path": "evidence/conformance-summary.json"
     },
+    "operator_readiness": {
+      "evm": {
+        "status": "secondary-ready",
+        "summary_path": "evm/readiness.json",
+        "supported_target_count": 3
+      },
+      "midnight": {
+        "ready_for_live_submit": false,
+        "ready_for_local_operator": true,
+        "status": "ready",
+        "summary_path": "midnight/readiness.json"
+      }
+    },
     "verification_ledger": {
       "file_sha256": "03b7d9d8863d08215365fa70768fc98b581e2c8784fe9d21c6691b27a104e68e",
       "file_sha256_path": "ledger/ledger-sha256.txt",
@@ -22,7 +35,7 @@
       "total_entries": 169
     }
   },
-  "generated_at": "2026-04-07T05:34:46.354626Z",
+  "generated_at": "2026-04-07T10:47:41.860316Z",
   "headline_counts": {
     "hypothesis_carried_rows": 9,
     "implementation_bound_rows": 160,
@@ -218,10 +231,10 @@
   },
   "public_hostile_audit_verdict_path": "hostile-audit-verdict.json",
   "publication": {
-    "binary_manifest_path": "binary-manifest/v0.5.0/manifest.json",
-    "publication_checked_at": "2026-04-07T05:34:46.354636Z",
-    "release_tag": "v0.5.0",
-    "source_commit": "9d9ae65692799c5f3bdbb96df6ec1134a200b565",
+    "binary_manifest_path": "binary-manifest/v0.6.0/manifest.json",
+    "publication_checked_at": "2026-04-07T10:47:41.860326Z",
+    "release_tag": "v0.6.0",
+    "source_commit": "26138f39922fc197f23e35a7758b8a0bee018b18",
     "working_tree_dirty": false
   },
   "schema": "ziros-attestation-v2",
@@ -229,6 +242,6 @@
     "count": 0,
     "summary_path": "workspace-census-summary.json"
   },
-  "version": "0.5.0",
+  "version": "0.6.0",
   "workspace_census_summary_path": "workspace-census-summary.json"
 }

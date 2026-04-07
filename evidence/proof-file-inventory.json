@@ -1,10 +1,10 @@
 {
   "counts": {
-    "fstar_files": 10,
-    "lean_files": 19,
+    "fstar_files": 11,
+    "lean_files": 24,
     "metal_files": 18,
-    "rocq_files": 71,
-    "verus_hint_files": 722
+    "rocq_files": 72,
+    "verus_hint_files": 735
   },
   "extension_counts": {
     ".aux": 54,
@@ -15,14 +15,14 @@
     ".cl": 6,
     ".compact": 4,
     ".entitlements": 4,
-    ".fst": 10,
+    ".fst": 11,
     ".glob": 54,
     ".h": 2,
     ".html": 2,
     ".js": 3,
     ".json": 72,
     ".jsonl": 1,
-    ".lean": 19,
+    ".lean": 24,
     ".lock": 2,
     ".m": 1,
     ".map": 1,
@@ -35,16 +35,15 @@
     ".plist": 3,
     ".png": 10,
     ".prover": 1,
-    ".py": 13,
-    ".rs": 722,
-    ".sh": 27,
+    ".py": 17,
+    ".rs": 735,
+    ".sh": 28,
     ".swift": 25,
-    ".toml": 41,
+    ".toml": 42,
     ".ts": 57,
-    ".tsv": 14,
     ".ttf": 5,
-    ".txt": 11,
-    ".v": 71,
+    ".txt": 5,
+    ".v": 72,
     ".verifier": 1,
     ".vo": 54,
     ".vok": 54,
@@ -54,8 +53,8 @@
     ".yaml": 1,
     ".yml": 4,
     ".zkir": 9,
-    "<no-ext>": 29
+    "<no-ext>": 30
   },
-  "generated_at": "2026-04-07T05:34:46.339686Z",
+  "generated_at": "2026-04-07T10:47:41.763408Z",
   "schema": "zkf-public-proof-file-inventory-v2"
 }

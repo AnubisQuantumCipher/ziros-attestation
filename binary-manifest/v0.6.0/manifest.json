@@ -1,0 +1,11 @@
+{
+  "binaries": {
+    "zkf": {
+      "path": "zkf",
+      "sha256": "138c32bacfbedde26afcffd7eee3bec4936f4b980b57c7b917a8bb1292c9b1a0"
+    }
+  },
+  "build_date": "2026-04-07T10:47:41.859150Z",
+  "target_triple": "aarch64-apple-darwin",
+  "version": "0.6.0"
+}

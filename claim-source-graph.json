@@ -4,7 +4,7 @@
       "category": "mathematically_established",
       "claim_id": "publication.release_tag",
       "claim_text": "Published release tag in the public attestation.",
-      "expected_value": "v0.5.0",
+      "expected_value": "v0.6.0",
       "sources": [
         {
           "json_pointer": "/release_tag",
@@ -195,9 +195,41 @@
           "path": "attestation/latest.json"
         }
       ]
+    },
+    {
+      "category": "mathematically_established",
+      "claim_id": "operator.midnight_status",
+      "claim_text": "Published Midnight readiness status for the 0.6.0 full operator path.",
+      "expected_value": "ready",
+      "sources": [
+        {
+          "json_pointer": "/status",
+          "path": "midnight/readiness.json"
+        },
+        {
+          "json_pointer": "/claims_verified/operator_readiness/midnight/status",
+          "path": "attestation/latest.json"
+        }
+      ]
+    },
+    {
+      "category": "mathematically_established",
+      "claim_id": "operator.evm_status",
+      "claim_text": "Published EVM readiness status for the 0.6.0 secondary operator lane.",
+      "expected_value": "secondary-ready",
+      "sources": [
+        {
+          "json_pointer": "/status",
+          "path": "evm/readiness.json"
+        },
+        {
+          "json_pointer": "/claims_verified/operator_readiness/evm/status",
+          "path": "attestation/latest.json"
+        }
+      ]
     }
   ],
-  "generated_at": "2026-04-07T05:34:46.354643Z",
-  "graph_digest": "581b1d289c1404849bf346d078d6b066abe49707dd87206cd07e167ebf4ee4d7",
+  "generated_at": "2026-04-07T10:47:41.860332Z",
+  "graph_digest": "7f153619e29b81803cf44d9d1aabc552ef7a7abdc44f373b6b193d3502c47369",
   "schema": "ziros-claim-source-graph-v1"
 }

@@ -1,22 +1,24 @@
 {
   "artifact_index": {
     "attestation_latest": "attestation/latest.json",
-    "binary_manifest": "binary-manifest/v0.5.0/manifest.json",
+    "binary_manifest": "binary-manifest/v0.6.0/manifest.json",
     "capability_summary": "evidence/capability-summary.json",
     "claim_source_graph": "claim-source-graph.json",
     "conformance_summary": "evidence/conformance-summary.json",
+    "evm_readiness": "evm/readiness.json",
     "hostile_audit_verdict": "hostile-audit-verdict.json",
     "ledger_sha256": "ledger/ledger-sha256.txt",
     "ledger_summary": "ledger/ledger-summary.json",
     "ledger_verification": "ledger/verification-ledger.json",
+    "midnight_readiness": "midnight/readiness.json",
     "proof_file_inventory": "evidence/proof-file-inventory.json",
     "protocol_proof_registry": "evidence/protocol-proof-registry.json",
     "publication_manifest": "publication/manifest.json",
     "workspace_census_summary": "workspace-census-summary.json"
   },
   "attestation": {
-    "attestation_hash": "40a1525b833e0083a454a7030514aa98292016a5fb2c3b918285e50450c0bb24",
-    "claim_source_graph_digest": "581b1d289c1404849bf346d078d6b066abe49707dd87206cd07e167ebf4ee4d7",
+    "attestation_hash": "5003f445f5261f954a2dd69aa2cdffc36faa3868ea177c593dbe8f9883aca845",
+    "claim_source_graph_digest": "7f153619e29b81803cf44d9d1aabc552ef7a7abdc44f373b6b193d3502c47369",
     "claims_verified": {
       "capability_surface": {
         "backend_count": 9,
@@ -30,6 +32,19 @@
         "headline_tests_run": 24,
         "summary_path": "evidence/conformance-summary.json"
       },
+      "operator_readiness": {
+        "evm": {
+          "status": "secondary-ready",
+          "summary_path": "evm/readiness.json",
+          "supported_target_count": 3
+        },
+        "midnight": {
+          "ready_for_live_submit": false,
+          "ready_for_local_operator": true,
+          "status": "ready",
+          "summary_path": "midnight/readiness.json"
+        }
+      },
       "verification_ledger": {
         "file_sha256": "03b7d9d8863d08215365fa70768fc98b581e2c8784fe9d21c6691b27a104e68e",
         "file_sha256_path": "ledger/ledger-sha256.txt",
@@ -38,7 +53,7 @@
         "total_entries": 169
       }
     },
-    "generated_at": "2026-04-07T05:34:46.354626Z",
+    "generated_at": "2026-04-07T10:47:41.860316Z",
     "headline_counts": {
       "hypothesis_carried_rows": 9,
       "implementation_bound_rows": 160,
@@ -234,10 +249,10 @@
     },
     "public_hostile_audit_verdict_path": "hostile-audit-verdict.json",
     "publication": {
-      "binary_manifest_path": "binary-manifest/v0.5.0/manifest.json",
-      "publication_checked_at": "2026-04-07T05:34:46.354636Z",
-      "release_tag": "v0.5.0",
-      "source_commit": "9d9ae65692799c5f3bdbb96df6ec1134a200b565",
+      "binary_manifest_path": "binary-manifest/v0.6.0/manifest.json",
+      "publication_checked_at": "2026-04-07T10:47:41.860326Z",
+      "release_tag": "v0.6.0",
+      "source_commit": "26138f39922fc197f23e35a7758b8a0bee018b18",
       "working_tree_dirty": false
     },
     "schema": "ziros-attestation-v2",
@@ -245,22 +260,22 @@
       "count": 0,
       "summary_path": "workspace-census-summary.json"
     },
-    "version": "0.5.0",
+    "version": "0.6.0",
     "workspace_census_summary_path": "workspace-census-summary.json"
   },
-  "claim_source_graph_digest": "581b1d289c1404849bf346d078d6b066abe49707dd87206cd07e167ebf4ee4d7",
-  "generated_at": "2026-04-07T05:34:46.354626Z",
-  "hostile_audit_verdict_digest": "be502c092f86c147d40b41724b9808b0c931f74b8f662cee934eb8ef9cb7c7b5",
+  "claim_source_graph_digest": "7f153619e29b81803cf44d9d1aabc552ef7a7abdc44f373b6b193d3502c47369",
+  "generated_at": "2026-04-07T10:47:41.860316Z",
+  "hostile_audit_verdict_digest": "96b96602ec124887c4a4043e8637267ab851dcb0b2b8a446b04db5c7d7d54625",
   "publication": {
-    "attestation_generated_at": "2026-04-07T05:34:46.354626Z",
-    "binary_manifest_path": "binary-manifest/v0.5.0/manifest.json",
+    "attestation_generated_at": "2026-04-07T10:47:41.860316Z",
+    "binary_manifest_path": "binary-manifest/v0.6.0/manifest.json",
     "binary_target": "aarch64-apple-darwin",
     "public_repo_name": "ziros-attestation",
-    "publication_checked_at": "2026-04-07T05:34:46.354636Z",
-    "published_release_version": "0.5.0",
-    "release_tag": "v0.5.0",
+    "publication_checked_at": "2026-04-07T10:47:41.860326Z",
+    "published_release_version": "0.6.0",
+    "release_tag": "v0.6.0",
     "schema": "ziros-publication-manifest-v1",
-    "source_commit": "9d9ae65692799c5f3bdbb96df6ec1134a200b565",
+    "source_commit": "26138f39922fc197f23e35a7758b8a0bee018b18",
     "source_truth_surfaces": [
       "zkf-ir-spec/verification-ledger.json",
       ".zkf-completion-status.json",
@@ -274,8 +289,10 @@
     "capability_summary": "evidence/capability-summary.json",
     "claim_source_graph": "claim-source-graph.json",
     "conformance_summary": "evidence/conformance-summary.json",
+    "evm_readiness": "evm/readiness.json",
     "hostile_audit_verdict": "hostile-audit-verdict.json",
     "ledger_sha256": "ledger/ledger-sha256.txt",
+    "midnight_readiness": "midnight/readiness.json",
     "protocol_proof_registry": "evidence/protocol-proof-registry.json"
   },
   "schema": "ziros-evidence-package-v2",
@@ -285,22 +302,22 @@
       "bounded": 0,
       "excluded_from_release": 0,
       "explicit_tcb": 0,
-      "mechanized": 100
+      "mechanized": 107
     },
-    "generated_at": "2026-04-07T05:34:46.338665Z",
+    "generated_at": "2026-04-07T10:47:41.760861Z",
     "release_included_counts": {
       "excluded": 0,
-      "included": 1543
+      "included": 1550
     },
     "schema": "ziros-workspace-census-summary-v1",
-    "source_census_root": "19640c38e27cf39d14205a5104a321992b0ac08714afa09d36e4cfb76724473b",
-    "source_commit": "61dabc68a7df11cc041fe1535020775dbcea122e",
-    "total_tracked_files": 1543,
+    "source_census_root": "16e5e502e8067a8a6d73463f76a2edff151d73bc64ffa141dbd26606faee10e4",
+    "source_commit": "63c5eeba3c7267fe83b9c057043ade1ae5157274",
+    "total_tracked_files": 1550,
     "trust_band_counts": {
       "noncritical_support": 0,
       "publication_critical": 0,
       "release_critical": 0,
-      "sealed_core": 1543
+      "sealed_core": 1550
     },
     "zero_unclassified_files": true
   }
