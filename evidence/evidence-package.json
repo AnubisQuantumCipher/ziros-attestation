@@ -1,7 +1,7 @@
 {
   "artifact_index": {
     "attestation_latest": "attestation/latest.json",
-    "binary_manifest": "binary-manifest/v0.6.0/manifest.json",
+    "binary_manifest": "binary-manifest/v0.7.1/manifest.json",
     "capability_summary": "evidence/capability-summary.json",
     "claim_source_graph": "claim-source-graph.json",
     "conformance_summary": "evidence/conformance-summary.json",
@@ -17,8 +17,8 @@
     "workspace_census_summary": "workspace-census-summary.json"
   },
   "attestation": {
-    "attestation_hash": "ae51de0a3f5457c28a2541bd99bdf032a96d2fdb5061a92e0b205078ad4f15de",
-    "claim_source_graph_digest": "8718ffa6e9eafa2c10b61d1a9105ae47b2b01ec1549ccdcb9ca0347bc602b5ca",
+    "attestation_hash": "edaecf06619a85749b732e9d35ba18a16a6c7f19836e821c3d2c70d27e076767",
+    "claim_source_graph_digest": "e6d0ba0846f45fb6cd5e0881d63548edfe9f1198d4a2fd453c55cbfc0e1a6b8e",
     "claims_verified": {
       "capability_surface": {
         "backend_count": 9,
@@ -53,7 +53,7 @@
         "total_entries": 169
       }
     },
-    "generated_at": "2026-04-07T10:52:32.060758Z",
+    "generated_at": "2026-04-07T15:57:17.112814Z",
     "headline_counts": {
       "hypothesis_carried_rows": 9,
       "implementation_bound_rows": 160,
@@ -249,10 +249,10 @@
     },
     "public_hostile_audit_verdict_path": "hostile-audit-verdict.json",
     "publication": {
-      "binary_manifest_path": "binary-manifest/v0.6.0/manifest.json",
-      "publication_checked_at": "2026-04-07T10:52:32.060765Z",
-      "release_tag": "v0.6.0",
-      "source_commit": "50eb34764c5b75269dedcec54744547230afd646",
+      "binary_manifest_path": "binary-manifest/v0.7.1/manifest.json",
+      "publication_checked_at": "2026-04-07T15:57:17.112824Z",
+      "release_tag": "v0.7.1",
+      "source_commit": "dacd7b9adea14290dd94f6496972cc0a0360146a",
       "working_tree_dirty": false
     },
     "schema": "ziros-attestation-v2",
@@ -260,22 +260,22 @@
       "count": 0,
       "summary_path": "workspace-census-summary.json"
     },
-    "version": "0.6.0",
+    "version": "0.7.1",
     "workspace_census_summary_path": "workspace-census-summary.json"
   },
-  "claim_source_graph_digest": "8718ffa6e9eafa2c10b61d1a9105ae47b2b01ec1549ccdcb9ca0347bc602b5ca",
-  "generated_at": "2026-04-07T10:52:32.060758Z",
-  "hostile_audit_verdict_digest": "66c8c0b8527a82d861f5aa1420cf5a66ad4bba22cdd561f3b6ede4ba77a98645",
+  "claim_source_graph_digest": "e6d0ba0846f45fb6cd5e0881d63548edfe9f1198d4a2fd453c55cbfc0e1a6b8e",
+  "generated_at": "2026-04-07T15:57:17.112814Z",
+  "hostile_audit_verdict_digest": "1f474ae7c909f950de99108e630f50361f2e7de4b10abe47d9f938a4fd6c0ac5",
   "publication": {
-    "attestation_generated_at": "2026-04-07T10:52:32.060758Z",
-    "binary_manifest_path": "binary-manifest/v0.6.0/manifest.json",
+    "attestation_generated_at": "2026-04-07T15:57:17.112814Z",
+    "binary_manifest_path": "binary-manifest/v0.7.1/manifest.json",
     "binary_target": "aarch64-apple-darwin",
     "public_repo_name": "ziros-attestation",
-    "publication_checked_at": "2026-04-07T10:52:32.060765Z",
-    "published_release_version": "0.6.0",
-    "release_tag": "v0.6.0",
+    "publication_checked_at": "2026-04-07T15:57:17.112824Z",
+    "published_release_version": "0.7.1",
+    "release_tag": "v0.7.1",
     "schema": "ziros-publication-manifest-v1",
-    "source_commit": "50eb34764c5b75269dedcec54744547230afd646",
+    "source_commit": "dacd7b9adea14290dd94f6496972cc0a0360146a",
     "source_truth_surfaces": [
       "zkf-ir-spec/verification-ledger.json",
       ".zkf-completion-status.json",
@@ -304,20 +304,20 @@
       "explicit_tcb": 0,
       "mechanized": 107
     },
-    "generated_at": "2026-04-07T10:52:31.979143Z",
+    "generated_at": "2026-04-07T15:57:17.091367Z",
     "release_included_counts": {
       "excluded": 0,
-      "included": 1550
+      "included": 1581
     },
     "schema": "ziros-workspace-census-summary-v1",
-    "source_census_root": "af1d4db0302dda1bea0ac5483cc96ffcefe9bf7d2364e6efd052ee0e68e494df",
-    "source_commit": "50eb34764c5b75269dedcec54744547230afd646",
-    "total_tracked_files": 1550,
+    "source_census_root": "0b4323b7b8dbc82e1656f2ff133f3a381ffa53612d8f2e726fe4ed0d5598f04d",
+    "source_commit": "a2c74a3d638bedf00e04d28dde2023d41c964ee9",
+    "total_tracked_files": 1581,
     "trust_band_counts": {
       "noncritical_support": 0,
       "publication_critical": 0,
       "release_critical": 0,
-      "sealed_core": 1550
+      "sealed_core": 1581
     },
     "zero_unclassified_files": true
   }

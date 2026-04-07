@@ -1,0 +1,19 @@
+{
+  "binaries": {
+    "ziros": {
+      "path": "ziros",
+      "sha256": "1277ba8f165abd6a0db6c0100be16cdceb3e42f7432a446ada703f3159bf9e31"
+    },
+    "ziros-agentd": {
+      "path": "ziros-agentd",
+      "sha256": "6969956f9763dea6eb5c8625cfa9d84412226f6c778740cfab147e164ac7e40d"
+    },
+    "zkf": {
+      "path": "zkf",
+      "sha256": "1277ba8f165abd6a0db6c0100be16cdceb3e42f7432a446ada703f3159bf9e31"
+    }
+  },
+  "build_date": "2026-04-07T15:57:17.111747Z",
+  "target_triple": "aarch64-apple-darwin",
+  "version": "0.7.1"
+}

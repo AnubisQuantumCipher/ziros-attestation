@@ -4,7 +4,7 @@
     "lean_files": 24,
     "metal_files": 18,
     "rocq_files": 72,
-    "verus_hint_files": 735
+    "verus_hint_files": 743
   },
   "extension_counts": {
     ".aux": 54,
@@ -15,18 +15,19 @@
     ".cl": 6,
     ".compact": 4,
     ".entitlements": 4,
+    ".example": 1,
     ".fst": 11,
     ".glob": 54,
     ".h": 2,
     ".html": 2,
-    ".js": 3,
-    ".json": 72,
+    ".js": 7,
+    ".json": 75,
     ".jsonl": 1,
     ".lean": 24,
     ".lock": 2,
     ".m": 1,
     ".map": 1,
-    ".md": 64,
+    ".md": 75,
     ".metal": 18,
     ".mjs": 1,
     ".mlmodel": 4,
@@ -35,9 +36,9 @@
     ".plist": 3,
     ".png": 10,
     ".prover": 1,
-    ".py": 17,
-    ".rs": 735,
-    ".sh": 28,
+    ".py": 19,
+    ".rs": 743,
+    ".sh": 30,
     ".swift": 25,
     ".toml": 42,
     ".ts": 57,
@@ -55,6 +56,6 @@
     ".zkir": 9,
     "<no-ext>": 30
   },
-  "generated_at": "2026-04-07T10:52:31.980278Z",
+  "generated_at": "2026-04-07T15:57:17.092363Z",
   "schema": "zkf-public-proof-file-inventory-v2"
 }

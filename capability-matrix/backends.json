@@ -118,6 +118,6 @@
       "status": "ready"
     }
   ],
-  "generated_for": "0.6.0",
+  "generated_for": "0.7.1",
   "schema": "ziros-backend-capability-matrix-v1"
 }

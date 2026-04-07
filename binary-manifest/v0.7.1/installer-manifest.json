@@ -1,0 +1,19 @@
+{
+  "channel": "stable",
+  "generated_at": "2026-04-07T15:51:59.946176+00:00",
+  "platforms": [
+    {
+      "archive_url": "https://github.com/AnubisQuantumCipher/ziros-attestation/releases/download/v0.7.1/ziros-darwin-arm64-v0.7.1.tar.gz",
+      "binaries": [
+        "ziros",
+        "zkf",
+        "ziros-agentd"
+      ],
+      "platform": "darwin-arm64",
+      "sha256": "d915fd1b4e73dd49fe1f72db6fd16ef646b59d92c54240098959cda6cb86a7eb"
+    }
+  ],
+  "release_tag": "v0.7.1",
+  "schema": "ziros-installer-manifest-v1",
+  "version": "0.7.1"
+}

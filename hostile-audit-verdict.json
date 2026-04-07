@@ -19,8 +19,8 @@
       "operator.evm_status"
     ]
   },
-  "claim_source_graph_digest": "8718ffa6e9eafa2c10b61d1a9105ae47b2b01ec1549ccdcb9ca0347bc602b5ca",
-  "generated_at": "2026-04-07T10:52:32.060803Z",
+  "claim_source_graph_digest": "e6d0ba0846f45fb6cd5e0881d63548edfe9f1198d4a2fd453c55cbfc0e1a6b8e",
+  "generated_at": "2026-04-07T15:57:17.112869Z",
   "schema": "ziros-hostile-audit-verdict-v1",
   "summary": {
     "bounded_only_files": 0,

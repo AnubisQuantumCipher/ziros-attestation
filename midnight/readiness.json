@@ -3,7 +3,7 @@
     "gateway: {\"error\":\"forbidden\",\"reason\":\"missing_cf_access_jwt_assertion\"}"
   ],
   "blockers": [],
-  "claim_scope": "full-universal-path-for-0.6.0",
+  "claim_scope": "full-universal-path-for-0.7.1",
   "contract_universe_count": 7,
   "doctor_summary": {
     "failed": 0,
@@ -14,7 +14,7 @@
     "warned": 1
   },
   "domain": "midnight",
-  "generated_at": "2026-04-07T10:52:32.060037Z",
+  "generated_at": "2026-04-07T15:57:17.111812Z",
   "live_submit_blockers": [
     "gateway: {\"error\":\"forbidden\",\"reason\":\"missing_cf_access_jwt_assertion\"}",
     "wallet: No browser wallet session or headless operator wallet credentials were available.",
@@ -22,7 +22,7 @@
   ],
   "ready_for_live_submit": false,
   "ready_for_local_operator": true,
-  "release_tag": "v0.6.0",
+  "release_tag": "v0.7.1",
   "required_cli_surfaces": [
     "zkf midnight status",
     "zkf midnight contract compile",
@@ -35,8 +35,8 @@
     "zkf midnight contract diagnose"
   ],
   "schema": "ziros-public-midnight-readiness-v1",
-  "source_commit": "50eb34764c5b75269dedcec54744547230afd646",
+  "source_commit": "dacd7b9adea14290dd94f6496972cc0a0360146a",
   "status": "ready",
   "validation_template": "token-transfer",
-  "version": "0.6.0"
+  "version": "0.7.1"
 }
