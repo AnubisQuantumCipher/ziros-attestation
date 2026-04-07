@@ -6,20 +6,20 @@
     "explicit_tcb": 0,
     "mechanized": 100
   },
-  "generated_at": "2026-04-07T05:23:17.284890Z",
+  "generated_at": "2026-04-07T05:34:46.338665Z",
   "release_included_counts": {
     "excluded": 0,
-    "included": 1449
+    "included": 1543
   },
   "schema": "ziros-workspace-census-summary-v1",
-  "source_census_root": "08668d235bb33e1c91f84c6c1cb3233bc2d3924f30677aee8b2d5beb61f9c6d8",
-  "source_commit": "e831e1d32119891a30d83ce918b0f62c3a00c6e0",
-  "total_tracked_files": 1449,
+  "source_census_root": "19640c38e27cf39d14205a5104a321992b0ac08714afa09d36e4cfb76724473b",
+  "source_commit": "61dabc68a7df11cc041fe1535020775dbcea122e",
+  "total_tracked_files": 1543,
   "trust_band_counts": {
     "noncritical_support": 0,
     "publication_critical": 0,
     "release_critical": 0,
-    "sealed_core": 1449
+    "sealed_core": 1543
   },
   "zero_unclassified_files": true
 }

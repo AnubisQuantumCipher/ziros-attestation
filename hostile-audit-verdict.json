@@ -17,8 +17,8 @@
       "capability.gadgets_published"
     ]
   },
-  "claim_source_graph_digest": "4d1d87d03c64e9f97f1380796aaaa2525849aad73e4e8af0c69afb3f36e93ff4",
-  "generated_at": "2026-04-07T05:23:17.302990Z",
+  "claim_source_graph_digest": "581b1d289c1404849bf346d078d6b066abe49707dd87206cd07e167ebf4ee4d7",
+  "generated_at": "2026-04-07T05:34:46.354686Z",
   "schema": "ziros-hostile-audit-verdict-v1",
   "summary": {
     "bounded_only_files": 0,

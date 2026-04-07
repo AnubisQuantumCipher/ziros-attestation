@@ -5,7 +5,7 @@
       "sha256": "22fbf39efff89f3a5abb57736cb1c71463e4d6e2b9ad570e64b250278908049d"
     }
   },
-  "build_date": "2026-04-07T05:23:17.301833Z",
+  "build_date": "2026-04-07T05:34:46.353615Z",
   "target_triple": "aarch64-apple-darwin",
   "version": "0.5.0"
 }
