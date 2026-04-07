@@ -7,13 +7,13 @@ This repository is evidence-only. It publishes no implementation source, headers
 
 | Surface | Published state |
 | --- | --- |
-| Public release | `v0.7.2` via [publication/manifest.json](publication/manifest.json) |
+| Public release | `v0.7.3` via [publication/manifest.json](publication/manifest.json) |
 | Headline theorem count | **160 implementation-bound mechanized rows** |
 | Disclosed hypotheses | 9 hypothesis-carried rows, published separately in [attestation/latest.json](attestation/latest.json) and [evidence/protocol-proof-registry.json](evidence/protocol-proof-registry.json) |
 | Public conformance | 24/24 tests passed across `plonky3`, `halo2`, `nova`, and `hypernova` |
 | Sealed-source census | 1581 tracked files classified; zero unclassified = `True` |
-| Midnight readiness | full universal path for `0.7.2`: status=`ready`, local_operator=`True`, live_submit=`False` via [midnight/readiness.json](midnight/readiness.json) |
-| EVM readiness | secondary deploy-capable lane for `0.7.2`: status=`secondary-ready` via [evm/readiness.json](evm/readiness.json) |
+| Midnight readiness | full universal path for `0.7.3`: status=`ready`, local_operator=`True`, live_submit=`False` via [midnight/readiness.json](midnight/readiness.json) |
+| EVM readiness | secondary deploy-capable lane for `0.7.3`: status=`secondary-ready` via [evm/readiness.json](evm/readiness.json) |
 | Midnight evidence | 5 published Midnight preprod deployment manifests; explorer verification 0/5 on 2026-04-05 |
 | Hostile-audit verdict | [hostile-audit-verdict.json](hostile-audit-verdict.json) and [claim-source-graph.json](claim-source-graph.json) |
 <!-- END GENERATED PUBLIC SUMMARY -->
@@ -46,9 +46,9 @@ Public trust here comes from machine-readable evidence and replayable claim edge
 | Hypothesis registry | Explicit assumptions for non-headline theorem rows | **9 rows disclosed separately** |
 | Public backend conformance | Compile -> prove -> verify across 4 published backends | **24/24 tests passed** |
 | Sealed-source census | Opaque private-file census summarized publicly | **1581 files; zero unclassified = True** |
-| Binary integrity | Published release manifest `binary-manifest/v0.7.2/manifest.json` | **SHA-256 verified for `aarch64-apple-darwin`** |
-| Midnight operator path | Full universal path for `0.7.2` | **status=ready local_operator=True live_submit=False** |
-| EVM operator path | Secondary deploy-capable lane for `0.7.2` | **status=secondary-ready** |
+| Binary integrity | Published release manifest `binary-manifest/v0.7.3/manifest.json` | **SHA-256 verified for `aarch64-apple-darwin`** |
+| Midnight operator path | Full universal path for `0.7.3` | **status=ready local_operator=True live_submit=False** |
+| EVM operator path | Secondary deploy-capable lane for `0.7.3` | **status=secondary-ready** |
 | Midnight deployment evidence | Published deployment manifest plus live explorer recheck | **0/5 explorer-verified on 2026-04-05** |
 <!-- END GENERATED WEEKLY STATUS -->
 
@@ -67,8 +67,8 @@ Public trust here comes from machine-readable evidence and replayable claim edge
 | [evidence/proof-file-inventory.json](evidence/proof-file-inventory.json) | Sealed proof-language inventory and checker counts exported from the private tree |
 | [evidence/protocol-proof-registry.json](evidence/protocol-proof-registry.json) | Public digest-pinned registry for the 9 protocol hypothesis rows |
 | [conformance/latest/](conformance/latest/) | Public compile-prove-verify results for the attested backends |
-| [binary-manifest/v0.7.2/manifest.json](binary-manifest/v0.7.2/manifest.json) | SHA-256 integrity manifest for the published release artifacts |
-| [binary-manifest/v0.7.2/installer-manifest.json](binary-manifest/v0.7.2/installer-manifest.json) | Public installer manifest binding the npm wrapper to the attested binary bundle |
+| [binary-manifest/v0.7.3/manifest.json](binary-manifest/v0.7.3/manifest.json) | SHA-256 integrity manifest for the published release artifacts |
+| [binary-manifest/v0.7.3/installer-manifest.json](binary-manifest/v0.7.3/installer-manifest.json) | Public installer manifest binding the npm wrapper to the attested binary bundle |
 | [workspace-census-summary.json](workspace-census-summary.json) | Opaque sealed-source census totals and zero-unclassified verdict |
 | [claim-source-graph.json](claim-source-graph.json) | Machine-readable map from public claims to public source artifacts |
 | [hostile-audit-verdict.json](hostile-audit-verdict.json) | Public hostile-audit summary derived from the claim graph and census summary |

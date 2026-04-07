@@ -1,6 +1,6 @@
 {
-  "attestation_hash": "774542976d9a454c9c749eaa5814fc6d66f9f396e7136a0776ac2ef53542d430",
-  "claim_source_graph_digest": "6be14973de1d9e9268920ecb8b2b00377cf4dcd085ffa4bcf6e24d16c9a6c127",
+  "attestation_hash": "32c65d3ed04b3a9871074df94cace36191324fe4c57cd5aaa3d6a8b4b6471ad5",
+  "claim_source_graph_digest": "2d489341f5ace268eb5628a23cc58e6b260ba85fbe075e7a0853cec9df70b811",
   "claims_verified": {
     "capability_surface": {
       "backend_count": 9,
@@ -35,7 +35,7 @@
       "total_entries": 169
     }
   },
-  "generated_at": "2026-04-07T16:08:27.598358Z",
+  "generated_at": "2026-04-07T16:20:05.781453Z",
   "headline_counts": {
     "hypothesis_carried_rows": 9,
     "implementation_bound_rows": 160,
@@ -231,10 +231,10 @@
   },
   "public_hostile_audit_verdict_path": "hostile-audit-verdict.json",
   "publication": {
-    "binary_manifest_path": "binary-manifest/v0.7.2/manifest.json",
-    "publication_checked_at": "2026-04-07T16:08:27.598365Z",
-    "release_tag": "v0.7.2",
-    "source_commit": "ffe6f5eaf7b2c724706a48d9f643fb485befe661",
+    "binary_manifest_path": "binary-manifest/v0.7.3/manifest.json",
+    "publication_checked_at": "2026-04-07T16:20:05.781460Z",
+    "release_tag": "v0.7.3",
+    "source_commit": "a9cecce94cd95e9c6c792b9aecf279edf178a938",
     "working_tree_dirty": false
   },
   "schema": "ziros-attestation-v2",
@@ -242,6 +242,6 @@
     "count": 0,
     "summary_path": "workspace-census-summary.json"
   },
-  "version": "0.7.2",
+  "version": "0.7.3",
   "workspace_census_summary_path": "workspace-census-summary.json"
 }

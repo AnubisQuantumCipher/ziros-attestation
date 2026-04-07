@@ -1,10 +1,10 @@
 {
-  "claim_scope": "secondary-deploy-capable-verifier-export-lane-for-0.7.2",
+  "claim_scope": "secondary-deploy-capable-verifier-export-lane-for-0.7.3",
   "domain": "evm",
-  "generated_at": "2026-04-07T16:08:27.596469Z",
-  "release_tag": "v0.7.2",
+  "generated_at": "2026-04-07T16:20:05.780351Z",
+  "release_tag": "v0.7.3",
   "schema": "ziros-public-evm-readiness-v1",
-  "source_commit": "ffe6f5eaf7b2c724706a48d9f643fb485befe661",
+  "source_commit": "a9cecce94cd95e9c6c792b9aecf279edf178a938",
   "status": "secondary-ready",
   "supported_surfaces": [
     "zkf evm verifier export",
@@ -20,5 +20,5 @@
     "optimism-arbitrum-l2",
     "generic-evm"
   ],
-  "version": "0.7.2"
+  "version": "0.7.3"
 }
