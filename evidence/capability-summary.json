@@ -35,8 +35,8 @@
     "schnorr",
     "sha256"
   ],
-  "generated_at": "2026-04-07T15:57:17.092356Z",
-  "generated_for": "0.7.1",
+  "generated_at": "2026-04-07T16:08:27.576990Z",
+  "generated_for": "0.7.2",
   "post_quantum_component_count": 7,
   "post_quantum_components": [
     "plonky3",
