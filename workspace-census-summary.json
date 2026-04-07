@@ -1,43 +1,25 @@
 {
-  "schema": "ziros-workspace-census-summary-v1",
-  "generated_at": "2026-04-07T00:21:49.906373+00:00",
-  "source_commit": "d6fd472f4cefdf4be70c04b12de88974d65e30a7",
-  "source_census_root": "c6798e8b9e72101e64cf13865bbed55ac17c61bc1ba5ff3c31e0b30e5a5d76f4",
-  "total_tracked_files": 1240,
-  "zero_unclassified_files": true,
-  "trust_band_counts": {
-    "sealed_core": 1109,
-    "publication_critical": 6,
-    "release_critical": 17,
-    "noncritical_support": 108
-  },
+  "by_trust_band_and_coverage": {},
   "coverage_state_counts": {
-    "bounded": 479,
-    "excluded_from_release": 211,
-    "mechanized": 521,
-    "explicit_tcb": 29
+    "bounded": 0,
+    "excluded_from_release": 0,
+    "explicit_tcb": 0,
+    "mechanized": 100
   },
-  "by_trust_band_and_coverage": {
-    "sealed_core": {
-      "bounded": 360,
-      "excluded_from_release": 199,
-      "mechanized": 521,
-      "explicit_tcb": 29
-    },
-    "publication_critical": {
-      "bounded": 5,
-      "excluded_from_release": 1
-    },
-    "release_critical": {
-      "bounded": 17
-    },
-    "noncritical_support": {
-      "excluded_from_release": 11,
-      "bounded": 97
-    }
-  },
+  "generated_at": "2026-04-07T05:23:17.284890Z",
   "release_included_counts": {
-    "included": 1029,
-    "excluded": 211
-  }
+    "excluded": 0,
+    "included": 1449
+  },
+  "schema": "ziros-workspace-census-summary-v1",
+  "source_census_root": "08668d235bb33e1c91f84c6c1cb3233bc2d3924f30677aee8b2d5beb61f9c6d8",
+  "source_commit": "e831e1d32119891a30d83ce918b0f62c3a00c6e0",
+  "total_tracked_files": 1449,
+  "trust_band_counts": {
+    "noncritical_support": 0,
+    "publication_critical": 0,
+    "release_critical": 0,
+    "sealed_core": 1449
+  },
+  "zero_unclassified_files": true
 }

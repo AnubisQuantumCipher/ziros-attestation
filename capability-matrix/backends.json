@@ -1,64 +1,72 @@
 {
-  "schema": "zkf-public-capability-surface-v1",
-  "generated_at": "2026-04-07T01:18:46.667913+00:00",
-  "generated_for": "0.4.2",
   "backends": [
     {
-      "id": "plonky3",
-      "mode": "native",
-      "status": "ready",
       "assurance_lane": "native-cryptographic-proof",
-      "proof_semantics": "proof-enforced-lowered-ir",
       "fields": [
         "goldilocks",
         "babybear",
         "mersenne31"
       ],
       "gpu_coverage": "0/2 GPU stages active on current host",
-      "notes": "Plonky3 STARK backend with native field profiles: Goldilocks/BabyBear over FRI and Mersenne31 over Circle PCS. Supports Equal/Boolean constraints, range constraints via bit decomposition (field-safe bit cap), and division via derived quotient columns. implementation_type=native compiled_in=true production_ready=true assurance_lane=native-cryptographic-proof proof_semantics=proof-enforced-lowered-ir aggregation_semantics=single-proof-with-optional-wrapper"
+      "id": "plonky3",
+      "mode": "native",
+      "notes": "Plonky3 STARK backend with native field profiles: Goldilocks/BabyBear over FRI and Mersenne31 over Circle PCS. Supports Equal/Boolean constraints, range constraints via bit decomposition (field-safe bit cap), and division via derived quotient columns. implementation_type=native compiled_in=true production_ready=true assurance_lane=native-cryptographic-proof proof_semantics=proof-enforced-lowered-ir aggregation_semantics=single-proof-with-optional-wrapper",
+      "proof_semantics": "proof-enforced-lowered-ir",
+      "status": "ready"
     },
     {
-      "id": "halo2",
-      "mode": "native",
-      "status": "ready",
       "assurance_lane": "native-cryptographic-proof",
-      "proof_semantics": "proof-enforced-basic-ir",
       "fields": [
         "pasta-fp"
       ],
       "gpu_coverage": "0/2 GPU stages active on current host",
-      "notes": "Plonkish backend implemented with Halo2 (IPA). Supports Equal/Boolean/Range/Div. Range constraints wider than 16 bits are lowered into 16-bit lookup chunks automatically. implementation_type=native compiled_in=true production_ready=true assurance_lane=native-cryptographic-proof proof_semantics=proof-enforced-basic-ir aggregation_semantics=single-proof-only"
+      "id": "halo2",
+      "mode": "native",
+      "notes": "Plonkish backend implemented with Halo2 (IPA). Supports Equal/Boolean/Range/Div. Range constraints wider than 16 bits are lowered into 16-bit lookup chunks automatically. implementation_type=native compiled_in=true production_ready=true assurance_lane=native-cryptographic-proof proof_semantics=proof-enforced-basic-ir aggregation_semantics=single-proof-only",
+      "proof_semantics": "proof-enforced-basic-ir",
+      "status": "ready"
     },
     {
-      "id": "halo2-bls12-381",
-      "mode": "native",
-      "status": "ready",
       "assurance_lane": "native-cryptographic-proof",
-      "proof_semantics": "proof-enforced-basic-ir",
       "fields": [
         "bls12-381"
       ],
       "gpu_coverage": "0/2 GPU stages active on current host",
-      "notes": "PLONK+KZG on BLS12-381 via PSE halo2 fork. Real BLS12-381 Fr field, SHPLONK multiopen, deterministic trusted setup. Range constraints wider than 16 bits are lowered into 16-bit lookup chunks automatically. implementation_type=native compiled_in=true production_ready=true assurance_lane=native-cryptographic-proof proof_semantics=proof-enforced-basic-ir aggregation_semantics=single-proof-only"
+      "id": "halo2-bls12-381",
+      "mode": "native",
+      "notes": "PLONK+KZG on BLS12-381 via PSE halo2 fork. Real BLS12-381 Fr field, SHPLONK multiopen, deterministic trusted setup. Range constraints wider than 16 bits are lowered into 16-bit lookup chunks automatically. implementation_type=native compiled_in=true production_ready=true assurance_lane=native-cryptographic-proof proof_semantics=proof-enforced-basic-ir aggregation_semantics=single-proof-only",
+      "proof_semantics": "proof-enforced-basic-ir",
+      "status": "ready"
     },
     {
-      "id": "arkworks-groth16",
-      "mode": "native",
-      "status": "limited",
       "assurance_lane": "native-cryptographic-proof",
-      "proof_semantics": "proof-enforced-basic-ir",
       "fields": [
         "bn254"
       ],
       "gpu_coverage": "0/3 GPU stages active on current host",
-      "notes": "Groth16 on BN254 for smallest proof size and cheap on-chain verification. implementation_type=native compiled_in=true production_ready=false assurance_lane=native-cryptographic-proof proof_semantics=proof-enforced-basic-ir aggregation_semantics=single-proof-only readiness_reason=upstream-ark-groth16-production-disclaimer operator_action=treat arkworks-groth16 as non-production until the upstream production disclaimer is resolved or the dependency is replaced"
+      "id": "arkworks-groth16",
+      "mode": "native",
+      "notes": "Groth16 on BN254 for smallest proof size and cheap on-chain verification. implementation_type=native compiled_in=true production_ready=false assurance_lane=native-cryptographic-proof proof_semantics=proof-enforced-basic-ir aggregation_semantics=single-proof-only readiness_reason=upstream-ark-groth16-production-disclaimer operator_action=treat arkworks-groth16 as non-production until the upstream production disclaimer is resolved or the dependency is replaced",
+      "proof_semantics": "proof-enforced-basic-ir",
+      "status": "limited"
     },
     {
+      "assurance_lane": "attestation-backed-host-validated-lane",
+      "delegates_to": "plonky3",
+      "fields": [
+        "goldilocks",
+        "babybear",
+        "mersenne31"
+      ],
+      "gpu_coverage": "0/0 GPU stages active on current host",
       "id": "sp1",
       "mode": "delegated",
-      "status": "broken",
-      "assurance_lane": "attestation-backed-host-validated-lane",
+      "notes": "SP1 compatibility mode: delegates proof generation to plonky3 backend for Goldilocks programs. implementation_type=delegated compiled_in=false production_ready=false assurance_lane=attestation-backed-host-validated-lane proof_semantics=attestation-over-host-validation aggregation_semantics=zkvm-attestation explicit_compat_alias=sp1-compat readiness_reason=native-backend-not-compiled operator_action=build a binary with the native feature enabled or request `sp1-compat` with --allow-compat",
       "proof_semantics": "attestation-over-host-validation",
+      "status": "broken"
+    },
+    {
+      "assurance_lane": "attestation-backed-host-validated-lane",
       "delegates_to": "plonky3",
       "fields": [
         "goldilocks",
@@ -66,59 +74,50 @@
         "mersenne31"
       ],
       "gpu_coverage": "0/0 GPU stages active on current host",
-      "notes": "SP1 compatibility mode: delegates proof generation to plonky3 backend for Goldilocks programs. implementation_type=delegated compiled_in=false production_ready=false assurance_lane=attestation-backed-host-validated-lane proof_semantics=attestation-over-host-validation aggregation_semantics=zkvm-attestation explicit_compat_alias=sp1-compat readiness_reason=native-backend-not-compiled operator_action=build a binary with the native feature enabled or request `sp1-compat` with --allow-compat"
-    },
-    {
       "id": "risc-zero",
       "mode": "delegated",
-      "status": "broken",
-      "assurance_lane": "attestation-backed-host-validated-lane",
+      "notes": "RISC Zero compatibility mode: delegates proof generation to plonky3 backend for Goldilocks programs. Native RISC Zero integration requires the `native-risc-zero` feature flag. implementation_type=delegated compiled_in=false production_ready=false assurance_lane=attestation-backed-host-validated-lane proof_semantics=attestation-over-host-validation aggregation_semantics=zkvm-attestation explicit_compat_alias=risc-zero-compat readiness_reason=native-backend-not-compiled operator_action=build a binary with the native feature enabled or request `risc-zero-compat` with --allow-compat",
       "proof_semantics": "attestation-over-host-validation",
-      "delegates_to": "plonky3",
-      "fields": [
-        "goldilocks",
-        "babybear",
-        "mersenne31"
-      ],
-      "gpu_coverage": "0/0 GPU stages active on current host",
-      "notes": "RISC Zero compatibility mode: delegates proof generation to plonky3 backend for Goldilocks programs. Native RISC Zero integration requires the `native-risc-zero` feature flag. implementation_type=delegated compiled_in=false production_ready=false assurance_lane=attestation-backed-host-validated-lane proof_semantics=attestation-over-host-validation aggregation_semantics=zkvm-attestation explicit_compat_alias=risc-zero-compat readiness_reason=native-backend-not-compiled operator_action=build a binary with the native feature enabled or request `risc-zero-compat` with --allow-compat"
+      "status": "broken"
     },
     {
+      "assurance_lane": "native-cryptographic-proof",
+      "fields": [
+        "bn254"
+      ],
+      "gpu_coverage": "0/1 GPU stages active on current host",
       "id": "nova",
       "mode": "native",
-      "status": "ready",
-      "assurance_lane": "native-cryptographic-proof",
+      "notes": "Native Nova backend (nova-snark) with IR-backed step circuit and classic/hypernova profiles. Compatibility delegation is disabled by default and can be enabled only with ZKF_NOVA_ALLOW_COMPAT_DELEGATE=true. implementation_type=native compiled_in=true production_ready=true assurance_lane=native-cryptographic-proof proof_semantics=proof-enforced-basic-ir-recursive-shell aggregation_semantics=cryptographic-recursive-folding",
       "proof_semantics": "proof-enforced-basic-ir-recursive-shell",
+      "status": "ready"
+    },
+    {
+      "assurance_lane": "native-cryptographic-proof",
       "fields": [
         "bn254"
       ],
       "gpu_coverage": "0/1 GPU stages active on current host",
-      "notes": "Native Nova backend (nova-snark) with IR-backed step circuit and classic/hypernova profiles. Compatibility delegation is disabled by default and can be enabled only with ZKF_NOVA_ALLOW_COMPAT_DELEGATE=true. implementation_type=native compiled_in=true production_ready=true assurance_lane=native-cryptographic-proof proof_semantics=proof-enforced-basic-ir-recursive-shell aggregation_semantics=cryptographic-recursive-folding"
-    },
-    {
       "id": "hypernova",
       "mode": "native",
-      "status": "ready",
-      "assurance_lane": "native-cryptographic-proof",
+      "notes": "HyperNova native mode: delegates to Nova native backend with HyperNova CCS profile for real multifolding over Pallas/Vesta curve cycle. Supports BN254 IR programs (mapped to Pallas scalar field). implementation_type=native compiled_in=true production_ready=true assurance_lane=native-cryptographic-proof proof_semantics=proof-enforced-basic-ir-recursive-shell aggregation_semantics=cryptographic-recursive-multifolding",
       "proof_semantics": "proof-enforced-basic-ir-recursive-shell",
-      "fields": [
-        "bn254"
-      ],
-      "gpu_coverage": "0/1 GPU stages active on current host",
-      "notes": "HyperNova native mode: delegates to Nova native backend with HyperNova CCS profile for real multifolding over Pallas/Vesta curve cycle. Supports BN254 IR programs (mapped to Pallas scalar field). implementation_type=native compiled_in=true production_ready=true assurance_lane=native-cryptographic-proof proof_semantics=proof-enforced-basic-ir-recursive-shell aggregation_semantics=cryptographic-recursive-multifolding"
+      "status": "ready"
     },
     {
-      "id": "midnight-compact",
-      "mode": "native",
-      "status": "broken",
       "assurance_lane": "delegated-or-external-lane",
-      "proof_semantics": "external-or-delegated",
       "fields": [
         "pasta-fp",
         "pasta-fq"
       ],
       "gpu_coverage": "0/0 GPU stages active on current host",
-      "notes": "Midnight runtime: proves via proof server when ZKF_MIDNIGHT_PROOF_SERVER_PROVE_URL is set; otherwise delegates to arkworks-groth16 when ZKF_MIDNIGHT_ALLOW_COMPAT_DELEGATE=true. implementation_type=native compiled_in=true production_ready=false assurance_lane=delegated-or-external-lane proof_semantics=external-or-delegated aggregation_semantics=single-proof-only readiness_reason=midnight-proof-server-unconfigured operator_action=configure real http(s) ZKF_MIDNIGHT_PROOF_SERVER_PROVE_URL and ZKF_MIDNIGHT_PROOF_SERVER_VERIFY_URL endpoints and ensure GET /health succeeds"
+      "id": "midnight-compact",
+      "mode": "native",
+      "notes": "Midnight runtime: proves via proof server when ZKF_MIDNIGHT_PROOF_SERVER_PROVE_URL is set; otherwise delegates to arkworks-groth16 when ZKF_MIDNIGHT_ALLOW_COMPAT_DELEGATE=true. Shipped developer-platform commands include `zkf midnight gateway serve`, `zkf midnight templates`, `zkf midnight init`, `zkf midnight doctor`, `zkf midnight disclosure`, and `zkf midnight resolve`, pinned to compactc 0.30.0, but they do not promote this backend row to production-ready. implementation_type=native compiled_in=true production_ready=false assurance_lane=delegated-or-external-lane proof_semantics=external-or-delegated aggregation_semantics=single-proof-only readiness_reason=midnight-proof-server-unconfigured operator_action=configure real http(s) ZKF_MIDNIGHT_PROOF_SERVER_PROVE_URL and ZKF_MIDNIGHT_PROOF_SERVER_VERIFY_URL endpoints and ensure GET /health succeeds",
+      "proof_semantics": "external-or-delegated",
+      "status": "broken"
     }
-  ]
+  ],
+  "generated_for": "0.5.0",
+  "schema": "ziros-backend-capability-matrix-v1"
 }

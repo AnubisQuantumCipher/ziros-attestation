@@ -7,11 +7,11 @@ This repository is evidence-only. It publishes no implementation source, headers
 
 | Surface | Published state |
 | --- | --- |
-| Public release | `v0.4.2` via [publication/manifest.json](publication/manifest.json) |
-| Headline theorem count | **156 implementation-bound mechanized rows** |
+| Public release | `v0.5.0` via [publication/manifest.json](publication/manifest.json) |
+| Headline theorem count | **160 implementation-bound mechanized rows** |
 | Disclosed hypotheses | 9 hypothesis-carried rows, published separately in [attestation/latest.json](attestation/latest.json) and [evidence/protocol-proof-registry.json](evidence/protocol-proof-registry.json) |
 | Public conformance | 24/24 tests passed across `plonky3`, `halo2`, `nova`, and `hypernova` |
-| Sealed-source census | 1240 tracked files classified; zero unclassified = `True` |
+| Sealed-source census | 1449 tracked files classified; zero unclassified = `True` |
 | Midnight evidence | 5 published Midnight preprod deployment manifests; explorer verification 0/5 on 2026-04-05 |
 | Hostile-audit verdict | [hostile-audit-verdict.json](hostile-audit-verdict.json) and [claim-source-graph.json](claim-source-graph.json) |
 <!-- END GENERATED PUBLIC SUMMARY -->
@@ -40,11 +40,11 @@ Public trust here comes from machine-readable evidence and replayable claim edge
 <!-- BEGIN GENERATED WEEKLY STATUS -->
 | What It Publishes | How | Current Status |
 | --- | --- | --- |
-| Headline theorem count | Implementation-bound machine-checked rows only | **156 implementation-bound rows** |
-| Hypothesis registry | Explicit assumptions for non-headline theorem rows | **9 rows disclosed separately with pinned private Lean artifact digests** |
+| Headline theorem count | Implementation-bound machine-checked rows only | **160 implementation-bound rows** |
+| Hypothesis registry | Explicit assumptions for non-headline theorem rows | **9 rows disclosed separately** |
 | Public backend conformance | Compile -> prove -> verify across 4 published backends | **24/24 tests passed** |
-| Sealed-source census | Opaque private-file census summarized publicly | **1240 files; 29 explicit TCB, 479 bounded, 211 excluded** |
-| Binary integrity | Published release manifest `binary-manifest/v0.4.2/manifest.json` | **SHA-256 verified for `aarch64-apple-darwin`** |
+| Sealed-source census | Opaque private-file census summarized publicly | **1449 files; zero unclassified = True** |
+| Binary integrity | Published release manifest `binary-manifest/v0.5.0/manifest.json` | **SHA-256 verified for `aarch64-apple-darwin`** |
 | Midnight deployment evidence | Published deployment manifest plus live explorer recheck | **0/5 explorer-verified on 2026-04-05** |
 <!-- END GENERATED WEEKLY STATUS -->
 
@@ -63,7 +63,7 @@ Public trust here comes from machine-readable evidence and replayable claim edge
 | [evidence/proof-file-inventory.json](evidence/proof-file-inventory.json) | Sealed proof-language inventory and checker counts exported from the private tree |
 | [evidence/protocol-proof-registry.json](evidence/protocol-proof-registry.json) | Public digest-pinned registry for the 9 protocol hypothesis rows |
 | [conformance/latest/](conformance/latest/) | Public compile-prove-verify results for the attested backends |
-| [binary-manifest/v0.4.2/manifest.json](binary-manifest/v0.4.2/manifest.json) | SHA-256 integrity manifest for the published release artifacts |
+| [binary-manifest/v0.5.0/manifest.json](binary-manifest/v0.5.0/manifest.json) | SHA-256 integrity manifest for the published release artifacts |
 | [workspace-census-summary.json](workspace-census-summary.json) | Opaque sealed-source census totals and zero-unclassified verdict |
 | [claim-source-graph.json](claim-source-graph.json) | Machine-readable map from public claims to public source artifacts |
 | [hostile-audit-verdict.json](hostile-audit-verdict.json) | Public hostile-audit summary derived from the claim graph and census summary |

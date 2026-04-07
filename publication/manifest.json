@@ -1,13 +1,13 @@
 {
-  "schema": "ziros-publication-manifest-v1",
-  "published_release_version": "0.4.2",
-  "release_tag": "v0.4.2",
-  "binary_manifest_path": "binary-manifest/v0.4.2/manifest.json",
+  "attestation_generated_at": "2026-04-07T05:23:17.302932Z",
+  "binary_manifest_path": "binary-manifest/v0.5.0/manifest.json",
   "binary_target": "aarch64-apple-darwin",
-  "attestation_generated_at": "2026-04-07T01:18:46.670387+00:00",
-  "publication_checked_at": "2026-04-07T01:18:46.670389+00:00",
-  "source_commit": "d6fd472f4cefdf4be70c04b12de88974d65e30a7",
-  "working_tree_dirty": true,
+  "public_repo_name": "ziros-attestation",
+  "publication_checked_at": "2026-04-07T05:23:17.302941Z",
+  "published_release_version": "0.5.0",
+  "release_tag": "v0.5.0",
+  "schema": "ziros-publication-manifest-v1",
+  "source_commit": "b101408e16aa0df9ff3b323596cb10246150b24c",
   "source_truth_surfaces": [
     "zkf-ir-spec/verification-ledger.json",
     ".zkf-completion-status.json",
@@ -15,5 +15,5 @@
     "release/product-release.json",
     "release/private_source_census.json"
   ],
-  "public_repo_name": "ziros-attestation"
+  "working_tree_dirty": false
 }

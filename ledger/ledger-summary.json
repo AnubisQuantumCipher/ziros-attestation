@@ -1,38 +1,37 @@
 {
-  "total": 165,
-  "mechanized_local": 165,
-  "pending": 0,
-  "pending_entries": 0,
+  "by_assurance_class": {
+    "hypothesis_carried_theorem": 9,
+    "mechanized_implementation_claim": 160
+  },
   "by_checker": {
-    "rocq": 61,
-    "verus": 80,
+    "fstar": 2,
     "lean": 22,
-    "fstar": 2
+    "rocq": 59,
+    "verus": 86
   },
   "by_scope_domain": {
-    "zkf-core": 29,
-    "zkf-backends": 23,
-    "zkf-ir-spec": 3,
-    "zkf-cli": 13,
-    "zkf-frontends": 4,
-    "zkf-runtime": 53,
-    "zkf-metal": 9,
+    "zkf-backends": 24,
+    "zkf-core": 23,
     "zkf-distributed": 24,
-    "zkf-lib": 7
+    "zkf-frontends": 1,
+    "zkf-ir-spec": 3,
+    "zkf-lib": 15,
+    "zkf-metal": 9,
+    "zkf-runtime": 70
   },
-  "by_assurance_class": {
-    "mechanized_implementation_claim": 156,
-    "hypothesis_carried_theorem": 9
-  },
+  "mechanized_local": 169,
+  "pending": 0,
+  "pending_entries": 0,
+  "total": 169,
   "trusted_assumption_rows": [
-    "protocol.fri_completeness",
-    "protocol.fri_proximity_soundness",
     "protocol.groth16_completeness",
     "protocol.groth16_knowledge_soundness",
     "protocol.groth16_zero_knowledge",
-    "protocol.hypernova_completeness",
-    "protocol.hypernova_folding_soundness",
+    "protocol.fri_completeness",
+    "protocol.fri_proximity_soundness",
     "protocol.nova_completeness",
-    "protocol.nova_folding_soundness"
+    "protocol.nova_folding_soundness",
+    "protocol.hypernova_completeness",
+    "protocol.hypernova_folding_soundness"
   ]
 }

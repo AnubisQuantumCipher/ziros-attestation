@@ -45,7 +45,7 @@ An agent or reviewer can audit this repository without source access by checking
 3. the hostile-audit verdict in [hostile-audit-verdict.json](../hostile-audit-verdict.json)
 4. the theorem counts in [ledger/ledger-summary.json](../ledger/ledger-summary.json)
 5. the public conformance JSON in [conformance/latest/](../conformance/latest/)
-6. the binary manifest in [binary-manifest/v0.4.2/manifest.json](../binary-manifest/v0.4.2/manifest.json)
+6. the binary manifest in [binary-manifest/v0.5.0/manifest.json](../binary-manifest/v0.5.0/manifest.json)
 7. the Midnight explorer state in [midnight/explorer-status.json](../midnight/explorer-status.json)
 
 ## Midnight Evidence

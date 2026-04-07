@@ -1,17 +1,51 @@
 {
-  "schema": "ziros-public-conformance-summary-v1",
-  "generated_at": "2026-04-07T01:18:46.669166+00:00",
+  "generated_at": "2026-04-07T05:23:17.286104Z",
+  "headline_backend_count": 4,
   "headline_backend_ids": [
     "plonky3",
     "halo2",
     "nova",
     "hypernova"
   ],
-  "headline_backend_count": 4,
-  "headline_tests_run": 24,
-  "headline_tests_passed": 24,
-  "headline_tests_failed": 0,
+  "headline_rows": [
+    {
+      "backend": "plonky3",
+      "path": "conformance/latest/plonky3.json",
+      "status": "pass",
+      "tests_failed": 0,
+      "tests_passed": 6,
+      "tests_run": 6
+    },
+    {
+      "backend": "halo2",
+      "path": "conformance/latest/halo2.json",
+      "status": "pass",
+      "tests_failed": 0,
+      "tests_passed": 6,
+      "tests_run": 6
+    },
+    {
+      "backend": "nova",
+      "path": "conformance/latest/nova.json",
+      "status": "pass",
+      "tests_failed": 0,
+      "tests_passed": 6,
+      "tests_run": 6
+    },
+    {
+      "backend": "hypernova",
+      "path": "conformance/latest/hypernova.json",
+      "status": "pass",
+      "tests_failed": 0,
+      "tests_passed": 6,
+      "tests_run": 6
+    }
+  ],
   "headline_status": "pass",
+  "headline_tests_failed": 0,
+  "headline_tests_passed": 24,
+  "headline_tests_run": 24,
+  "published_backend_count": 5,
   "published_backend_ids": [
     "plonky3",
     "halo2",
@@ -19,53 +53,19 @@
     "hypernova",
     "arkworks-groth16"
   ],
-  "published_backend_count": 5,
-  "published_tests_run": 30,
-  "published_tests_passed": 30,
-  "published_tests_failed": 0,
   "published_status": "pass",
-  "headline_rows": [
-    {
-      "backend": "plonky3",
-      "path": "conformance/latest/plonky3.json",
-      "tests_run": 6,
-      "tests_passed": 6,
-      "tests_failed": 0,
-      "status": "pass"
-    },
-    {
-      "backend": "halo2",
-      "path": "conformance/latest/halo2.json",
-      "tests_run": 6,
-      "tests_passed": 6,
-      "tests_failed": 0,
-      "status": "pass"
-    },
-    {
-      "backend": "nova",
-      "path": "conformance/latest/nova.json",
-      "tests_run": 6,
-      "tests_passed": 6,
-      "tests_failed": 0,
-      "status": "pass"
-    },
-    {
-      "backend": "hypernova",
-      "path": "conformance/latest/hypernova.json",
-      "tests_run": 6,
-      "tests_passed": 6,
-      "tests_failed": 0,
-      "status": "pass"
-    }
-  ],
+  "published_tests_failed": 0,
+  "published_tests_passed": 30,
+  "published_tests_run": 30,
+  "schema": "ziros-public-conformance-summary-v1",
   "supplemental_rows": [
     {
       "backend": "arkworks-groth16",
       "path": "conformance/latest/arkworks-groth16.json",
-      "tests_run": 6,
-      "tests_passed": 6,
+      "status": "pass",
       "tests_failed": 0,
-      "status": "pass"
+      "tests_passed": 6,
+      "tests_run": 6
     }
   ]
 }
