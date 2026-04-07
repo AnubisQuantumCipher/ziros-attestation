@@ -1,6 +1,6 @@
 {
-  "attestation_hash": "5003f445f5261f954a2dd69aa2cdffc36faa3868ea177c593dbe8f9883aca845",
-  "claim_source_graph_digest": "7f153619e29b81803cf44d9d1aabc552ef7a7abdc44f373b6b193d3502c47369",
+  "attestation_hash": "ae51de0a3f5457c28a2541bd99bdf032a96d2fdb5061a92e0b205078ad4f15de",
+  "claim_source_graph_digest": "8718ffa6e9eafa2c10b61d1a9105ae47b2b01ec1549ccdcb9ca0347bc602b5ca",
   "claims_verified": {
     "capability_surface": {
       "backend_count": 9,
@@ -35,7 +35,7 @@
       "total_entries": 169
     }
   },
-  "generated_at": "2026-04-07T10:47:41.860316Z",
+  "generated_at": "2026-04-07T10:52:32.060758Z",
   "headline_counts": {
     "hypothesis_carried_rows": 9,
     "implementation_bound_rows": 160,
@@ -232,9 +232,9 @@
   "public_hostile_audit_verdict_path": "hostile-audit-verdict.json",
   "publication": {
     "binary_manifest_path": "binary-manifest/v0.6.0/manifest.json",
-    "publication_checked_at": "2026-04-07T10:47:41.860326Z",
+    "publication_checked_at": "2026-04-07T10:52:32.060765Z",
     "release_tag": "v0.6.0",
-    "source_commit": "26138f39922fc197f23e35a7758b8a0bee018b18",
+    "source_commit": "50eb34764c5b75269dedcec54744547230afd646",
     "working_tree_dirty": false
   },
   "schema": "ziros-attestation-v2",

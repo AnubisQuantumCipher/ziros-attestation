@@ -14,7 +14,7 @@
     "warned": 1
   },
   "domain": "midnight",
-  "generated_at": "2026-04-07T10:47:41.859163Z",
+  "generated_at": "2026-04-07T10:52:32.060037Z",
   "live_submit_blockers": [
     "gateway: {\"error\":\"forbidden\",\"reason\":\"missing_cf_access_jwt_assertion\"}",
     "wallet: No browser wallet session or headless operator wallet credentials were available.",
@@ -35,7 +35,7 @@
     "zkf midnight contract diagnose"
   ],
   "schema": "ziros-public-midnight-readiness-v1",
-  "source_commit": "26138f39922fc197f23e35a7758b8a0bee018b18",
+  "source_commit": "50eb34764c5b75269dedcec54744547230afd646",
   "status": "ready",
   "validation_template": "token-transfer",
   "version": "0.6.0"

@@ -6,14 +6,14 @@
     "explicit_tcb": 0,
     "mechanized": 107
   },
-  "generated_at": "2026-04-07T10:47:41.760861Z",
+  "generated_at": "2026-04-07T10:52:31.979143Z",
   "release_included_counts": {
     "excluded": 0,
     "included": 1550
   },
   "schema": "ziros-workspace-census-summary-v1",
-  "source_census_root": "16e5e502e8067a8a6d73463f76a2edff151d73bc64ffa141dbd26606faee10e4",
-  "source_commit": "63c5eeba3c7267fe83b9c057043ade1ae5157274",
+  "source_census_root": "af1d4db0302dda1bea0ac5483cc96ffcefe9bf7d2364e6efd052ee0e68e494df",
+  "source_commit": "50eb34764c5b75269dedcec54744547230afd646",
   "total_tracked_files": 1550,
   "trust_band_counts": {
     "noncritical_support": 0,

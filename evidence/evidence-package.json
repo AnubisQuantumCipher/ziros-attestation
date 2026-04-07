@@ -17,8 +17,8 @@
     "workspace_census_summary": "workspace-census-summary.json"
   },
   "attestation": {
-    "attestation_hash": "5003f445f5261f954a2dd69aa2cdffc36faa3868ea177c593dbe8f9883aca845",
-    "claim_source_graph_digest": "7f153619e29b81803cf44d9d1aabc552ef7a7abdc44f373b6b193d3502c47369",
+    "attestation_hash": "ae51de0a3f5457c28a2541bd99bdf032a96d2fdb5061a92e0b205078ad4f15de",
+    "claim_source_graph_digest": "8718ffa6e9eafa2c10b61d1a9105ae47b2b01ec1549ccdcb9ca0347bc602b5ca",
     "claims_verified": {
       "capability_surface": {
         "backend_count": 9,
@@ -53,7 +53,7 @@
         "total_entries": 169
       }
     },
-    "generated_at": "2026-04-07T10:47:41.860316Z",
+    "generated_at": "2026-04-07T10:52:32.060758Z",
     "headline_counts": {
       "hypothesis_carried_rows": 9,
       "implementation_bound_rows": 160,
@@ -250,9 +250,9 @@
     "public_hostile_audit_verdict_path": "hostile-audit-verdict.json",
     "publication": {
       "binary_manifest_path": "binary-manifest/v0.6.0/manifest.json",
-      "publication_checked_at": "2026-04-07T10:47:41.860326Z",
+      "publication_checked_at": "2026-04-07T10:52:32.060765Z",
       "release_tag": "v0.6.0",
-      "source_commit": "26138f39922fc197f23e35a7758b8a0bee018b18",
+      "source_commit": "50eb34764c5b75269dedcec54744547230afd646",
       "working_tree_dirty": false
     },
     "schema": "ziros-attestation-v2",
@@ -263,19 +263,19 @@
     "version": "0.6.0",
     "workspace_census_summary_path": "workspace-census-summary.json"
   },
-  "claim_source_graph_digest": "7f153619e29b81803cf44d9d1aabc552ef7a7abdc44f373b6b193d3502c47369",
-  "generated_at": "2026-04-07T10:47:41.860316Z",
-  "hostile_audit_verdict_digest": "96b96602ec124887c4a4043e8637267ab851dcb0b2b8a446b04db5c7d7d54625",
+  "claim_source_graph_digest": "8718ffa6e9eafa2c10b61d1a9105ae47b2b01ec1549ccdcb9ca0347bc602b5ca",
+  "generated_at": "2026-04-07T10:52:32.060758Z",
+  "hostile_audit_verdict_digest": "66c8c0b8527a82d861f5aa1420cf5a66ad4bba22cdd561f3b6ede4ba77a98645",
   "publication": {
-    "attestation_generated_at": "2026-04-07T10:47:41.860316Z",
+    "attestation_generated_at": "2026-04-07T10:52:32.060758Z",
     "binary_manifest_path": "binary-manifest/v0.6.0/manifest.json",
     "binary_target": "aarch64-apple-darwin",
     "public_repo_name": "ziros-attestation",
-    "publication_checked_at": "2026-04-07T10:47:41.860326Z",
+    "publication_checked_at": "2026-04-07T10:52:32.060765Z",
     "published_release_version": "0.6.0",
     "release_tag": "v0.6.0",
     "schema": "ziros-publication-manifest-v1",
-    "source_commit": "26138f39922fc197f23e35a7758b8a0bee018b18",
+    "source_commit": "50eb34764c5b75269dedcec54744547230afd646",
     "source_truth_surfaces": [
       "zkf-ir-spec/verification-ledger.json",
       ".zkf-completion-status.json",
@@ -304,14 +304,14 @@
       "explicit_tcb": 0,
       "mechanized": 107
     },
-    "generated_at": "2026-04-07T10:47:41.760861Z",
+    "generated_at": "2026-04-07T10:52:31.979143Z",
     "release_included_counts": {
       "excluded": 0,
       "included": 1550
     },
     "schema": "ziros-workspace-census-summary-v1",
-    "source_census_root": "16e5e502e8067a8a6d73463f76a2edff151d73bc64ffa141dbd26606faee10e4",
-    "source_commit": "63c5eeba3c7267fe83b9c057043ade1ae5157274",
+    "source_census_root": "af1d4db0302dda1bea0ac5483cc96ffcefe9bf7d2364e6efd052ee0e68e494df",
+    "source_commit": "50eb34764c5b75269dedcec54744547230afd646",
     "total_tracked_files": 1550,
     "trust_band_counts": {
       "noncritical_support": 0,
