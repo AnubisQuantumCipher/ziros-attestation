@@ -1,5 +1,8 @@
 {
   "categories": {
+    "explicit_tcb": [
+      "ledger.trusted_protocol_tcb_rows"
+    ],
     "hypothesis_carried": [
       "ledger.hypothesis_carried_rows"
     ],
@@ -19,13 +22,13 @@
       "operator.evm_status"
     ]
   },
-  "claim_source_graph_digest": "2d489341f5ace268eb5628a23cc58e6b260ba85fbe075e7a0853cec9df70b811",
-  "generated_at": "2026-04-07T16:20:05.781502Z",
+  "claim_source_graph_digest": "ebdf6f6c5e5d801bc2fa0c0fc50a1ef1518afc173967b88de92068de3d0bbba5",
+  "generated_at": "2026-04-11T20:53:50.986531Z",
   "schema": "ziros-hostile-audit-verdict-v1",
   "summary": {
     "bounded_only_files": 0,
     "excluded_files": 0,
-    "explicit_tcb_claims": 0,
+    "explicit_tcb_claims": 1,
     "explicit_tcb_files": 0,
     "external_evidence_claims": 0,
     "failed_claims": 0,

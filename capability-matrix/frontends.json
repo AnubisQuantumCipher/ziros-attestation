@@ -1,6 +1,15 @@
 {
   "frontends": [
     {
+      "id": "zir",
+      "input_formats": [
+        "zir-source",
+        "zkf-zir-source-descriptor-json"
+      ],
+      "notes": "Native Zir source frontend. Tier 1 is total and bounded; Tier 2 preserves advanced ZIR features and fails closed when forced through unsupported lowerings.",
+      "status": "ready"
+    },
+    {
       "id": "noir",
       "input_formats": [
         "noir-artifact-json",
@@ -69,6 +78,6 @@
       "status": "ready"
     }
   ],
-  "generated_for": "0.7.3",
+  "generated_for": "0.7.5",
   "schema": "ziros-frontend-capability-matrix-v1"
 }

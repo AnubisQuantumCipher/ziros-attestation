@@ -1,28 +1,36 @@
 {
   "by_assurance_class": {
-    "hypothesis_carried_theorem": 9,
-    "mechanized_implementation_claim": 160
+    "attestation_backed_lane": 0,
+    "bounded_check": 0,
+    "hypothesis_carried_theorem": 0,
+    "mechanized_implementation_claim": 167,
+    "model_only_claim": 17,
+    "trusted_protocol_tcb": 9
   },
   "by_checker": {
     "fstar": 2,
-    "lean": 22,
-    "rocq": 59,
-    "verus": 86
+    "generated_proof": 4,
+    "lean": 13,
+    "refined_rust": 1,
+    "rocq": 76,
+    "rocq+verus": 1,
+    "verus": 96
   },
   "by_scope_domain": {
-    "zkf-backends": 24,
+    "zkf-backends": 26,
     "zkf-core": 23,
     "zkf-distributed": 24,
     "zkf-frontends": 1,
     "zkf-ir-spec": 3,
-    "zkf-lib": 15,
+    "zkf-lang": 3,
+    "zkf-lib": 33,
     "zkf-metal": 9,
-    "zkf-runtime": 70
+    "zkf-runtime": 71
   },
-  "mechanized_local": 169,
+  "mechanized_local": 193,
   "pending": 0,
   "pending_entries": 0,
-  "total": 169,
+  "total": 193,
   "trusted_assumption_rows": [
     "protocol.groth16_completeness",
     "protocol.groth16_knowledge_soundness",

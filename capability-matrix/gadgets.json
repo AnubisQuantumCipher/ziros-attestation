@@ -71,6 +71,7 @@
         "bn254",
         "bls12-381",
         "pasta-fp",
+        "pasta-fq",
         "goldilocks",
         "babybear",
         "mersenne31"
@@ -100,6 +101,7 @@
         "bn254",
         "bls12-381",
         "pasta-fp",
+        "pasta-fq",
         "goldilocks",
         "babybear",
         "mersenne31"
@@ -138,12 +140,13 @@
         "bn254",
         "bls12-381",
         "pasta-fp",
+        "pasta-fq",
         "goldilocks",
         "babybear",
         "mersenne31"
       ]
     }
   ],
-  "generated_for": "0.7.3",
+  "generated_for": "0.7.5",
   "schema": "ziros-gadget-capability-matrix-v1"
 }

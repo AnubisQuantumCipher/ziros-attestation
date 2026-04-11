@@ -11,8 +11,9 @@
     "hypernova",
     "midnight-compact"
   ],
-  "frontend_count": 7,
+  "frontend_count": 8,
   "frontend_ids": [
+    "zir",
     "noir",
     "circom",
     "cairo",
@@ -35,8 +36,8 @@
     "schnorr",
     "sha256"
   ],
-  "generated_at": "2026-04-07T16:20:05.761351Z",
-  "generated_for": "0.7.3",
+  "generated_at": "2026-04-11T20:53:50.965361Z",
+  "generated_for": "0.7.5",
   "post_quantum_component_count": 7,
   "post_quantum_components": [
     "plonky3",

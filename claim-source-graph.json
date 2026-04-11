@@ -4,7 +4,7 @@
       "category": "mathematically_established",
       "claim_id": "publication.release_tag",
       "claim_text": "Published release tag in the public attestation.",
-      "expected_value": "v0.7.3",
+      "expected_value": "v0.7.5",
       "sources": [
         {
           "json_pointer": "/release_tag",
@@ -20,7 +20,7 @@
       "category": "mathematically_established",
       "claim_id": "ledger.implementation_bound_rows",
       "claim_text": "Implementation-bound machine-checked theorem rows disclosed in the public ledger.",
-      "expected_value": 160,
+      "expected_value": 167,
       "sources": [
         {
           "json_pointer": "/by_assurance_class/mechanized_implementation_claim",
@@ -36,7 +36,7 @@
       "category": "hypothesis_carried",
       "claim_id": "ledger.hypothesis_carried_rows",
       "claim_text": "Hypothesis-carried theorem rows disclosed separately from the headline count.",
-      "expected_value": 9,
+      "expected_value": 0,
       "sources": [
         {
           "json_pointer": "/by_assurance_class/hypothesis_carried_theorem",
@@ -44,6 +44,22 @@
         },
         {
           "json_pointer": "/headline_counts/hypothesis_carried_rows",
+          "path": "attestation/latest.json"
+        }
+      ]
+    },
+    {
+      "category": "explicit_tcb",
+      "claim_id": "ledger.trusted_protocol_tcb_rows",
+      "claim_text": "Trusted protocol TCB rows disclosed separately from implementation-bound theorem rows.",
+      "expected_value": 9,
+      "sources": [
+        {
+          "json_pointer": "/by_assurance_class/trusted_protocol_tcb",
+          "path": "ledger/ledger-summary.json"
+        },
+        {
+          "json_pointer": "/headline_counts/trusted_protocol_tcb_rows",
           "path": "attestation/latest.json"
         },
         {
@@ -88,7 +104,7 @@
       "category": "mathematically_established",
       "claim_id": "ledger.file_sha256",
       "claim_text": "Published verification ledger file digest.",
-      "expected_value": "03b7d9d8863d08215365fa70768fc98b581e2c8784fe9d21c6691b27a104e68e",
+      "expected_value": "4b6568998b8e00e290fed2ddc93cc44026e73270dd5b5f24350a1b54deef6df4",
       "sources": [
         {
           "json_pointer": "",
@@ -168,7 +184,7 @@
       "category": "mathematically_established",
       "claim_id": "capability.frontends_published",
       "claim_text": "Number of frontend capability entries published.",
-      "expected_value": 7,
+      "expected_value": 8,
       "sources": [
         {
           "json_pointer": "/frontend_count",
@@ -199,7 +215,7 @@
     {
       "category": "mathematically_established",
       "claim_id": "operator.midnight_status",
-      "claim_text": "Published Midnight readiness status for the 0.7.3 full operator path.",
+      "claim_text": "Published Midnight readiness status for the 0.7.5 full operator path.",
       "expected_value": "ready",
       "sources": [
         {
@@ -215,7 +231,7 @@
     {
       "category": "mathematically_established",
       "claim_id": "operator.evm_status",
-      "claim_text": "Published EVM readiness status for the 0.7.3 secondary operator lane.",
+      "claim_text": "Published EVM readiness status for the 0.7.5 secondary operator lane.",
       "expected_value": "secondary-ready",
       "sources": [
         {
@@ -229,7 +245,7 @@
       ]
     }
   ],
-  "generated_at": "2026-04-07T16:20:05.781468Z",
-  "graph_digest": "2d489341f5ace268eb5628a23cc58e6b260ba85fbe075e7a0853cec9df70b811",
+  "generated_at": "2026-04-11T20:53:50.986492Z",
+  "graph_digest": "ebdf6f6c5e5d801bc2fa0c0fc50a1ef1518afc173967b88de92068de3d0bbba5",
   "schema": "ziros-claim-source-graph-v1"
 }

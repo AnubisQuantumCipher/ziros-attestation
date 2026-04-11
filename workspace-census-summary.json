@@ -4,22 +4,22 @@
     "bounded": 0,
     "excluded_from_release": 0,
     "explicit_tcb": 0,
-    "mechanized": 107
+    "mechanized": 156
   },
-  "generated_at": "2026-04-07T16:20:05.758304Z",
+  "generated_at": "2026-04-11T20:53:50.962089Z",
   "release_included_counts": {
     "excluded": 0,
-    "included": 1581
+    "included": 1773
   },
   "schema": "ziros-workspace-census-summary-v1",
-  "source_census_root": "5de95e1de17254e1e0a716a709991075748017d9b65b08a064458d617fb81a09",
-  "source_commit": "ffe6f5eaf7b2c724706a48d9f643fb485befe661",
-  "total_tracked_files": 1581,
+  "source_census_root": "d3975f47cc8e33f5910dc6c1052ad099456d5e613acdb09e7c8aad3e67e467df",
+  "source_commit": "fa91d639c8df088a91d0be7bd40d8695e9993313",
+  "total_tracked_files": 1773,
   "trust_band_counts": {
     "noncritical_support": 0,
     "publication_critical": 0,
     "release_critical": 0,
-    "sealed_core": 1581
+    "sealed_core": 1773
   },
   "zero_unclassified_files": true
 }

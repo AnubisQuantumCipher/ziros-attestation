@@ -1,7 +1,7 @@
 {
   "artifact_index": {
     "attestation_latest": "attestation/latest.json",
-    "binary_manifest": "binary-manifest/v0.7.3/manifest.json",
+    "binary_manifest": "binary-manifest/v0.7.5/manifest.json",
     "capability_summary": "evidence/capability-summary.json",
     "claim_source_graph": "claim-source-graph.json",
     "conformance_summary": "evidence/conformance-summary.json",
@@ -17,12 +17,12 @@
     "workspace_census_summary": "workspace-census-summary.json"
   },
   "attestation": {
-    "attestation_hash": "32c65d3ed04b3a9871074df94cace36191324fe4c57cd5aaa3d6a8b4b6471ad5",
-    "claim_source_graph_digest": "2d489341f5ace268eb5628a23cc58e6b260ba85fbe075e7a0853cec9df70b811",
+    "attestation_hash": "30da74cadc15a32bf8cae62835f03ff3b88d4b3e4ff1ed2abfac48eb0803500f",
+    "claim_source_graph_digest": "ebdf6f6c5e5d801bc2fa0c0fc50a1ef1518afc173967b88de92068de3d0bbba5",
     "claims_verified": {
       "capability_surface": {
         "backend_count": 9,
-        "frontend_count": 7,
+        "frontend_count": 8,
         "gadget_count": 11,
         "summary_path": "evidence/capability-summary.json"
       },
@@ -46,30 +46,31 @@
         }
       },
       "verification_ledger": {
-        "file_sha256": "03b7d9d8863d08215365fa70768fc98b581e2c8784fe9d21c6691b27a104e68e",
+        "file_sha256": "4b6568998b8e00e290fed2ddc93cc44026e73270dd5b5f24350a1b54deef6df4",
         "file_sha256_path": "ledger/ledger-sha256.txt",
-        "implementation_bound_rows": 160,
+        "implementation_bound_rows": 167,
         "pending": 0,
-        "total_entries": 169
+        "total_entries": 193
       }
     },
-    "generated_at": "2026-04-07T16:20:05.781453Z",
+    "generated_at": "2026-04-11T20:53:50.986477Z",
     "headline_counts": {
-      "hypothesis_carried_rows": 9,
-      "implementation_bound_rows": 160,
-      "mechanized_local_rows": 169,
+      "hypothesis_carried_rows": 0,
+      "implementation_bound_rows": 167,
+      "mechanized_local_rows": 193,
       "pending_rows": 0,
+      "trusted_protocol_tcb_rows": 9,
       "zero_unclassified_files": true
     },
     "hypothesis_registry": {
       "count": 9,
       "families": {
         "fri_exact": {
-          "checker": "lean",
+          "checker": "rocq",
           "exact_surface": "Plonky3 FRI transcript and verifier-guard boundary",
           "hypothesis_class": "cryptographic_protocol_hypothesis",
           "label": "fri exact hypotheses",
-          "proof_status": "hypothesis_stated_no_repo_local_artifact",
+          "proof_status": "trusted_protocol_tcb_no_repo_local_artifact",
           "row_count": 2,
           "theorem_ids": [
             "protocol.fri_completeness",
@@ -77,11 +78,11 @@
           ]
         },
         "groth16_exact": {
-          "checker": "lean",
+          "checker": "rocq",
           "exact_surface": "BN254 Groth16 imported-CRS verifier boundary",
           "hypothesis_class": "cryptographic_protocol_hypothesis",
           "label": "groth16 exact hypotheses",
-          "proof_status": "hypothesis_stated_no_repo_local_artifact",
+          "proof_status": "trusted_protocol_tcb_no_repo_local_artifact",
           "row_count": 3,
           "theorem_ids": [
             "protocol.groth16_completeness",
@@ -90,11 +91,11 @@
           ]
         },
         "hypernova_exact": {
-          "checker": "lean",
+          "checker": "rocq",
           "exact_surface": "HyperNova CCS profile and verifier metadata boundary",
           "hypothesis_class": "cryptographic_protocol_hypothesis",
           "label": "hypernova exact hypotheses",
-          "proof_status": "hypothesis_stated_no_repo_local_artifact",
+          "proof_status": "trusted_protocol_tcb_no_repo_local_artifact",
           "row_count": 2,
           "theorem_ids": [
             "protocol.hypernova_completeness",
@@ -102,11 +103,11 @@
           ]
         },
         "nova_exact": {
-          "checker": "lean",
+          "checker": "rocq",
           "exact_surface": "classic Nova recursive shell and verifier metadata boundary",
           "hypothesis_class": "cryptographic_protocol_hypothesis",
           "label": "nova exact hypotheses",
-          "proof_status": "hypothesis_stated_no_repo_local_artifact",
+          "proof_status": "trusted_protocol_tcb_no_repo_local_artifact",
           "row_count": 2,
           "theorem_ids": [
             "protocol.nova_completeness",
@@ -116,12 +117,12 @@
       },
       "rows_by_theorem_id": {
         "protocol.fri_completeness": {
-          "checker": "lean",
-          "evidence_kind": "hypothesis_registry_note",
+          "checker": "rocq",
+          "evidence_kind": "trusted_protocol_tcb_registry_note",
           "exact_surface": "Plonky3 FRI transcript and verifier-guard boundary",
-          "notes": "Exact FRI completeness remains a hypothesis-carried claim on the shipped Plonky3 verifier surface, but the referenced local Lean artifact is not present in this checkout. This row is intentionally marked `hypothesis_stated`: verifier acceptance is still understood to depend on `friExactCompletenessHypothesis`, without claiming an in-tree mechanized proof.",
+          "notes": "Local Rocq theorem `fri_exact_completeness_reduction_ok` mechanizes the shipped exact-surface reduction over Hax extraction of `zkf-backends/src/proof_fri_exact_spec.rs`: if `friExactCompletenessHypothesis` holds and the shipped verifier guard is true, then `fri_exact_completeness_reduction` returns `true`. The explicit Reed-Solomon completeness hypothesis remains in `trusted_assumptions`, so this row stays a trusted protocol TCB claim rather than a discharged cryptographic theorem.",
           "proof_family": "fri_exact",
-          "proof_status": "hypothesis_stated_no_repo_local_artifact",
+          "proof_status": "trusted_protocol_tcb_no_repo_local_artifact",
           "scope": "zkf-backends::plonky3",
           "theorem_id": "protocol.fri_completeness",
           "title": "FRI exact Plonky3 shipped surface satisfies completeness under explicit Reed-Solomon completeness hypotheses",
@@ -130,12 +131,12 @@
           ]
         },
         "protocol.fri_proximity_soundness": {
-          "checker": "lean",
-          "evidence_kind": "hypothesis_registry_note",
+          "checker": "rocq",
+          "evidence_kind": "trusted_protocol_tcb_registry_note",
           "exact_surface": "Plonky3 FRI transcript and verifier-guard boundary",
-          "notes": "Exact FRI proximity soundness remains a hypothesis-carried claim on the shipped Plonky3 verifier surface, but the referenced local Lean artifact is not present in this checkout. This row is intentionally marked `hypothesis_stated`: the verifier boundary is still understood to depend on `friReedSolomonProximitySoundnessHypothesis`, without claiming an in-tree mechanized proof.",
+          "notes": "Local Rocq theorem `fri_exact_proximity_soundness_reduction_ok` mechanizes the shipped exact-surface reduction over Hax extraction of `zkf-backends/src/proof_fri_exact_spec.rs`: if `friReedSolomonProximitySoundnessHypothesis` holds and the shipped verifier accepts, then `fri_exact_proximity_soundness_reduction` returns `true`. The explicit Reed-Solomon proximity hypothesis remains in `trusted_assumptions`, so this row stays a trusted protocol TCB claim rather than a discharged cryptographic theorem.",
           "proof_family": "fri_exact",
-          "proof_status": "hypothesis_stated_no_repo_local_artifact",
+          "proof_status": "trusted_protocol_tcb_no_repo_local_artifact",
           "scope": "zkf-backends::plonky3",
           "theorem_id": "protocol.fri_proximity_soundness",
           "title": "FRI exact Plonky3 shipped surface reduces proximity soundness to explicit Reed-Solomon hypotheses",
@@ -144,12 +145,12 @@
           ]
         },
         "protocol.groth16_completeness": {
-          "checker": "lean",
-          "evidence_kind": "hypothesis_registry_note",
+          "checker": "rocq",
+          "evidence_kind": "trusted_protocol_tcb_registry_note",
           "exact_surface": "BN254 Groth16 imported-CRS verifier boundary",
-          "notes": "Exact Groth16 completeness remains a hypothesis-carried claim on the shipped BN254 verifier boundary, but the referenced local Lean artifact is not present in this checkout. This row is intentionally marked `hypothesis_stated`: verifier acceptance is still understood to reduce to `groth16ImportedCrsValidityHypothesis` plus `groth16ExactCompletenessHypothesis`, without claiming an in-tree mechanized proof.",
+          "notes": "Local Rocq theorem `groth16_exact_completeness_reduction_ok` mechanizes the shipped exact-surface reduction over Hax extraction of `zkf-backends/src/proof_groth16_exact_spec.rs`: if `groth16ImportedCrsValidityHypothesis` and `groth16ExactCompletenessHypothesis` hold on the extracted boundary and the shipped verifier guard is true, then `groth16_exact_completeness_reduction` returns `true`. The explicit hypotheses remain in `trusted_assumptions`, so this row stays a trusted protocol TCB claim rather than a discharged cryptographic theorem.",
           "proof_family": "groth16_exact",
-          "proof_status": "hypothesis_stated_no_repo_local_artifact",
+          "proof_status": "trusted_protocol_tcb_no_repo_local_artifact",
           "scope": "zkf-backends::arkworks",
           "theorem_id": "protocol.groth16_completeness",
           "title": "Groth16 exact imported-CRS shipped surface satisfies completeness under explicit imported-CRS and algebraic hypotheses",
@@ -159,12 +160,12 @@
           ]
         },
         "protocol.groth16_knowledge_soundness": {
-          "checker": "lean",
-          "evidence_kind": "hypothesis_registry_note",
+          "checker": "rocq",
+          "evidence_kind": "trusted_protocol_tcb_registry_note",
           "exact_surface": "BN254 Groth16 imported-CRS verifier boundary",
-          "notes": "Exact Groth16 knowledge soundness remains a hypothesis-carried claim on the shipped BN254 verifier boundary, but the referenced local Lean artifact is not present in this checkout. This row is intentionally marked `hypothesis_stated`: the shipped boundary is still understood to depend on `groth16ImportedCrsValidityHypothesis` and `groth16KnowledgeOfExponentHypothesis`, without claiming an in-tree mechanized proof.",
+          "notes": "Local Rocq theorem `groth16_exact_knowledge_soundness_reduction_ok` mechanizes the shipped exact-surface reduction over Hax extraction of `zkf-backends/src/proof_groth16_exact_spec.rs`: if `groth16ImportedCrsValidityHypothesis` and `groth16KnowledgeOfExponentHypothesis` hold and the shipped verifier accepts, then `groth16_exact_knowledge_soundness_reduction` returns `true`. The explicit KEA-style hypothesis remains in `trusted_assumptions`, so this row stays a trusted protocol TCB claim rather than a discharged cryptographic theorem.",
           "proof_family": "groth16_exact",
-          "proof_status": "hypothesis_stated_no_repo_local_artifact",
+          "proof_status": "trusted_protocol_tcb_no_repo_local_artifact",
           "scope": "zkf-backends::arkworks",
           "theorem_id": "protocol.groth16_knowledge_soundness",
           "title": "Groth16 exact imported-CRS shipped surface reduces knowledge soundness to explicit KEA-style hypotheses",
@@ -174,12 +175,12 @@
           ]
         },
         "protocol.groth16_zero_knowledge": {
-          "checker": "lean",
-          "evidence_kind": "hypothesis_registry_note",
+          "checker": "rocq",
+          "evidence_kind": "trusted_protocol_tcb_registry_note",
           "exact_surface": "BN254 Groth16 imported-CRS verifier boundary",
-          "notes": "Exact Groth16 zero knowledge remains a hypothesis-carried claim on the shipped BN254 verifier boundary, but the referenced local Lean artifact is not present in this checkout. This row is intentionally marked `hypothesis_stated`: the public-view equivalence claim still depends on `groth16ImportedCrsValidityHypothesis` and `groth16ExactZeroKnowledgeHypothesis`, without claiming a local mechanized proof artifact.",
+          "notes": "Local Rocq theorem `groth16_exact_zero_knowledge_reduction_ok` mechanizes the shipped exact-surface reduction over Hax extraction of `zkf-backends/src/proof_groth16_exact_spec.rs`: if `groth16ImportedCrsValidityHypothesis` and `groth16ExactZeroKnowledgeHypothesis` hold on the extracted boundary, then `groth16_exact_zero_knowledge_reduction` returns `true`. The explicit simulator hypothesis remains in `trusted_assumptions`, so this row stays a trusted protocol TCB claim rather than a discharged cryptographic theorem.",
           "proof_family": "groth16_exact",
-          "proof_status": "hypothesis_stated_no_repo_local_artifact",
+          "proof_status": "trusted_protocol_tcb_no_repo_local_artifact",
           "scope": "zkf-backends::arkworks",
           "theorem_id": "protocol.groth16_zero_knowledge",
           "title": "Groth16 exact imported-CRS shipped surface reduces zero knowledge to explicit simulator hypotheses",
@@ -189,12 +190,12 @@
           ]
         },
         "protocol.hypernova_completeness": {
-          "checker": "lean",
-          "evidence_kind": "hypothesis_registry_note",
+          "checker": "rocq",
+          "evidence_kind": "trusted_protocol_tcb_registry_note",
           "exact_surface": "HyperNova CCS profile and verifier metadata boundary",
-          "notes": "Exact HyperNova completeness remains a hypothesis-carried claim on the shipped native verifier surface, but the referenced local Lean artifact is not present in this checkout. This row is intentionally marked `hypothesis_stated`: verifier acceptance is still understood to depend on `hypernovaExactCompletenessHypothesis`, without claiming an in-tree mechanized proof.",
+          "notes": "Local Rocq theorem `hypernova_exact_completeness_reduction_ok` mechanizes the shipped exact-surface reduction over Hax extraction of `zkf-backends/src/proof_hypernova_exact_spec.rs`: if `hypernovaExactCompletenessHypothesis` holds and the shipped verifier guard is true, then `hypernova_exact_completeness_reduction` returns `true`. The explicit CCS folding hypothesis remains in `trusted_assumptions`, so this row stays a trusted protocol TCB claim rather than a discharged cryptographic theorem.",
           "proof_family": "hypernova_exact",
-          "proof_status": "hypothesis_stated_no_repo_local_artifact",
+          "proof_status": "trusted_protocol_tcb_no_repo_local_artifact",
           "scope": "zkf-backends::nova_native",
           "theorem_id": "protocol.hypernova_completeness",
           "title": "HyperNova exact native profile satisfies completeness under explicit CCS folding hypotheses",
@@ -203,12 +204,12 @@
           ]
         },
         "protocol.hypernova_folding_soundness": {
-          "checker": "lean",
-          "evidence_kind": "hypothesis_registry_note",
+          "checker": "rocq",
+          "evidence_kind": "trusted_protocol_tcb_registry_note",
           "exact_surface": "HyperNova CCS profile and verifier metadata boundary",
-          "notes": "Exact HyperNova folding soundness remains a hypothesis-carried claim on the shipped native verifier surface, but the referenced local Lean artifact is not present in this checkout. This row is intentionally marked `hypothesis_stated`: the verifier boundary is still understood to depend on `hypernovaExactFoldingSoundnessHypothesis`, without claiming an in-tree mechanized proof.",
+          "notes": "Local Rocq theorem `hypernova_exact_folding_soundness_reduction_ok` mechanizes the shipped exact-surface reduction over Hax extraction of `zkf-backends/src/proof_hypernova_exact_spec.rs`: if `hypernovaExactFoldingSoundnessHypothesis` holds and the shipped verifier accepts, then `hypernova_exact_folding_soundness_reduction` returns `true`. The explicit CCS commitment hypothesis remains in `trusted_assumptions`, so this row stays a trusted protocol TCB claim rather than a discharged cryptographic theorem.",
           "proof_family": "hypernova_exact",
-          "proof_status": "hypothesis_stated_no_repo_local_artifact",
+          "proof_status": "trusted_protocol_tcb_no_repo_local_artifact",
           "scope": "zkf-backends::nova_native",
           "theorem_id": "protocol.hypernova_folding_soundness",
           "title": "HyperNova exact native profile reduces folding soundness to explicit CCS commitment hypotheses",
@@ -217,12 +218,12 @@
           ]
         },
         "protocol.nova_completeness": {
-          "checker": "lean",
-          "evidence_kind": "hypothesis_registry_note",
+          "checker": "rocq",
+          "evidence_kind": "trusted_protocol_tcb_registry_note",
           "exact_surface": "classic Nova recursive shell and verifier metadata boundary",
-          "notes": "Exact Nova completeness remains a hypothesis-carried claim on the shipped native verifier surface, but the referenced local Lean artifact is not present in this checkout. This row is intentionally marked `hypothesis_stated`: verifier acceptance is still understood to depend on `novaExactCompletenessHypothesis` plus the shipped `completeClassicNovaIvcMetadata` side condition, without claiming an in-tree mechanized proof.",
+          "notes": "Local Rocq theorem `nova_exact_completeness_reduction_ok` mechanizes the shipped exact-surface reduction over Hax extraction of `zkf-backends/src/proof_nova_exact_spec.rs`: if `novaExactCompletenessHypothesis` holds, `completeClassicNovaIvcMetadata` holds, and the shipped verifier guard is true, then `nova_exact_completeness_reduction` returns `true`. The explicit folding hypothesis remains in `trusted_assumptions`, so this row stays a trusted protocol TCB claim rather than a discharged cryptographic theorem.",
           "proof_family": "nova_exact",
-          "proof_status": "hypothesis_stated_no_repo_local_artifact",
+          "proof_status": "trusted_protocol_tcb_no_repo_local_artifact",
           "scope": "zkf-backends::nova_native",
           "theorem_id": "protocol.nova_completeness",
           "title": "Classic Nova exact native profile satisfies completeness under explicit folding hypotheses",
@@ -232,12 +233,12 @@
           ]
         },
         "protocol.nova_folding_soundness": {
-          "checker": "lean",
-          "evidence_kind": "hypothesis_registry_note",
+          "checker": "rocq",
+          "evidence_kind": "trusted_protocol_tcb_registry_note",
           "exact_surface": "classic Nova recursive shell and verifier metadata boundary",
-          "notes": "Exact Nova folding soundness remains a hypothesis-carried claim on the shipped native verifier surface, but the referenced local Lean artifact is not present in this checkout. This row is intentionally marked `hypothesis_stated`: the verifier boundary is still understood to depend on `novaExactFoldingSoundnessHypothesis`, without claiming an in-tree mechanized proof.",
+          "notes": "Local Rocq theorem `nova_exact_folding_soundness_reduction_ok` mechanizes the shipped exact-surface reduction over Hax extraction of `zkf-backends/src/proof_nova_exact_spec.rs`: if `novaExactFoldingSoundnessHypothesis` holds and the shipped verifier accepts, then `nova_exact_folding_soundness_reduction` returns `true`. The explicit commitment-binding hypothesis remains in `trusted_assumptions`, so this row stays a trusted protocol TCB claim rather than a discharged cryptographic theorem.",
           "proof_family": "nova_exact",
-          "proof_status": "hypothesis_stated_no_repo_local_artifact",
+          "proof_status": "trusted_protocol_tcb_no_repo_local_artifact",
           "scope": "zkf-backends::nova_native",
           "theorem_id": "protocol.nova_folding_soundness",
           "title": "Classic Nova exact native profile reduces folding soundness to explicit commitment-binding hypotheses",
@@ -249,10 +250,10 @@
     },
     "public_hostile_audit_verdict_path": "hostile-audit-verdict.json",
     "publication": {
-      "binary_manifest_path": "binary-manifest/v0.7.3/manifest.json",
-      "publication_checked_at": "2026-04-07T16:20:05.781460Z",
-      "release_tag": "v0.7.3",
-      "source_commit": "a9cecce94cd95e9c6c792b9aecf279edf178a938",
+      "binary_manifest_path": "binary-manifest/v0.7.5/manifest.json",
+      "publication_checked_at": "2026-04-11T20:53:50.986484Z",
+      "release_tag": "v0.7.5",
+      "source_commit": "12200b2788578e2300c1e23c9c8f84189a0338d5",
       "working_tree_dirty": false
     },
     "schema": "ziros-attestation-v2",
@@ -260,22 +261,22 @@
       "count": 0,
       "summary_path": "workspace-census-summary.json"
     },
-    "version": "0.7.3",
+    "version": "0.7.5",
     "workspace_census_summary_path": "workspace-census-summary.json"
   },
-  "claim_source_graph_digest": "2d489341f5ace268eb5628a23cc58e6b260ba85fbe075e7a0853cec9df70b811",
-  "generated_at": "2026-04-07T16:20:05.781453Z",
-  "hostile_audit_verdict_digest": "4cf66117794d1084b7d06e810a67124ec28aba85e0d95382ac6a469b452e10a2",
+  "claim_source_graph_digest": "ebdf6f6c5e5d801bc2fa0c0fc50a1ef1518afc173967b88de92068de3d0bbba5",
+  "generated_at": "2026-04-11T20:53:50.986477Z",
+  "hostile_audit_verdict_digest": "03e5ff411091aedf2a276060da1c4cfc35191e05c32793d8ca3f205727a4eeab",
   "publication": {
-    "attestation_generated_at": "2026-04-07T16:20:05.781453Z",
-    "binary_manifest_path": "binary-manifest/v0.7.3/manifest.json",
+    "attestation_generated_at": "2026-04-11T20:53:50.986477Z",
+    "binary_manifest_path": "binary-manifest/v0.7.5/manifest.json",
     "binary_target": "aarch64-apple-darwin",
     "public_repo_name": "ziros-attestation",
-    "publication_checked_at": "2026-04-07T16:20:05.781460Z",
-    "published_release_version": "0.7.3",
-    "release_tag": "v0.7.3",
+    "publication_checked_at": "2026-04-11T20:53:50.986484Z",
+    "published_release_version": "0.7.5",
+    "release_tag": "v0.7.5",
     "schema": "ziros-publication-manifest-v1",
-    "source_commit": "a9cecce94cd95e9c6c792b9aecf279edf178a938",
+    "source_commit": "12200b2788578e2300c1e23c9c8f84189a0338d5",
     "source_truth_surfaces": [
       "zkf-ir-spec/verification-ledger.json",
       ".zkf-completion-status.json",
@@ -302,22 +303,22 @@
       "bounded": 0,
       "excluded_from_release": 0,
       "explicit_tcb": 0,
-      "mechanized": 107
+      "mechanized": 156
     },
-    "generated_at": "2026-04-07T16:20:05.758304Z",
+    "generated_at": "2026-04-11T20:53:50.962089Z",
     "release_included_counts": {
       "excluded": 0,
-      "included": 1581
+      "included": 1773
     },
     "schema": "ziros-workspace-census-summary-v1",
-    "source_census_root": "5de95e1de17254e1e0a716a709991075748017d9b65b08a064458d617fb81a09",
-    "source_commit": "ffe6f5eaf7b2c724706a48d9f643fb485befe661",
-    "total_tracked_files": 1581,
+    "source_census_root": "d3975f47cc8e33f5910dc6c1052ad099456d5e613acdb09e7c8aad3e67e467df",
+    "source_commit": "fa91d639c8df088a91d0be7bd40d8695e9993313",
+    "total_tracked_files": 1773,
     "trust_band_counts": {
       "noncritical_support": 0,
       "publication_critical": 0,
       "release_critical": 0,
-      "sealed_core": 1581
+      "sealed_core": 1773
     },
     "zero_unclassified_files": true
   }

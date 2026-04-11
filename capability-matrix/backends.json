@@ -83,7 +83,9 @@
     {
       "assurance_lane": "native-cryptographic-proof",
       "fields": [
-        "bn254"
+        "bn254",
+        "pasta-fp",
+        "pasta-fq"
       ],
       "gpu_coverage": "0/1 GPU stages active on current host",
       "id": "nova",
@@ -95,12 +97,14 @@
     {
       "assurance_lane": "native-cryptographic-proof",
       "fields": [
-        "bn254"
+        "bn254",
+        "pasta-fp",
+        "pasta-fq"
       ],
       "gpu_coverage": "0/1 GPU stages active on current host",
       "id": "hypernova",
       "mode": "native",
-      "notes": "HyperNova native mode: delegates to Nova native backend with HyperNova CCS profile for real multifolding over Pallas/Vesta curve cycle. Supports BN254 IR programs (mapped to Pallas scalar field). implementation_type=native compiled_in=true production_ready=true assurance_lane=native-cryptographic-proof proof_semantics=proof-enforced-basic-ir-recursive-shell aggregation_semantics=cryptographic-recursive-multifolding",
+      "notes": "HyperNova native mode: delegates to Nova native backend with HyperNova CCS profile for real multifolding over Pallas/Vesta curve cycle. Supports BN254, PastaFp, and PastaFq IR programs. implementation_type=native compiled_in=true production_ready=true assurance_lane=native-cryptographic-proof proof_semantics=proof-enforced-basic-ir-recursive-shell aggregation_semantics=cryptographic-recursive-multifolding",
       "proof_semantics": "proof-enforced-basic-ir-recursive-shell",
       "status": "ready"
     },
@@ -118,6 +122,6 @@
       "status": "ready"
     }
   ],
-  "generated_for": "0.7.3",
+  "generated_for": "0.7.5",
   "schema": "ziros-backend-capability-matrix-v1"
 }

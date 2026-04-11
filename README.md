@@ -7,13 +7,14 @@ This repository is evidence-only. It publishes no implementation source, headers
 
 | Surface | Published state |
 | --- | --- |
-| Public release | `v0.7.3` via [publication/manifest.json](publication/manifest.json) |
-| Headline theorem count | **160 implementation-bound mechanized rows** |
-| Disclosed hypotheses | 9 hypothesis-carried rows, published separately in [attestation/latest.json](attestation/latest.json) and [evidence/protocol-proof-registry.json](evidence/protocol-proof-registry.json) |
+| Public release | `v0.7.5` via [publication/manifest.json](publication/manifest.json) |
+| Headline theorem count | **167 implementation-bound mechanized rows** |
+| Disclosed hypotheses | 0 hypothesis-carried rows, published separately in [attestation/latest.json](attestation/latest.json) and [evidence/protocol-proof-registry.json](evidence/protocol-proof-registry.json) |
+| Trusted protocol TCB | 9 explicit protocol TCB rows, published separately from implementation-bound proof rows |
 | Public conformance | 24/24 tests passed across `plonky3`, `halo2`, `nova`, and `hypernova` |
-| Sealed-source census | 1581 tracked files classified; zero unclassified = `True` |
-| Midnight readiness | full universal path for `0.7.3`: status=`ready`, local_operator=`True`, live_submit=`False` via [midnight/readiness.json](midnight/readiness.json) |
-| EVM readiness | secondary deploy-capable lane for `0.7.3`: status=`secondary-ready` via [evm/readiness.json](evm/readiness.json) |
+| Sealed-source census | 1773 tracked files classified; zero unclassified = `True` |
+| Midnight readiness | full universal path for `0.7.5`: status=`ready`, local_operator=`True`, live_submit=`False` via [midnight/readiness.json](midnight/readiness.json) |
+| EVM readiness | secondary deploy-capable lane for `0.7.5`: status=`secondary-ready` via [evm/readiness.json](evm/readiness.json) |
 | Midnight evidence | 5 published Midnight preprod deployment manifests; explorer verification 0/5 on 2026-04-05 |
 | Hostile-audit verdict | [hostile-audit-verdict.json](hostile-audit-verdict.json) and [claim-source-graph.json](claim-source-graph.json) |
 <!-- END GENERATED PUBLIC SUMMARY -->
@@ -42,13 +43,14 @@ Public trust here comes from machine-readable evidence and replayable claim edge
 <!-- BEGIN GENERATED WEEKLY STATUS -->
 | What It Publishes | How | Current Status |
 | --- | --- | --- |
-| Headline theorem count | Implementation-bound machine-checked rows only | **160 implementation-bound rows** |
-| Hypothesis registry | Explicit assumptions for non-headline theorem rows | **9 rows disclosed separately** |
+| Headline theorem count | Implementation-bound machine-checked rows only | **167 implementation-bound rows** |
+| Hypothesis registry | Explicit assumptions for non-headline theorem rows | **0 rows disclosed separately** |
+| Protocol TCB registry | External protocol assumptions isolated from implementation-bound theorem rows | **9 trusted protocol TCB rows** |
 | Public backend conformance | Compile -> prove -> verify across 4 published backends | **24/24 tests passed** |
-| Sealed-source census | Opaque private-file census summarized publicly | **1581 files; zero unclassified = True** |
-| Binary integrity | Published release manifest `binary-manifest/v0.7.3/manifest.json` | **SHA-256 verified for `aarch64-apple-darwin`** |
-| Midnight operator path | Full universal path for `0.7.3` | **status=ready local_operator=True live_submit=False** |
-| EVM operator path | Secondary deploy-capable lane for `0.7.3` | **status=secondary-ready** |
+| Sealed-source census | Opaque private-file census summarized publicly | **1773 files; zero unclassified = True** |
+| Binary integrity | Published release manifest `binary-manifest/v0.7.5/manifest.json` | **SHA-256 verified for `aarch64-apple-darwin`** |
+| Midnight operator path | Full universal path for `0.7.5` | **status=ready local_operator=True live_submit=False** |
+| EVM operator path | Secondary deploy-capable lane for `0.7.5` | **status=secondary-ready** |
 | Midnight deployment evidence | Published deployment manifest plus live explorer recheck | **0/5 explorer-verified on 2026-04-05** |
 <!-- END GENERATED WEEKLY STATUS -->
 
